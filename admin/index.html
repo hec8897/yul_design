@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<title>YUL i.d</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="title" content="YUL i.d">
+	<meta name="author" content="YUL i.d">
+	
+    <!--  BASE CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="css/elements.min.css" rel="stylesheet" />
+	<link href="css/default.css" rel="stylesheet" />
+	<link href="css/responsive.min.css" rel="stylesheet" />
+	<!--  END BASE CSS  -->
+	
+	<!--  BASE JS  -->
+	<script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/apps.min.js"></script>
+    <!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<script src="js/respond.min.js"></script>
+	    <![endif]-->
+    <!--  END BASE JS  -->
+    
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
+    
+	<style>
+        html{width:100%; height:100% !important; min-height:100%; background:#fff}
+        body{background:#fff !important; width:100%; height:100%; min-height:100%}
+        .wrap{position:relative; padding:10px; box-sizing:border-box; margin-bottom:50px}
+        table{width:100%; border:1px solid #e0e0e0; border-collapse:collapse; overflow: hidden}
+        table,th,td{padding:10px 0; text-align: center; font-size:12px !important; border-right:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0}
+        table th{font-weight:700; color:#444; background:#f0f0f0}
+        table td a{display:block; font-size:12px}
+        table td,table td a{font-weight:500; color:#777}
+        .tred{color:#e83737}
+        .tblue{color:#4b73f7}
+    </style>
+</head>
+<body>
+<div class="wrap animated fadeInDown">
+    <h3>PC&amp;모바일 반응형 화면</h3>
+    <table>
+        <tr>
+            <th colspan="4">웹페이지</th>
+        </tr>
+        <tr>
+            <th colspan="2" width="40%">제목</th>
+            <th width="45%">파일명</th>
+            <th width="*">비고</th>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding:0; height:5px"></td>
+        </tr>
+        <tr>
+            <th colspan="2">메인페이지</th>
+            <td><a href="main.html">main.html</a></td>
+            <td class="">진행중</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding:0; height:5px"></td>
+        </tr>
+        <tr>
+            <th colspan="2">about us</th>
+            <td><a href="main.html">about.html</a></td>
+            <td class="">진행중</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding:0; height:5px"></td>
+        </tr>
+        <tr>
+            <th rowspan="2">portfolio</th>
+            <td>리스트</td>
+            <td><a href="cs_1.html">portfolio.html</a></td>
+            <td class="">진행중</td>
+        </tr>
+        <tr>
+            <td>상세화면</td>
+            <td><a href="cs_2.html">portfolio_view.html</a></td>
+            <td class="">진행중</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding:0; height:5px"></td>
+        </tr>
+        <tr>
+            <th colspan="2">Consulting</th>
+            <td><a href="download.html">Consul.html</a></td>
+            <td class="">진행중</td>
+        </tr>
+    </table>
+    
+    <div class="mt50"></div>
+    <h3>관리자 화면</h3>
+    <table>
+        <tr>
+            <th colspan="2" width="40%">관리자 로그인</th>
+            <td width="45%"><a href="admin_login.html">admin_login.html</a></td>
+            <td class="tblue">완료</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding:0; height:5px"></td>
+        </tr>
+        <tr>
+            <th colspan="2">관리자 메인</th>
+            <td><a href="admin_main.html">admin_main.html</a></td>
+            <td class="tblue">완료</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding:0; height:5px"></td>
+        </tr>
+        <tr>
+            <th colspan="2">관리자 정보</th>
+            <td><a href="admin_info.html">admin_info.html</a></td>
+            <td class="tblue">완료</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding:0; height:5px"></td>
+        </tr>
+        <tr>
+            <th colspan="2">메인배너 관리</th>
+            <td><a href="admin_mbanner.html">admin_mbanner.html</a></td>
+            <td class="tblue">완료</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding:0; height:5px"></td>
+        </tr>
+        <tr>
+            <th rowspan="3">portfolio</th>
+            <td>portfolio 목록</td>
+            <td><a href="admin_portfolio_list.html">admin_portfolio_list.html</a></td>
+            <td class="tblue">완료</td>
+        </tr>
+        <tr>
+            <td>portfolio 쓰기 &amp; 수정</td>
+            <td><a href="admin_portfolio_add.html">admin_portfolio_add.html</a></td>
+            <td class="tblue">완료</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding:0; height:5px"></td>
+        </tr>
+        <tr>
+            <th rowspan="3">견적문의</th>
+            <td>견적문의 목록</td>
+            <td><a href="admin_consul.html">admin_consul.html</a></td>
+            <td class="tblue">완료</td>
+        </tr>
+        <tr>
+            <td>견적문의 보기</td>
+            <td><a href="admin_consul_view.html">admin_consul_view.html</a></td>
+            <td class="tblue">완료</td>
+        </tr>
+    </table>
+    <br><br>
+</div>
+
+</body>
+</html>
