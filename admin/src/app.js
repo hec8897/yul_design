@@ -9,9 +9,8 @@ const router = new VueRouter({
                 path:'/modals-modify/:id',
                 component:MainBannerModla,
                 props:true
-
-            }
-        ]
+                }
+            ]
         },
         {
             path: '/info',
