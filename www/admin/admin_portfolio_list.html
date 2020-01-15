@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>관리자 페이지</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="title" content="administrator">
+	<meta name="author" content="administrator">
+    <meta name="description" content="administrator">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+
+    <!--  BASE CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="css/elements.min.css" rel="stylesheet" />
+	<link href="css/admin_default.css" rel="stylesheet" />
+	<!--  END BASE CSS  -->
+	
+	<!--  BASE JS  -->
+	<script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/apps.min.js"></script>
+    <!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<script src="js/respond.min.js"></script>
+	    <![endif]-->
+    <!--  END BASE JS  -->
+    
+    <!-- datepicker js -->
+    <script src="js/form-plugins.min.js"></script>
+    <!-- END datepicker js -->
+    
+    <script>
+        $(document).ready(function() {
+            App.init();
+            FormPlugins.init();
+        });
+    </script>
+    
+</head>
+
+<body>
+<div class="wrap">
+    <!-- head area -->
+    <div class="head_wrap">
+        <div class="head_bi">
+            <div class="bi_img"><a href=""><img src="images/bi_yul.png" alt="yul_bi"></a></div>
+            <h4>ADMINISTRATOR</h4>
+        </div>
+        <!-- login ingo -->
+        <div class="head_info">
+            <a href="" class="btn_out">로그아웃</a>
+        </div>
+        <!-- END login ingo //-->
+    </div>
+    <!-- END head area //-->
+
+    <!-- side GNB -->
+    <div id="sidebar" class="sidebar">
+        <ul class="nav">
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">group</i>
+                    <h5>관리자 관리</h5>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">view_compact</i>
+                    <h5>메인 관리</h5>
+                </a>
+            </li>
+            <li class="has-sub on">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">dvr</i>
+                    <h5>포트폴리오</h5>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">assignment_late</i>
+                    <h5>견적문의</h5>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="side_bg"></div>
+    <!-- END side GNB //-->
+    
+    <!-- contents area -->
+    <div class="con_wrap">
+        <!-- search -->
+        <div class="search_wrap">
+            <div class="panel">
+                <ul>
+                    <li><h5>등록일</h5></li>
+                    <li>
+                        <div class="daterange">
+                            <label for="datepicker-default"><i class="material-icons md-18">date_range</i></label>
+                            <input type="text" class="" name="start" id="datepicker-default" placeholder="날짜선택" />
+                        </div>
+                        ~
+                        <div class="daterange">
+                            <label for="datepicker-autoClose"><i class="material-icons md-18">date_range</i></label>
+                            <input type="text" class="" name="end" id="datepicker-autoClose" placeholder="날짜선택" />
+                        </div>
+                    </li>
+                    <li><h5>검색종류</h5></li>
+                    <li class="search_input">
+                        <div>
+                            <select name="" id="" class="">
+                                <option value="">검색종류</option>
+                                <option value="">검색종류</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="검색">
+                            <a href=""><i class="material-icons">search</i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- list table -->
+        <div class="table_wrap mt40">
+            <div class="tit_wrap">
+                <h4>포트폴리오</h4>
+            </div>
+            <table class="portfolio">
+                <tr>
+                    <th>No</th>
+                    <th>제목</th>
+                    <th>시공형태</th>
+                    <th>시공주소</th>
+                    <th>시공면적</th>
+                    <th>천정</th>
+                    <th>바닥</th>
+                    <th>벽체</th>
+                    <th>노출</th>
+                </tr>
+                <tr>
+                    <td>123456</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr class="tgrey">
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>비공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr class="tgrey">
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>비공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td class="tal"><a href="">아이들이 행복한 집, 개포LG자이 APT</a></td>
+                    <td>주거공간</td>
+                    <td>구로 디지털로 1234 개포LG APT</td>
+                    <td>220m<sup>3</sup></td>
+                    <td>적삼목</td>
+                    <td>대리석</td>
+                    <td>적삼목</td>
+                    <td>공개</td>
+                </tr>
+            </table>
+            <div class="foot_btn">
+                <a href="" class="b_add b_blue">등록</a>
+            </div>
+            <!-- page -->
+            <div class="page">
+                <a href="" class="none"><i class="material-icons vam">navigate_before</i></a>
+                <a href="" class="on">1</a>
+                <a href="">2</a>
+                <a href="">3</a>
+                <a href="">4</a>
+                <a href="">5</a>
+                <a href="">6</a>
+                <a href="">7</a>
+                <a href="">8</a>
+                <a href="">9</a>
+                <a href="">10</a>
+                <a href=""><i class="material-icons vam">navigate_next</i></a>
+            </div>
+            <!-- END page -->
+        </div>
+        <!-- END list table //-->
+    </div>
+    <!-- END contents area //-->
+</div>
+
+</body>
+</html>
