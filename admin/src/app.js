@@ -4,13 +4,11 @@ const router = new VueRouter({
         {
             path: '/',
             component: MainPage,
-            childrend:[
-                {
-                path:'/modals-modify/:id',
-                component:MainBannerModla,
-                props:true
-                }
-            ]
+        },
+        {
+            path:'/view/:idx',
+            component:ConsulView,
+            props:true
         },
         {
             path: '/info',
@@ -18,7 +16,7 @@ const router = new VueRouter({
         },
         {
             path: '/banner',
-            // component: Mbanner
+            component: Mbanner
         },
         {
             path: '/portfolio/:index',
@@ -32,19 +30,13 @@ const router = new VueRouter({
           
         },
         {
-            path: '/counsul',
-            // component: cousul
-        },
-        {
-            path: '/view/:id',
-            // component: CousulView,
-            props: true,
-            params:true
+            path: '/consul',
+            component: consulPage
         }
     ]
 })
 
-
+var eventBus = new Vue();
 var app = new Vue({
     router,
     data: {

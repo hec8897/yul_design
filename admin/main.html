@@ -13,7 +13,8 @@
     <!--  BASE CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link href="css/elements.min.css" rel="stylesheet" />
-	<link href="css/admin_default.css" rel="stylesheet" />
+    <link href="css/admin_default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/vue/modal.css">
 	<!--  END BASE CSS  -->
 	
 	<!--  BASE JS  -->
@@ -31,7 +32,11 @@
 		<script src="js/respond.min.js"></script>
 	    <![endif]-->
     <!--  END BASE JS  -->
-    
+
+    <!-- datepicker js -->
+    <script src="js/form-plugins.min.js"></script>
+    <!-- END datepicker js -->
+
     <script>
         $(document).ready(function() {
             App.init();
@@ -51,10 +56,21 @@
 <script src="src/global-component/app-header.js"></script>
 <script src="src/global-component/app-nav.js"></script>
 <script src="src/global-component/banner-update.js"></script>
+<script src="src/global-component/del-modal.js"></script>
+<script src="src/global-component/img-modal.js"></script>
+<script src="src/global-component/date-filter.js"></script>
+<script src="src/global-component/list-numbering.js"></script>
 
 <script src="src/local-component/main/main-page.js"></script>
 <script src="src/local-component/main/main_banner.js"></script>
 <script src="src/local-component/main/main-bord.js"></script>
+
+<script src="src/local-component/banner/banner_page.js"></script>
+<script src="src/local-component/banner/saved-banner.js"></script>
+
+<script src="src/local-component/consul/consul-page.js"></script>
+<script src="src/local-component/consul/consul_view.js"></script>
+
 
 
 

@@ -19,7 +19,7 @@ Vue.component('app-nav', {
                             </router-link>
 
                             
-                            <router-link to="/test" tag='li' class='has-sub' class-active="has-sub on">
+                            <router-link to="/consul" tag='li' class='has-sub' class-active="has-sub on">
 
                             <b class="caret fr"></b>
                             <i class="material-icons ml20 mr10">assignment_late</i>
