@@ -13,7 +13,7 @@
                                 <th>전화번호</th>
                                 <th>등록일</th>
                             </tr>
-                            <tr v-for="(list,i) in lists">
+                            <tr v-for="(list,i) in lists" v-if='i < limit && i >= start'>
                                 <td>{{i+1}}</td>
                                 <td class="tal"><router-link v-bind:to="/view/+list.idx">{{list.tit}}</router-link></td>
                                 <td>{{list.standard}}</td>
@@ -21,12 +21,123 @@
                                 <td>{{list.reqPhone}}</td>
                                 <td>{{list.InsertDate}}</td>
                             </tr>
-                        
                         </table>
                     </div>`,
     data() {
         return {
+            start:0,
+            limit:10,
             lists:[
+                {
+                    idx:0,
+                    tit:"아파트 30평 견적 문의 드립니다",
+                    standard:"사무공간",
+                    reqName:"김다운",
+                    reqPhone:"01023866482",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
+                {
+                    idx:1,
+                    tit:"용인시에 있는 단독주택 47평 견적의뢰 합니다.",
+                    standard:"주거공간",
+                    reqName:"김김김",
+                    reqPhone:"01023866487",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
+                {
+                    idx:0,
+                    tit:"아파트 30평 견적 문의 드립니다",
+                    standard:"사무공간",
+                    reqName:"김다운",
+                    reqPhone:"01023866482",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
+                {
+                    idx:1,
+                    tit:"용인시에 있는 단독주택 47평 견적의뢰 합니다.",
+                    standard:"주거공간",
+                    reqName:"김김김",
+                    reqPhone:"01023866487",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
+                {
+                    idx:0,
+                    tit:"아파트 30평 견적 문의 드립니다",
+                    standard:"사무공간",
+                    reqName:"김다운",
+                    reqPhone:"01023866482",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
+                {
+                    idx:1,
+                    tit:"용인시에 있는 단독주택 47평 견적의뢰 합니다.",
+                    standard:"주거공간",
+                    reqName:"김김김",
+                    reqPhone:"01023866487",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
+                   {
+                    idx:0,
+                    tit:"아파트 30평 견적 문의 드립니다",
+                    standard:"사무공간",
+                    reqName:"김다운",
+                    reqPhone:"01023866482",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
+                {
+                    idx:1,
+                    tit:"용인시에 있는 단독주택 47평 견적의뢰 합니다.",
+                    standard:"주거공간",
+                    reqName:"김김김",
+                    reqPhone:"01023866487",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
+                {
+                    idx:0,
+                    tit:"아파트 30평 견적 문의 드립니다",
+                    standard:"사무공간",
+                    reqName:"김다운",
+                    reqPhone:"01023866482",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
+                {
+                    idx:1,
+                    tit:"용인시에 있는 단독주택 47평 견적의뢰 합니다.",
+                    standard:"주거공간",
+                    reqName:"김김김",
+                    reqPhone:"01023866487",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
                 {
                     idx:0,
                     tit:"아파트 30평 견적 문의 드립니다",
@@ -52,13 +163,52 @@
             ]
         }
     },
-    mounted(){
-        eventBus.$on('searchData',function(value){
-            console.log(value)
+    created(){
+
+        eventBus.$on('searchData',(Data)=>{
+            console.log(Data.FrontDate)
+            console.log(Data.BackDate)
+            console.log(Data.SelectClass)
+            console.log(Data.SearchValue)   
+            console.log(this.lists)
+            //데이터 업데이트 axios 필요
+            this.lists = [
+                {
+                    idx:0,
+                    tit:"30평 견적 문의 드립니다",
+                    standard:"사무공간",
+                    reqName:"2김다운",
+                    reqPhone:"01023866482",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                },
+                {
+                    idx:1,
+                    tit:"47평 견적의뢰 합니다.",
+                    standard:"주거공간",
+                    reqName:"김김",
+                    reqPhone:"01023866487",
+                    InsertDate:"2020-01-06 17:30:30",
+                    reqConsult:"주거공간 견적 신청",
+                    reqMemo:"상담 메모",
+                    reqAddress:"서울시 구로구",
+                }
+            ]
 
         })
 
+        eventBus.$emit('Listlength',this.lists.length)
+
+
+
+    },
+    methods:{
+ 
+      
     }
+    
 
     
 })

@@ -27,8 +27,6 @@ Vue.component('date-filter', {
                                 <input type="text" placeholder="검색" id='search_value'>
                                 <i class="material-icons" id='search' v-on:click='SearchData'>search</i>
                             </div>
-
-
                         </li>
                     </ul>
                 </div>

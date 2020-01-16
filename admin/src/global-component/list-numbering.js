@@ -1,5 +1,6 @@
 Vue.component('list-number', {
-    template:`<div class="page">
+    props: ['DataLength'],
+    template: `<div class="page">
                 <a href="" class="none"><i class="material-icons vam">navigate_before</i></a>
                 <a href="" class="on">1</a>
                 <a href="">2</a>
@@ -12,5 +13,14 @@ Vue.component('list-number', {
                 <a href="">9</a>
                 <a href="">10</a>
                 <a href=""><i class="material-icons vam">navigate_next</i></a>
-            </div>`
+            </div>`,
+    methods: {
+        
+
+    },
+    created() {
+        eventBus.$on('Listlength',(Data)=>{
+            console.log(1)
+        })
+    }
 })
