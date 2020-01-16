@@ -367,7 +367,7 @@ table.ui-datepicker-calendar tr:last-child td{border-bottom:0}
 
 /* page button */
 .page{clear:both; margin:30px auto 10px auto; text-align:center}
-.page a{display:inline-block; border:1px solid #dfdfdf; width:40px; height:40px; line-height:40px; background:#fff;}
+.page a{display:inline-block; border:1px solid #dfdfdf; width:40px; height:40px; line-height:40px; background:#fff; margin: 2px;}
 .page a.on{border:1px solid #d90125; color:#d90125;}
 .page a:hover{border:1px solid #d90125; color:#d90125;}
 .page a.none{pointer-events:none; opacity:0.3}

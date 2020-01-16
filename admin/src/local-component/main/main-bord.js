@@ -22,6 +22,9 @@
                                 <td>{{list.InsertDate}}</td>
                             </tr>
                         </table>
+
+                        <list-number v-bind:DataLength='this.lists.length'></list-number>
+
                     </div>`,
     data() {
         return {
@@ -166,11 +169,6 @@
     created(){
 
         eventBus.$on('searchData',(Data)=>{
-            console.log(Data.FrontDate)
-            console.log(Data.BackDate)
-            console.log(Data.SelectClass)
-            console.log(Data.SearchValue)   
-            console.log(this.lists)
             //데이터 업데이트 axios 필요
             this.lists = [
                 {
