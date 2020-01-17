@@ -1,4 +1,5 @@
     Vue.component('main-bord', {
+        props:['no'],
         template: `<div class="table_wrap mt50">
                         <div class="tit_wrap">
                             <h4>견적문의</h4>
@@ -21,15 +22,13 @@
                                 <td>{{list.reqPhone}}</td>
                                 <td>{{list.InsertDate}}</td>
                             </tr>
-                        </table>
-
-                        <list-number v-bind:DataLength='this.lists.length'></list-number>
-
+                        </table>    
+                        <list-number v-bind:nowpage='this.limit-10' v-bind:DataLength='Math.ceil((this.lists.length)/10)'></list-number>
                     </div>`,
     data() {
         return {
             start:0,
-            limit:10,
+            limit:null,
             lists:[
                 {
                     idx:0,
@@ -167,6 +166,7 @@
         }
     },
     created(){
+        this.limit = this.start+10
 
         eventBus.$on('searchData',(Data)=>{
             //데이터 업데이트 axios 필요
@@ -194,16 +194,19 @@
                     reqAddress:"서울시 구로구",
                 }
             ]
-
         })
 
         eventBus.$emit('Listlength',this.lists.length)
 
-
+        eventBus.$on('NextPage',(Data)=>{
+            this.start = Data*10;
+            this.limit = (Data*10) + 10
+        })
 
     },
     methods:{
- 
+        GetNextPage(){
+        }
       
     }
     

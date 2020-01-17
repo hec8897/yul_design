@@ -30,8 +30,8 @@ const router = new VueRouter({
           
         },
         {
-            path: '/consul',
-            component: consulPage
+            path: '/consul/',
+            component: consulPage,
         }
     ]
 })
