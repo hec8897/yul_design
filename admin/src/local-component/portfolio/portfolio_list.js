@@ -15,7 +15,7 @@ Vue.component('portfolio-bord', {
             <th>벽체</th>
             <th>노출</th>
         </tr>
-        <tr v-for='(list,i) in lists'>
+        <router-link v-bind:to = "'/portfolioview/'+list.idx"  v-for='(list,i) in lists' tag='tr'>
             <td>{{i+1}}</td>
             <td class="tal"><a href="">{{list.tit}}</a></td>
             <td>{{list.standard}}</td>
@@ -26,7 +26,7 @@ Vue.component('portfolio-bord', {
             <td>{{list.option3}}</td>
             <td v-if='list.Activation === 1'>공개</td>
             <td v-else>비공개</td>
-        </tr>
+        </router-link>
  
     </table>
     <div class="foot_btn">
@@ -48,7 +48,7 @@ data(){
                 Activation:1
             },
             {
-                idx:0,
+                idx:1,
                 tit:'아이들이 행복한 22집, 개포LG 자이',
                 standard:'사무공간',
                 reqAddress:'구로 디지털로 1234 개포LG APT',

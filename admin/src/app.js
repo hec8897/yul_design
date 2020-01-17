@@ -23,8 +23,8 @@ const router = new VueRouter({
             component: portFolioPage
         },
         {
-            path:'/portfolioview/:mode',
-            // component:PortFolioView,
+            path:'/portfolioview/:idx',
+            component:portFolioPageView,
             props:true
           
         },
