@@ -12,16 +12,15 @@ const router = new VueRouter({
         },
         {
             path: '/info',
-            // component: AdminInfo
+            component: InfoPage
         },
         {
             path: '/banner',
             component: Mbanner
         },
         {
-            path: '/portfolio/:index',
-            // component: portfolio,
-            props:true
+            path: '/portfolio/',
+            component: portFolioPage
         },
         {
             path:'/portfolioview/:mode',

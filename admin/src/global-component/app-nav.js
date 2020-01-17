@@ -12,7 +12,7 @@ Vue.component('app-nav', {
                             <h5>메인 관리</h5>
                         </router-link>
 
-                        <router-link to="/portfolio/0" tag='li' class='has-sub' class-active="has-sub on">
+                        <router-link to="/portfolio" tag='li' class='has-sub' class-active="has-sub on">
                             <b class="caret fr"></b>
                             <i class="material-icons ml20 mr10">dvr</i>
                             <h5>포트폴리오</h5>

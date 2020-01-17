@@ -1,18 +1,25 @@
+///잘안됨....보류 ㅋ
+
+
 Vue.component('list-number', {
-    props: ['DataLength','nowpage'],
+    props: ['DataLength','nowpage','Data'],
     template: `<div class="page">
-                <a href="" class="none"><i class="material-icons vam">navigate_before</i></a>
-                <span class="nobtn" v-for = "i in DataLength" v-on:click='NextPage(i-1,i)'>{{i}}</span>
-                <a href=""><i class="material-icons vam">navigate_next</i></a>
+                <span class="none"><i class="material-icons vam">navigate_before</i></span>
+                <span class="nobtn" v-for = "(list,i) in lists" v-if = 'i<10' v-on:click='NextPage(i,i+1)'>{{i+1}}</span>
+                <span v-on:click='NextList'><i class="material-icons vam">navigate_next</i></span>
             </div>`,
     data(){
         return{
             thisNumber:null,
-            thisIndex:1
+            thisIndex:0,
+            start:null,
+            limit:10,
+            lists:null              
         }
     },
     created(){
-        console.log(this.thisIndex)
+        this.lists = this.Data;
+        console.log(this.lists)
     },
     mounted(){
         this.thisNumber = this.nowpage
@@ -25,28 +32,30 @@ Vue.component('list-number', {
             for(let i = 0; i < NoBtn.length; i++){
                 NoBtn[i].className = 'nobtn'
             }
-            NoBtn[(this.thisNumber)/10].className = 'nobtn on'
+            NoBtn[this.thisIndex].className = 'nobtn on'
         },
         NextPage(i,ThisIndex){
             // if(ThisIndex)
-            if(this.thisIndex < ThisIndex){
+            if(this.thisIndex+1 < ThisIndex){
                 this.thisNumber+=10;
-                this.thisIndex+=1
-                this.ActivationBtn()
-
+                this.thisIndex = i
+                // this.ActivationBtn()
             }
-            else if(this.thisIndex > ThisIndex){
+            else if(this.thisIndex+1 > ThisIndex){
                 this.thisNumber-=10;
-                this.thisIndex-=1
-
-
-                this.ActivationBtn()
+                this.thisIndex = i
+                // this.ActivationBtn()
             }
-
             eventBus.$emit('NextPage',i)    
+        },
+        NextList(){
 
+            let NextListNo = (Math.round((this.thisIndex+11)/10))*10;
+            eventBus.$emit('NextPage',NextListNo)    
+            this.NextPage(NextListNo,NextListNo-1);
+            this.start+=10
+            this.limit+=10;
 
-            
         }
 
     }
