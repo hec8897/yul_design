@@ -71,6 +71,12 @@ const ConsulView = {
                     }
             }
         },
+        created(){
+        },
+        mounted(){
+            this.GetData()
+
+        },
         methods:{
             OpenDelModal(idx){
                 const Modal = document.getElementById('modal-del')
@@ -79,6 +85,23 @@ const ConsulView = {
                     Modal.style.opacity='1';
                 }, 100);
                 eventBus.$emit('idx',idx)
+            },
+            GetData(){
+                const baseURI = 'api/consul.data.php';
+                axios.post(`${baseURI}`, {
+                    mode:'list',
+                    idx:this.idx
+                })
+                .then((result) => {
+
+                    const ResultData = result.data.result[0]
+                    if(result.data.phpResult == 'ok'){
+                        this.list = ResultData;
+                    }
+                     
+                })
+                .catch(err => console.log('Login: ', err));
+        
             }
         }
 }

@@ -27,6 +27,9 @@ Vue.component('list-number', {
         if(this.DataLength <= 10){
             this.limit = this.DataLength
         }
+        eventBus.$on('ListLength',(Data)=>{
+        })
+
         eventBus.$on('UpdateList',(Data)=>{
             this.limit = Data.DataLength;
             this.thisNumber = Data.nowpage

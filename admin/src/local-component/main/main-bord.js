@@ -2654,14 +2654,14 @@
                     reqAddress:"서울시 구로구",
                 }
             ]
-            //기본데이터입니다
+            //기본데이터 개발후엔 데이터를 줄여야함 1~3개
         }
     },
     created(){
         this.limit = this.start+10
         eventBus.$on('searchData',(Data)=>{
             this.start = 0
-            //데이터 업데이트 axios 필요
+            //검색 업데이트 펑션이 존재해야하는 자리
             this.lists = [
                 {
                     idx:0,
@@ -2879,7 +2879,6 @@
                 }
                 
             ]
-            //데이터 업데이트 axios 필요
             eventBus.$emit('UpdateList',{DataLength:Math.ceil((this.lists.length)/10),nowpage:this.limit-10})
         })
 
@@ -2889,6 +2888,29 @@
             this.start = Data*10;
             this.limit = (Data*10) + 10
         })
+    },
+    mounted(){
+        this.GetDbList()
+    },
+    methods:{
+        GetDbList(){
+            //최초 데이터 업데이트 axios function //mounted에 실행 (마운트단계에서 업데이트하는방식)
+            const baseURI = 'api/consul.data.php';
+            axios.post(`${baseURI}`, {
+                mode:'lists',
+            })
+            .then((result) => {
+                const ResultData = result.data.result
+                    if(result.data.phpResult == 'ok'){
+                        //데이터가 있을경우 실행
+                        this.lists = ResultData
+                        eventBus.$emit('UpdateList',{DataLength:Math.ceil((this.lists.length)/10),nowpage:this.limit-10})
+                    }
+            })
+            .catch(err => console.log('Login: ', err));
+    
+
+        }
     }
     
 
