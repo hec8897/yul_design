@@ -1,5 +1,5 @@
 const HtmlRoute = {
-    main: 'main.html',
+    main: 'index.html',
     about: 'about.html',
     portfolio: {
         list: 'portfolio.html',

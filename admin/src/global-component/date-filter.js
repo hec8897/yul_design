@@ -49,6 +49,7 @@ Vue.component('date-filter', {
                         BackDate:BackDate.value,
                         SelectClass:SelectClass.value,
                         SearchValue:SearchValue.value
+                        //검색 조건 => main-bord.js
                     })
                 }
             }

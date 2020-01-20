@@ -48,13 +48,10 @@ const ConsulView = {
                             </table>
                         </div>
                     </div>
-                    
-                    <!-- button area -->
                     <div class="btn_wrap">
                         <span class="b_red" @click='OpenDelModal(list.idx)'>삭제</span>
                         <router-link to="/" class="b_sgrey">목록</router-link>
                     </div>
-                    <!-- END button area //-->
                 </div>`,
         data(){
             return{
