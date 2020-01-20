@@ -15,7 +15,7 @@ Vue.component('portfolio-bord', {
             <th>벽체</th>
             <th>노출</th>
         </tr>
-        <router-link v-bind:to = "'/portfolioview/'+list.idx"  v-for='(list,i) in lists' tag='tr'>
+        <router-link v-bind:to = "'/portfolioview/'+list.idx"  v-for='(list,i) in lists' tag='tr' v-if='i < limit && i >= start'>
             <td>{{i+1}}</td>
             <td class="tal"><a href="">{{list.tit}}</a></td>
             <td>{{list.standard}}</td>
@@ -26,44 +26,229 @@ Vue.component('portfolio-bord', {
             <td>{{list.option3}}</td>
             <td v-if='list.Activation === 1'>공개</td>
             <td v-else>비공개</td>
-        </router-link>
- 
+        </router-link> 
     </table>
+    <list-number v-bind:nowpage = 'this.limit-10' v-bind:DataLength='Math.ceil((this.lists.length)/10)'></list-number>
     <div class="foot_btn">
         <a href="" class="b_add b_blue">등록</a>
     </div>
 </div>`,
-data(){
-    return{
-        lists:[
-            {
-                idx:0,
-                tit:'아이들이 행복한 집, 개포LG 자이',
-                standard:'주거공간',
-                reqAddress:'구로 디지털로 1234 개포LG APT',
-                reqMeasure:'20평',
-                option1:'적삼목',
-                option2:'대리석',
-                option3:'적삼목',
-                Activation:1
-            },
-            {
-                idx:1,
-                tit:'아이들이 행복한 22집, 개포LG 자이',
-                standard:'사무공간',
-                reqAddress:'구로 디지털로 1234 개포LG APT',
-                reqMeasure:'20평',
-                option1:'적삼목',
-                option2:'대리석',
-                option3:'적삼목',
-                Activation:0
-            }
-        ]
+    data() {
+        return {
+            start: 0,
+            limit: null,
+            lists: [
+                {
+                    idx: 0,
+                    tit: '아이들이 행복한 집, 개포LG 자이',
+                    standard: '주거공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 1
+                },
+                {
+                    idx: 1,
+                    tit: '아이들이 행복한 22집, 개포LG 자이',
+                    standard: '사무공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 0
+                },
+                {
+                    idx: 0,
+                    tit: '아이들이 행복한 집, 개포LG 자이',
+                    standard: '주거공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 1
+                },
+                {
+                    idx: 1,
+                    tit: '아이들이 행복한 22집, 개포LG 자이',
+                    standard: '사무공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 0
+                },
+                {
+                    idx: 0,
+                    tit: '아이들이 행복한 집, 개포LG 자이',
+                    standard: '주거공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 1
+                },
+                {
+                    idx: 1,
+                    tit: '아이들이 행복한 22집, 개포LG 자이',
+                    standard: '사무공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 0
+                },
+                {
+                    idx: 0,
+                    tit: '아이들이 행복한 집, 개포LG 자이',
+                    standard: '주거공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 1
+                },
+                {
+                    idx: 1,
+                    tit: '아이들이 행복한 22집, 개포LG 자이',
+                    standard: '사무공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 0
+                },
+                {
+                    idx: 0,
+                    tit: '아이들이 행복한 집, 개포LG 자이',
+                    standard: '주거공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 1
+                },
+                {
+                    idx: 1,
+                    tit: '아이들이 행복한 22집, 개포LG 자이',
+                    standard: '사무공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 0
+                },
+                {
+                    idx: 0,
+                    tit: '아이들이 행복한 집, 개포LG 자이',
+                    standard: '주거공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 1
+                },
+                {
+                    idx: 1,
+                    tit: '아이들이 행복한 22집, 개포LG 자이',
+                    standard: '사무공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 0
+                },
+                {
+                    idx: 0,
+                    tit: '아이들이 행복한 집, 개포LG 자이',
+                    standard: '주거공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 1
+                },
+                {
+                    idx: 1,
+                    tit: '아이들이 행복한 22집, 개포LG 자이',
+                    standard: '사무공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 0
+                },
+                {
+                    idx: 0,
+                    tit: '아이들이 행복한 집, 개포LG 자이',
+                    standard: '주거공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 1
+                },
+                {
+                    idx: 1,
+                    tit: '아이들이 행복한 22집, 개포LG 자이',
+                    standard: '사무공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 0
+                },
 
+            ]
+        }
+    },
+    created(){
+        this.limit = this.start+10
+        eventBus.$on('searchData',(Data)=>{
+            this.start = 0
+            //데이터 업데이트 axios 필요
+            this.lists = [
+                {
+                    idx: 0,
+                    tit: '아이들이 행복한 집, 22개포LG 자이',
+                    standard: '주거공간',
+                    reqAddress: '구로 디지털로 1234 개포LG APT',
+                    reqMeasure: '20평',
+                    option1: '적삼목',
+                    option2: '대리석',
+                    option3: '적삼목',
+                    Activation: 1
+                },
+            ]
+        
+            //데이터 업데이트 axios 필요
+            eventBus.$emit('UpdateList',{DataLength:Math.ceil((this.lists.length)/10),nowpage:this.limit-10})
+        })
+
+        eventBus.$emit('Listlength',this.lists.length)
+
+        eventBus.$on('NextPage',(Data)=>{
+            this.start = Data*10;
+            this.limit = (Data*10) + 10
+        })
     }
-}
-            
+
 });
 
 
-                            // <router-link to="/counsul" tag='li' class='has-sub' class-active="has-sub on">

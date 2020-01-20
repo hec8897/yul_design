@@ -20,7 +20,8 @@ const router = new VueRouter({
         },
         {
             path: '/portfolio/',
-            component: portFolioPage
+            component: portFolioPage,
+
         },
         {
             path:'/portfolioview/:idx',
@@ -35,8 +36,8 @@ const router = new VueRouter({
     ]
 })
 
-var eventBus = new Vue();
-var app = new Vue({
+const eventBus = new Vue();
+const app = new Vue({
     router,
     data: {
         items: []

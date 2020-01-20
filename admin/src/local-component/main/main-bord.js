@@ -2654,10 +2654,8 @@
                     reqAddress:"서울시 구로구",
                 }
             ]
+            //기본데이터입니다
         }
-    },
-    updated(){
-
     },
     created(){
         this.limit = this.start+10
@@ -2881,6 +2879,7 @@
                 }
                 
             ]
+            //데이터 업데이트 axios 필요
             eventBus.$emit('UpdateList',{DataLength:Math.ceil((this.lists.length)/10),nowpage:this.limit-10})
         })
 
@@ -2890,12 +2889,6 @@
             this.start = Data*10;
             this.limit = (Data*10) + 10
         })
-
-    },
-    methods:{
-        GetNextPage(){
-        }
-      
     }
     
 

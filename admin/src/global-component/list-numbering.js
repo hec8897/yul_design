@@ -1,5 +1,5 @@
-///잘안됨....보류 ㅋ
-
+// 리스트 넘버링 컴포넌트
+//DataLegnth
 
 Vue.component('list-number', {
     props: ['DataLength','nowpage'],
@@ -27,13 +27,9 @@ Vue.component('list-number', {
         if(this.DataLength <= 10){
             this.limit = this.DataLength
         }
-
         eventBus.$on('UpdateList',(Data)=>{
-            console.log(Data.DataLength)
-            console.log(Data.nowpage)
             this.limit = Data.DataLength;
             this.thisNumber = Data.nowpage
-            
         })
 
     },
@@ -41,32 +37,24 @@ Vue.component('list-number', {
         this.thisNumber = this.nowpage
         const NoBtn = document.querySelectorAll('.nobtn')
         NoBtn[0].className = 'nobtn on'
-        // this.ActivationBtn(this.start)
     },
     updated(){
         const NoBtn = document.querySelectorAll('.nobtn')
         NoBtn[0].className = 'nobtn on'
-        // this.ActivationBtn(1)
-
     },
     methods:{
         ActivationBtn(j){
 
             const NoBtn = document.querySelectorAll('.nobtn')
             const LimitNo = this.limit - 10;
-
             for(let i = 0; i < NoBtn.length; i++){
                 NoBtn[i].className = 'nobtn'
             }
 
-            // if(this.limit)
-            // console.log(LimitNo)
-
             if(this.limit == this.DataLength){
-                console.log(j%10)
-
                 NoBtn[j%10-1].className = 'nobtn on'
             }
+            
             else{
                 NoBtn[j-1-LimitNo].className = 'nobtn on'
             }
@@ -101,10 +89,8 @@ Vue.component('list-number', {
         FrontList(){
             
             this.start-=10;
-            // this.limit-=10;
             this.limit = Math.ceil((this.limit-10)/10)*10
 
-            // console.log(this.start)
             if(this.start == 1){
                 this.limit = 10;
             }
