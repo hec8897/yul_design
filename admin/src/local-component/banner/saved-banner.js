@@ -1,5 +1,4 @@
 Vue.component('saved-banner-controler', {
-    
     template: `<div class="mban_wrap">
                     <h4 class="title">메인이미지 관리</h4>
                 <div class="mban_edit">
@@ -21,41 +20,69 @@ Vue.component('saved-banner-controler', {
                 </div>
             </div>
             </div>`,
-    data(){
-        return{
-            ImgDatas:[
+    data() {
+        return {
+            ImgDatas: [
                 {
-                    idx:0,
-                    imgLink:'images/banner_1.jpg'
+                    idx: 0,
+                    imgLink: 'banner/banner_1.jpg',
+                    Name: '샘플이미지1',
+                    Activation: 1
                 },
                 {
-                    idx:1,
-                    imgLink:'images/banner_2.jpg'
+                    idx: 1,
+                    imgLink: 'banner/banner_2.jpg',
+                    Name: '샘플이미지2',
+                    Activation: 1
                 },
                 {
-                    idx:2,
-                    imgLink:'images/banner_3.jpg'
+                    idx: 2,
+                    imgLink: 'banner/banner_1.jpg',
+                    Name: '샘플이미지3',
+                    Activation: 1
                 }
             ]
         }
     },
-    methods:{
-        OpenDelModal(idx){
+    mounted(){
+        this.GetnPostData('default')
+        console.log(this.ImgDatas)
+    },
+    methods: {
+        OpenDelModal(idx) {
             const Modal = document.getElementById('modal-del')
-            Modal.style.display='block';
+            Modal.style.display = 'block';
             setTimeout(() => {
-                Modal.style.opacity='1';
+                Modal.style.opacity = '1';
             }, 100);
 
-            eventBus.$emit('idx',idx)
+            eventBus.$emit('idx', idx)
         },
-        OpenImgInsertModal(Data){
+        OpenImgInsertModal(Data) {
             const Modal = document.getElementById('modal-add');
-            Modal.style.display='block';
+            Modal.style.display = 'block';
             setTimeout(() => {
-                Modal.style.opacity='1';
+                Modal.style.opacity = '1';
             }, 100);
-            eventBus.$emit('idx',Data)
+            eventBus.$emit('idx', Data)
+        },
+        GetnPostData(mode,files) {
+            const baseURI = 'api/banner.api.php';
+            axios.post(`${baseURI}`,{
+                mode: mode,
+                file:files
+                })
+                .then((result)=>{
+                    if(mode == 'default'){
+                        if(result.data.phpResult == 'ok'){
+                            this.ImgDatas = result.data.result
+                        }
+                    }
+                    console.log(result.data.result)
+                })
+                .catch(err => console.log('Login: ', err));
+
+
 
         }
     }
