@@ -97,12 +97,12 @@ iframe,object,video,embed{position:relative; top:0; left:0; max-width:100%}
 
 .visual{width:100%; height:800px; background-size:cover !important}
 .visual .visual_con{position:relative; width:1200px; margin:0 auto; box-sizing:border-box}
-.visual .visual_con h1{font-size:80px; color:#fff; margin-bottom:30px; text-shadow:6px 6px 12px rgba(0,0,0,0.2)}
-.visual .visual_con p{font-size:24px; font-weight:300; color:#fff; text-shadow:6px 6px 12px rgba(0,0,0,0.2)}
-.visual .visual_con p span{display:block; font-size:24px; font-weight:700; color:#fff; text-shadow:6px 6px 12px rgba(0,0,0,0.2)}
+.visual .visual_con h1{font-size:80px; color:#fff; margin-bottom:30px; text-shadow:6px 6px 12px rgba(0,0,0,0.3)}
+.visual .visual_con p{font-size:24px; font-weight:300; color:#fff; text-shadow:6px 6px 12px rgba(0,0,0,0.3)}
+.visual .visual_con p span{display:block; font-size:24px; font-weight:700; color:#fff; text-shadow:6px 6px 12px rgba(0,0,0,0.3)}
 .visual .visual_con.txt1{margin-top:220px; text-align:left; padding-left:150px}
-.visual .visual_con.txt2{margin-top:170px}
-.visual .visual_con.txt3{margin-top:270px}
+.visual .visual_con.txt2{margin-top:150px}
+.visual .visual_con.txt3{margin-top:250px}
 
 .swiper-slide.swiper-slide-active .visual .visual_con{
     animation-duration: 1s;
