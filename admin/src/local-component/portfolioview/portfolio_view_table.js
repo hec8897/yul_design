@@ -1,5 +1,9 @@
+//고민해야하는 요소...에디터 API 활용, 이미지를 어떤식으로업로드할것인지...
+
+
 Vue.component('portfilio-update', {
-    template:`        <div class="info_wrap">
+    props:['mode'],
+    template: ` <div class="info_wrap">
     <h4 class="title">포트폴리오</h4>
     <save-modal></save-modal>
     <delte-modal tb='banner'></delte-modal>
@@ -58,48 +62,70 @@ Vue.component('portfilio-update', {
             </li>
             <li><h5>내용</h5></li>
             <li>
-                <div id='summernote'></div>
+                <textarea name="content" id='summernote'></textarea>
             </li>
         </ul>
     </div>
     <!-- button area -->
 <div class="btn_wrap">
     <span class="b_red">삭제</span>
-    <span class="b_blue">등록</span>
+    <span class="b_blue" v-on:click='InsertData'>등록</span>
     <span class="b_sgrey">목록</span>
 </div>
 </div>
 
 `,
-mounted(){
-    $('#summernote').summernote({
-        height: 400,
-        lang: 'ko-KR', // default: 'en-US'
-        focus: false,
-        tooltip:false,
-     
-        toolbar: [
-            // [groupName, [list of button]]
-            ['style', ['bold',   'underline', 'clear']],
-            ['font', ['strikethrough', 'superscript', 'subscript']],
-            ['fontsize', ['fontsize']],
-            ['color', ['color']],
-            ['height', ['height']],
-            ['hr',['hr']],
-            ['picture',['picture']]
-        ]
-});
-      $('.note-statusbar').hide() 
-},
-methods:{
-    OpenDelModal(idx){
-        const Modal = document.getElementById('modal-alert')
-        Modal.style.display='block';
-        setTimeout(() => {
-            Modal.style.opacity='1';
-           }, 100);
-           
-           eventBus.$emit('idx',idx)
-       },
-   }
+    created(){
+
+    },
+    mounted() {
+        $('#summernote').summernote({
+            height: 400,
+            lang: 'ko-KR', // default: 'en-US'
+            focus: false,
+            tooltip: false,
+            lang : 'ko-KR', // 기본 메뉴언어 US->KR로 변경
+
+            // callbacks: {
+            //     onImageUpload: function(files, editor, welEditable) {
+            //       for (var i = files.length - 1; i >= 0; i--) {
+            //         sendFile(files[i], this);
+            //       }
+            //     }
+            // },
+            
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'underline', 'clear']],
+                ['para', ['paragraph']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['height', ['height']],
+                ['hr', ['hr']],
+                ['picture', ['picture']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
+        });
+
+        $('.note-statusbar').hide()
+    },
+    methods: {
+        OpenDelModal(idx) {
+            const Modal = document.getElementById('modal-alert')
+            Modal.style.display = 'block';
+            setTimeout(() => {
+                Modal.style.opacity = '1';
+            }, 100);
+
+            eventBus.$emit('idx', idx)
+        },
+        SummerNoteImg(){
+
+        },
+        InsertData() {
+            const textarea = document.querySelector('textarea')
+            console.log(textarea.value)
+        }
+    }
 })

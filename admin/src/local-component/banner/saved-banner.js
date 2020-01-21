@@ -3,7 +3,7 @@ Vue.component('saved-banner-controler', {
     template: `<div class="mban_wrap">
                     <h4 class="title">메인이미지 관리</h4>
                 <div class="mban_edit">
-                <img-modal></img-modal>
+                <img-modal mode='mainbanner'></img-modal>
                 <delte-modal tb='banner'></delte-modal>
 
                 <div class="edit_ban" v-for='ImgData in ImgDatas'>

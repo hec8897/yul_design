@@ -1,5 +1,63 @@
 Vue.component('img-modal', {
+    props:['mode'],
     template:`<div class="pop-window fade" id="modal-add">
+    <div class="mban_input">
+        <!-- head -->
+        <div class="input_head">
+            <h4>메인 배너 등록</h4>
+            <a href="javascript:;" data-dismiss="modal"><i class="mte i_close mte-2x"></i></a>
+        </div>
+        <!-- con -->
+        <div class="input_con">
+            <ul>
+                <li><h5>등록할 이미지</h5></li>
+                <li>
+                    <div class="attach">
+                        <input type="text" id="file2" placeholder="이미지 등록하기" readonly>
+                        <label for="file_img2">
+                            <span class="b_file">첨부</span>
+                        </label>
+                        <input type="file" id="file_img2" onchange="document.getElementById('file2').value=this.value;">
+                        <a href="" class="b_red">삭제</a>
+                    </div>
+                </li>
+      
+            </ul>
+        </div>
+        <!-- foot -->
+        <div class="modal_foot">
+            <span class="b_blue">등록</span>
+            <span v-on:click='ModalClose' class="b_sgrey">취소</span>
+        </div>
+    </div>
+</div>`,
+created(){
+    console.log(this.mode)
+    
+    idx = null;    
+    eventBus.$on('idx',function(value){
+        idx = value
+        return idx;
+    })
+},
+methods:{
+    GetData(){
+
+
+    },
+    ModalClose() {
+        const Modal = document.getElementById('modal-add')
+        Modal.style.opacity='0';
+
+        setTimeout(() => {
+            Modal.style.display='none';
+        }, 100);
+    },
+}
+})
+
+
+{/* <div class="pop-window fade" id="modal-add">
     <div class="mban_input">
         <!-- head -->
         <div class="input_head">
@@ -45,23 +103,4 @@ Vue.component('img-modal', {
             <span v-on:click='ModalClose' class="b_sgrey">취소</span>
         </div>
     </div>
-</div>`,
-created(){
-    idx = null;
-    eventBus.$on('idx',function(value){
-        idx = value
-        console.log(value)
-        return idx;
-    })
-},
-methods:{
-    ModalClose() {
-        const Modal = document.getElementById('modal-add')
-        Modal.style.opacity='0';
-
-        setTimeout(() => {
-            Modal.style.display='none';
-        }, 100);
-    },
-}
-})
+</div> */}
