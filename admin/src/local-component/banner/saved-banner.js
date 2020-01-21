@@ -9,7 +9,7 @@ Vue.component('saved-banner-controler', {
                     <span href="#modal-alert" class="btn_del" v-on:click='OpenDelModal(ImgData.idx)'>삭제</span>
                     <span 
                     v-on:click="OpenImgInsertModal(ImgData.idx)" 
-                    class="btn_mody">수정</span>
+                    class="btn_mody">비활성화</span>
                     <img v-bind:src="ImgData.imgLink" alt="main banner 1">
                 </div>
               
