@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-	<title>관리자 페이지</title>
-	<meta charset="utf-8" />
-	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
-	<meta name="title" content="administrator">
-	<meta name="author" content="administrator">
+    <title>관리자 페이지</title>
+    <meta charset="utf-8" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+    <meta name="title" content="administrator">
+    <meta name="author" content="administrator">
     <meta name="description" content="administrator">
 
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
-    
+
     <!--  BASE CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link href="css/elements.min.css" rel="stylesheet" />
+    <link href="css/elements.min.css" rel="stylesheet" />
     <link href="css/admin_default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/vue/modal.css">
-	<!--  END BASE CSS  -->
-	
-	<!--  BASE JS  -->
-	<script src="js/jquery-1.9.1.min.js"></script>
+    <!--  END BASE CSS  -->
+
+    <!--  BASE JS  -->
+    <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/apps.min.js"></script>
@@ -34,15 +35,48 @@
     <!--  END BASE JS  -->
 
     <!-- datepicker js -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
+
     <script src="js/form-plugins.min.js"></script>
     <!-- END datepicker js -->
+    <style>
+        .note-popover .popover-content .note-color-all .note-dropdown-menu,
+        .note-toolbar .note-color-all .note-dropdown-menu {
+            position: absolute;
+        }
+        .note-popover .popover-content .note-dropdown-menu, .note-toolbar .note-dropdown-menu{
+            position: absolute;
+        }
+        .note-dropdown-menu{
+            position: absolute;
+        }
+        .note-modal.open{
+            position: absolute;
+
+        }
+        .note-input{
+            width: 100%!important;
+        }
+        .note-modal-footer .note-btn{
+            float: initial;
+
+        }
+        .note-group-image-url{
+            display: none;
+        }
+    </style>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             App.init();
         });
     </script>
-    
+
 </head>
 
 <body>
@@ -80,14 +114,9 @@
 <script src="src/local-component/portfolioview/portfolio_view_page.js"></script>
 <script src="src/local-component/portfolioview/portfolio_view_table.js"></script>
 
-
-
 <script src="src/local-component/consul/consul-page.js"></script>
 <script src="src/local-component/consul/consul_view.js"></script>
 
-
-
-
-
 <script src="src/app.js"></script>
+
 </html>

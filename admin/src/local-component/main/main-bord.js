@@ -2661,6 +2661,8 @@
         this.limit = this.start+10
         eventBus.$on('searchData',(Data)=>{
             this.start = 0
+            console.log(Data)
+            this.GetDbList(Data)
             //검색 업데이트 펑션이 존재해야하는 자리
             this.lists = [
                 {
@@ -2888,19 +2890,21 @@
             this.start = Data*10;
             this.limit = (Data*10) + 10
         })
-    },
+    },  
     mounted(){
         this.GetDbList()
     },
     methods:{
-        GetDbList(){
+        GetDbList(Data){
             //최초 데이터 업데이트 axios function //mounted에 실행 (마운트단계에서 업데이트하는방식)
             const baseURI = 'api/consul.data.php';
             axios.post(`${baseURI}`, {
                 mode:'lists',
+                Data
             })
             .then((result) => {
                 const ResultData = result.data.result
+                console.log(result)
                     if(result.data.phpResult == 'ok'){
                         //데이터가 있을경우 실행
                         this.lists = ResultData

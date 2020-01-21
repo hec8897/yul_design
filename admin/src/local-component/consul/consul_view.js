@@ -50,17 +50,17 @@ const ConsulView = {
                     </div>
                     <div class="btn_wrap">
                         <span class="b_red" @click='OpenDelModal(list.idx)'>삭제</span>
-                        <router-link to="/" class="b_sgrey">목록</router-link>
-                    </div>
+                        <router-link to="/consul" class="b_sgrey" tag='span'>목록</router-link>
+                    </div> 
                 </div>`,
         data(){
             return{
                 list:
                     {
                         idx:2,
-                        tit:"아파트 30평 견적 문의 드립니다",
+                        tit:"개발테스트용",
                         standard:"사무공간",
-                        reqName:"김다운",
+                        reqName:"개발자",
                         reqPhone:"01023866482",
                         InsertDate:"2020-01-06 17:30:30",
                         reqConsult:"주거공간 견적 신청",

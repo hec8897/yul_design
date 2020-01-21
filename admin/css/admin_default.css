@@ -162,7 +162,7 @@ table.portfolio th:nth-child(8){width:7%}
 
 .btn_wrap{width:100%; padding:30px; text-align:center; box-sizing:border-box}
 .btn_wrap span{display:inline-block; margin:0 5px; width:150px; height:40px; line-height:40px; color:#fff; text-align:center}
-.btn_wrap a{display:inline-block; margin:0 5px; width:150px; height:40px; line-height:40px; color:#fff; text-align:center}
+.btn_wrap span{display:inline-block; margin:0 5px; width:150px; height:40px; line-height:40px; color:#fff; text-align:center}
 
 a.b_num{float:right; font-size:13px; color:#1a93d9; margin-top:7px}
 
@@ -172,7 +172,9 @@ a.b_num{float:right; font-size:13px; color:#1a93d9; margin-top:7px}
 .panel .search_input select{border:1px solid #e0e0e0; width:120px; height:40px; outline:none; margin-right:10px}
 .panel .search_input select:focus{border:1px solid #999}
 .panel .search_input input[type=text]{width:220px; padding-right:30px; box-sizing:border-box}
-.panel .search_input i{position:absolute; top:10px; left:190px}
+.panel .search_btn{width: 50px;display: inline-block; line-height: 40px; height: 40px; background-color: #d1312a; text-align: center; margin-left: 5px; border-radius: 2px;}
+.panel .search_btn i{vertical-align: middle; color: #fff;}
+/* .panel .search_input i{position:absolute; top:10px; left:190px} */
 
 .table_wrap a.b_add{display:inline-block; width:150px; height:40px; line-height:40px; font-size:16px; text-align:center; color:#fff}
 .table_wrap .foot_btn{width:100%; margin:30px 0; text-align:right}
@@ -251,10 +253,10 @@ a.b_yellow{background:#e1b724}
 a.b_yellow:hover{background:#b38c06}
 .b_red{background:#f4514a;cursor: pointer;}
 .b_red:hover{background:#c82821}
-a.b_sgrey{background:#6f8191}
-a.b_sgrey:hover{background:#415566}
-a.b_blue{background:#1a93d9}
-a.b_blue:hover{background:#036daa}
+.b_sgrey{background:#6f8191;cursor: pointer;}
+.b_sgrey:hover{background:#415566}
+.b_blue{background:#1a93d9; cursor: pointer;}
+.b_blue:hover{background:#036daa}
 
 .material-icons.md-18{font-size:18px}
 .material-icons.md-24{font-size:24px}

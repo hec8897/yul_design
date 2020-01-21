@@ -58,19 +58,39 @@ Vue.component('portfilio-update', {
             </li>
             <li><h5>내용</h5></li>
             <li>
-                <textarea name="" id=""></textarea>
+                <div id='summernote'></div>
             </li>
         </ul>
     </div>
     <!-- button area -->
 <div class="btn_wrap">
-    <a href="#modal-del" data-toggle="modal" class="b_red">삭제</a>
-    <a href="#modal-alert" data-toggle="modal" class="b_blue">등록</a>
-    <a href="" class="b_sgrey">목록</a>
+    <span class="b_red">삭제</span>
+    <span class="b_blue">등록</span>
+    <span class="b_sgrey">목록</span>
 </div>
 </div>
 
 `,
+mounted(){
+    $('#summernote').summernote({
+        height: 400,
+        lang: 'ko-KR', // default: 'en-US'
+        focus: false,
+        tooltip:false,
+     
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold',   'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['height', ['height']],
+            ['hr',['hr']],
+            ['picture',['picture']]
+        ]
+});
+      $('.note-statusbar').hide() 
+},
 methods:{
     OpenDelModal(idx){
         const Modal = document.getElementById('modal-alert')
