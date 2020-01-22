@@ -10,15 +10,15 @@ Vue.component('saved-banner-controler', {
                 <div class="edit_ban" v-for='ImgData in ImgDatas' >
                     <span href="#modal-alert" class="btn_del" v-on:click='OpenDelModal(ImgData.idx)'>삭제</span>
 
-                    <span v-if="ImgData.Activation === 1"
-                    v-on:click="OpenActiveModal(ImgData.Activation,ImgData.idx)" 
+                    <span v-if="ImgData.Activation === '1'"
+                    v-on:click="OpenActiveModal(ImgData.Activation,ImgData.idx,'hide')" 
                     class="btn_mody">비공개</span>
 
                     <span v-else
-                    v-on:click="OpenActiveModal(ImgData.Activation,ImgData.idx)" 
+                    v-on:click="OpenActiveModal(ImgData.Activation,ImgData.idx,'new')" 
                     class="btn_mody">공개</span>
 
-                    <img v-bind:src="ImgData.imgLink" alt="main banner 1" v-if = 'ImgData.Activation === 0' style='opacity:0.5'>
+                    <img v-bind:src="ImgData.imgLink" alt="main banner 1" v-if = "ImgData.Activation === '0'" style='opacity:0.5'>
                     <img v-bind:src="ImgData.imgLink" alt="main banner 1" v-else >
                 </div>
               
@@ -31,50 +31,96 @@ Vue.component('saved-banner-controler', {
             </div>`,
     data() {
         return {
-            ImgDatas: [{
+            ImgDatas: [
+                {
                     idx: 0,
                     imgLink: 'banner/banner_1.jpg',
                     Name: '샘플이미지1',
-                    Activation: 0
+                    Activation: '1'
                 },
                 {
                     idx: 1,
                     imgLink: 'banner/banner_2.jpg',
                     Name: '샘플이미지2',
-                    Activation: 1
+                    Activation: '1'
                 },
                 {
                     idx: 2,
                     imgLink: 'banner/banner_1.jpg',
                     Name: '샘플이미지3',
-                    Activation: 1
+                    Activation: '1'
                 }
             ]
         }
     },
     mounted() {
         this.GetnPostData('default')
+      
     },
+    created(){
+        eventBus.$on('bannerUploadResult',(Data)=>{
+            if(Data == "ok"){
+                this.GetnPostData('default')
+            }
+        })
+        eventBus.$on('bannerActiveResult',(Data)=>{
+            if(Data == "ok"){
+                this.GetnPostData('default')
+            }
+        })
+
+        eventBus.$on('bannerDelteResult',(Data)=>{
+            if(Data == "ok"){
+                this.GetnPostData('default')
+            }
+        })
+    },
+
     methods: {
         OpenDelModal(idx) {
+            let idxData = this.ImgDatas.filter((x) => {
+                return x.idx == idx;
+            })
+            console.log(idxData)
             const Modal = document.getElementById('modal-del')
             Modal.style.display = 'block';
             setTimeout(() => {
                 Modal.style.opacity = '1';
             }, 100);
 
-            eventBus.$emit('idx', idx)
+            eventBus.$emit('bannerData', idxData)
         },
-        OpenActiveModal(Activation,idx) {
-            const Modal = document.getElementById('modal-active')
-            Modal.style.display = 'block';
-            setTimeout(() => {
-                Modal.style.opacity = '1';
-            }, 100);
+        OpenActiveModal(Activation,idx,mode) {
+            const Modal = document.getElementById('modal-active');
 
-            eventBus.$emit('ActiveModal', {
-                idx,Activation,mode:'banner'
-            })
+            PostData =()=> {
+                Modal.style.display = 'block';
+                setTimeout(() => {
+                    Modal.style.opacity = '1';
+                }, 100);
+                eventBus.$emit('ActiveModal', {
+                    idx,Activation,mode:'banner'
+                })
+            }
+
+            if(mode == 'new'){
+                let Activation = this.ImgDatas.filter((x) => {
+                    return x.Activation == 1;
+                })
+                if(Activation.length == 3){
+                    alert('베너는 3개까지만 공개가능합니다 다른 배너를 비활성화 해주세요')
+                }
+                else{
+                    PostData();
+                }
+            }
+            else{
+                PostData();
+            }
+            
+    
+
+           
         },
         OpenImgInsertModal(Data) {
             const Modal = document.getElementById('modal-add');
@@ -91,11 +137,9 @@ Vue.component('saved-banner-controler', {
                     file: files
                 })
                 .then((result) => {
-                    if (mode == 'default') {
                         if (result.data.phpResult == 'ok') {
                             this.ImgDatas = result.data.result
                         }
-                    }
                 })
                 .catch(err => console.log('Login: ', err));
 

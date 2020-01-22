@@ -4,7 +4,7 @@ Vue.component('activation-modal', {
                 <div class="alert">
                     <div class="alert_con">
                         <i class="material-icons blue">error_outline</i>
-                        <p>배너를 하시겠습니까?{{tb}}</p>
+                        <p>배너를 변경 하시겠습니까?{{tb}}</p>
                     </div>
                     <div class="modal_foot">
                         <span class="b_blue" v-on:click='PostData'>확인</span>
@@ -36,7 +36,22 @@ Vue.component('activation-modal', {
             }, 100);
         },
         PostData(){
-            console.log(this.idx)
+          
+            const baseURI = 'api/banner.api.php';
+            axios.post(`${baseURI}`, {
+                    mode: "activation",
+                    idx:this.idx,
+                    activation:this.Activation == 1?0:1
+                })
+                .then((result) => {
+                    if (result.data.phpResult == 'ok') {
+                        eventBus.$emit('bannerActiveResult', "ok")
+                        this.ModalClose()
+
+                    }
+
+                })
+                .catch(err => console.log('Login: ', err));
             //배너 비활성화 로직
         }
     }
