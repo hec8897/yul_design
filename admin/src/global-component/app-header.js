@@ -5,7 +5,17 @@ Vue.component('app-header', {
             <h4>ADMINISTRATOR</h4>
         </div>
             <div class="head_info">
-                <a href="" class="btn_out">로그아웃</a>
+                <span class="btn_out" v-on:click='DestorySessionData'>로그아웃</span>
             </div>
-        </div>`
+        </div>`,
+        methods:{
+          DestorySessionData(){
+                var y = confirm("로그아웃 하시겠습니까?");
+
+                if (y == true) {
+                    sessionStorage.clear();
+                    location.href = "index.html";
+                }
+            }
+        }
 });

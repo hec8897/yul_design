@@ -1,21 +1,28 @@
 Vue.component('save-modal', {
-    props: ['tb'],
+    props: ['mode'],
     template: `<div class="pop-window fade" id="modal-alert">
                 <div class="alert">
                     <div class="alert_con">
                         <i class="material-icons red">error_outline</i>
-                        <p>수정하시겠습니까?</p>
+                        <p>수정하시겠습니까?{{mode}}</p>
                     </div>
                     <div class="modal_foot">
-                        <a href="javascript:;" data-dismiss="modal" class="b_red">확인</a>
-                        <a href="javascript:;" data-dismiss="modal" class="b_sgrey">취소</a>
+                        <span v-on:click='PostData' class="b_red">확인</span>
+                        <span v-on:click='ModalClose' class="b_sgrey">취소</span>
                     </div>
                 </div>
             </div>`,
     data() {
         return {
-            idx: null
+            idx: null,
+            Data:null
         }
+    },
+    mounted(){
+        this.GetData()
+    },
+    updated(){
+
     },
     created() {
         idx = null;
@@ -26,7 +33,7 @@ Vue.component('save-modal', {
     },
     methods: {
         ModalClose() {
-            const Modal = document.getElementById('modal-del')
+            const Modal = document.getElementById('modal-alert')
             Modal.style.opacity = '0';
 
             setTimeout(() => {
@@ -34,13 +41,40 @@ Vue.component('save-modal', {
             }, 100);
         },
         GetData(a) {
-            console.log(idx)
-            alert(idx)
-            //idx 활용 데이터 삭제후 idx 초기화!
-            idx = null
-            console.log(idx)
+            if(this.mode == 'user'){
+                eventBus.$on('idx',(Data)=>{
+                    console.log(Data)
+                    this.Data = Data.Data
+                })
+            }
+        },
+        PostData(){
+            if(this.mode == 'user'){
+                console.log(this.Data.ChPw)
+                console.log(this.Data.ChPhone)
+                console.log(this.Data.ChId)
+                console.log(this.Data.Idx)
 
 
+                let baseURI = 'api/user.proc.php'
+
+                axios.post(`${baseURI}`, {
+                    mode:'user_update',
+                    idx:this.Data.Idx,
+                    chId:this.Data.ChId,
+                    chPw:this.Data.ChPw,
+                    chPhone:this.Data.ChPhone
+                })
+                .then((result) => {
+                    if(result.data.phpResult == 'ok'){
+                        alert('변경이완료되었습니다')
+                        this.ModalClose();
+                        eventBus.$emit('userInfo',"change")
+                    }
+                })
+                .catch(err => console.log('Login: ', err));
+            }
+        
         }
     }
 })

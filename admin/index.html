@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>관리자 페이지</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="title" content="administrator">
+    <meta name="author" content="administrator">
+    <meta name="description" content="administrator">
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+
+    <!--  BASE CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="css/elements.min.css" rel="stylesheet" />
+    <link href="css/admin_default.css" rel="stylesheet" />
+    <!--  END BASE CSS  -->
+
+    <!--  BASE JS  -->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/apps.min.js"></script>
+    <!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<script src="js/respond.min.js"></script>
+	    <![endif]-->
+    <!--  END BASE JS  -->
+    <script src="moduls/axios.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+
+    <!-- Minified version of `es6-promise-auto` below. -->
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            App.init();
+        });
+        // var Promise = require('es6-promise').Promise;
+
+    </script>
+
+</head>
+
+<body>
+    <div class="login_wrap">
+        <!-- Login area -->
+        <div class="login_box">
+            <div class="login_bi"><img src="images/bi_yul.png" alt="admin ci"></div>
+            <div class="login_input">
+                <div class="mb10">
+                    <i class="material-icons">person</i>
+                    <input type="text" placeholder="아이디" id='reqid'>
+                </div>
+                <div>
+                    <i class="material-icons">lock</i>
+                    <input type="password" placeholder="비밀번호" id='reqpw'>
+                </div>
+                <div class="mt40">
+                    <button type="submit" id="" class="btn_admin" onclick="LoginProcess.PostLoginData()">관리자
+                        로그인</button>
+                    <!-- <button type="submit" id="" class="btn_pw">비밀번호 찾기</button> -->
+                </div>
+            </div>
+        </div>
+        <!-- END Login area -->
+
+        <script>
+
+            var LoginProcess = {
+                PostLoginData: function PostLoginData() {
+                    var ReqId = document.getElementById('reqid');
+                    var ReqPw = document.getElementById('reqpw');
+                    var baseURI = 'api/login.logic.php';
+                    axios.post("".concat(baseURI), {
+                        ID: ReqId.value,
+                        Pw: ReqPw.value
+                    }).then(function (result) {
+                        if (ReqId.value == "") {
+                            alert('아이디를 입력해주세요');
+                            ReqId.focus();
+                        } else if (ReqPw.value == "") {
+                            alert('패스워드를 입력해주세요');
+                            ReqPw.focus();
+                        } else {
+                            if (result.data.phpResult == "noid") {
+                                alert('검색된아이디가 없습니다');
+                            } else if (result.data.phpResult == "pwno") {
+                                alert('패스워드가 틀립니다');
+                            } else {
+                                alert("\uC5B4\uC11C\uC624\uC138\uC694 ".concat(result.data.userName, "\uB2D8"));
+                                sessionStorage.setItem("idx", result.data.idx);
+                                sessionStorage.setItem("name", result.data.userName);
+                                sessionStorage.setItem("ID", result.data.userId);
+                                sessionStorage.setItem("userPhone", result.data.userPhone);
+
+                                location.href = "main.html"
+                            }
+                        }
+                    }).catch(function (err) {
+                        return console.log('Login: ', err);
+                    });
+                },
+                DestorySessionData: function DestorySessionData() {
+                    var y = confirm("로그아웃 하시겠습니까?");
+
+                    if (y == true) {
+                        sessionStorage.clear();
+                        location.href = SrcNav.login;
+                    }
+                }
+            };
+        </script>
+    </div>
+</body>
+
+</html>
