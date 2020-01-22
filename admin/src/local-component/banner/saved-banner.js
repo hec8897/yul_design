@@ -55,7 +55,6 @@ Vue.component('saved-banner-controler', {
     },
     mounted() {
         this.GetnPostData('default')
-      
     },
     created(){
         eventBus.$on('bannerUploadResult',(Data)=>{
@@ -68,14 +67,12 @@ Vue.component('saved-banner-controler', {
                 this.GetnPostData('default')
             }
         })
-
         eventBus.$on('bannerDelteResult',(Data)=>{
             if(Data == "ok"){
                 this.GetnPostData('default')
             }
         })
     },
-
     methods: {
         OpenDelModal(idx) {
             let idxData = this.ImgDatas.filter((x) => {
