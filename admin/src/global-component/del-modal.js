@@ -34,8 +34,6 @@ Vue.component('delte-modal', {
             }, 100);
         },
         GetData(a){
-            console.log(idx)
-            alert(idx)
             //idx 활용 데이터 삭제후 idx 초기화!
             idx = null
             console.log(idx)

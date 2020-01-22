@@ -43,19 +43,12 @@ Vue.component('save-modal', {
         GetData(a) {
             if(this.mode == 'user'){
                 eventBus.$on('idx',(Data)=>{
-                    console.log(Data)
                     this.Data = Data.Data
                 })
             }
         },
         PostData(){
             if(this.mode == 'user'){
-                console.log(this.Data.ChPw)
-                console.log(this.Data.ChPhone)
-                console.log(this.Data.ChId)
-                console.log(this.Data.Idx)
-
-
                 let baseURI = 'api/user.proc.php'
 
                 axios.post(`${baseURI}`, {

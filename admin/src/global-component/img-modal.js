@@ -32,8 +32,6 @@ Vue.component('img-modal', {
     </div>
 </div>`,
 created(){
-    console.log(this.mode)
-    
     idx = null;    
     eventBus.$on('idx',function(value){
         idx = value
