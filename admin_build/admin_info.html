@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>관리자 페이지</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="title" content="administrator">
+	<meta name="author" content="administrator">
+    <meta name="description" content="administrator">
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />    
+    
+    <!--  BASE CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="css/elements.min.css" rel="stylesheet" />
+	<link href="css/admin_default.css" rel="stylesheet" />
+	<!--  END BASE CSS  -->
+	
+	<!--  BASE JS  -->
+	<script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/apps.min.js"></script>
+    <!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<script src="js/respond.min.js"></script>
+	    <![endif]-->
+    <!--  END BASE JS  -->
+    
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
+    
+</head>
+
+<body>
+<div class="wrap">
+    <!-- head area -->
+    <div class="head_wrap">
+        <div class="head_bi">
+            <div class="bi_img"><a href=""><img src="images/bi_yul.png" alt="yul_bi"></a></div>
+            <h4>ADMINISTRATOR</h4>
+        </div>
+        <!-- login ingo -->
+        <div class="head_info">
+            <a href="" class="btn_out">로그아웃</a>
+        </div>
+        <!-- END login ingo //-->
+    </div>
+    <!-- END head area //-->
+
+    <!-- side GNB -->
+    <div id="sidebar" class="sidebar">
+        <ul class="nav">
+            <li class="has-sub on">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">group</i>
+                    <h5>관리자 관리</h5>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">view_compact</i>
+                    <h5>메인 관리</h5>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">dvr</i>
+                    <h5>포트폴리오</h5>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">assignment_late</i>
+                    <h5>견적문의</h5>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="side_bg"></div>
+    <!-- END side GNB //-->
+    
+    <!-- popup 1 delete -->
+    <div class="pop-window fade" id="modal-alert">
+        <div class="alert">
+            <div class="alert_con">
+                <i class="material-icons red">error_outline</i>
+                <p>수정하시겠습니까?</p>
+            </div>
+            <div class="modal_foot">
+                <a href="javascript:;" data-dismiss="modal" class="b_red">확인</a>
+                <a href="javascript:;" data-dismiss="modal" class="b_sgrey">취소</a>
+            </div>
+        </div>
+    </div>
+    <!-- END popup 1 delete //-->
+    
+    <!-- popup 2 modify -->
+    <div class="pop-window fade" id="modal-pw">
+        <div class="mban_input">
+            <!-- head -->
+            <div class="input_head">
+                <h4>변경할 비밀번호 입력</h4>
+                <a href="javascript:;" data-dismiss="modal"><i class="mte i_close mte-2x"></i></a>
+            </div>
+            <!-- con -->
+            <div class="input_con type2">
+                <ul>
+                    <li><input type="password" placeholder="비밀번호를 입력하세요(영어/숫자/특문2가지 조합, 8자 이상)"></li>
+                    <li><input type="password" placeholder="비밀번호를 다시 한번 입력하세요"></li>
+                </ul>
+            </div>
+            <!-- foot -->
+            <div class="modal_foot">
+                <a href="javascript:;" data-dismiss="modal" class="b_blue">비밀번호 변경</a>
+                <a href="javascript:;" data-dismiss="modal" class="b_sgrey">취소</a>
+            </div>
+        </div>
+    </div>
+    <!-- END popup 2 modify //-->
+    
+    <!-- contents area -->
+    <div class="con_wrap">
+        <!-- my info -->
+        <div class="info_wrap">
+            <h4 class="title">관리자 정보</h4>
+            <div class="panel">
+                <ul>
+                    <li><h5>아이디</h5></li>
+                    <li><input type="text" placeholder="아이디"></li>
+                    <li><h5>비밀번호</h5></li>
+                    <li><input type="password" placeholder="비밀번호"></li>
+                    <li><h5>연락처</h5></li>
+                    <li class="phone_input">
+                        <div class="mr5">
+                            <select name="" id="" class="">
+                                <option value="">010</option>
+                                <option value="">011</option>
+                            </select>
+                        </div>
+                        <div>
+                            - <input type="text"> - <input type="text">
+                        </div>
+                    </li>
+                    <li><h5>비밀번호 확인</h5></li>
+                    <li><input type="password" placeholder="비밀번호 확인"></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- button area -->
+        <div class="btn_wrap">
+            <a href="#modal-alert" data-toggle="modal" class="b_blue">수정 완료</a>
+            <a href="" class="b_sgrey">메인 화면</a>
+        </div>
+        <!-- END button area //-->
+    </div>
+    <!-- END contents area //-->
+</div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+.note-frame{
+    border-radius: 0px;
+}
+.note-editor.note-airframe, .note-editor.note-frame{
+    border:1px solid #e0e0e0;
+}
+.note-popover .popover-content .note-color-all .note-dropdown-menu,
+.note-toolbar .note-color-all .note-dropdown-menu {
+    position: absolute;
+}
+.note-popover .popover-content .note-dropdown-menu, .note-toolbar .note-dropdown-menu{
+    position: absolute;
+}
+
+.note-modal-footer{
+    display: none;
+}
+.note-dropdown-menu{
+    position: absolute;
+}
+.note-modal.open{
+    position: absolute;
+
+}
+.note-input{
+    width: 100%!important;
+}
+.note-modal-footer .note-btn{
+    float: initial;
+
+}
+.note-group-image-url{
+    display: none;
+}

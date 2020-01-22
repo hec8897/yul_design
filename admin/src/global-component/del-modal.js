@@ -52,7 +52,6 @@ Vue.component('delte-modal', {
                     else{
                         alert('실패하였습니다 (관리자에게 문의해주세요)')
                     }
-             
                 })
                 .catch(err => console.log('Login: ', err));
             // //idx 활용 데이터 삭제후 idx 초기화!

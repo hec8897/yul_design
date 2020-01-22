@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>관리자 페이지</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="title" content="administrator">
+	<meta name="author" content="administrator">
+    <meta name="description" content="administrator">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+
+    <!--  BASE CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="css/elements.min.css" rel="stylesheet" />
+	<link href="css/admin_default.css" rel="stylesheet" />
+	<!--  END BASE CSS  -->
+	
+	<!--  BASE JS  -->
+	<script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/apps.min.js"></script>
+    <!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<script src="js/respond.min.js"></script>
+	    <![endif]-->
+    <!--  END BASE JS  -->
+    
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
+    
+</head>
+
+<body>
+<div class="wrap">
+    <!-- head area -->
+    <div class="head_wrap">
+        <div class="head_bi">
+            <div class="bi_img"><a href=""><img src="images/bi_yul.png" alt="yul_bi"></a></div>
+            <h4>ADMINISTRATOR</h4>
+        </div>
+        <!-- login ingo -->
+        <div class="head_info">
+            <a href="" class="btn_out">로그아웃</a>
+        </div>
+        <!-- END login ingo //-->
+    </div>
+    <!-- END head area //-->
+
+    <!-- side GNB -->
+    <div id="sidebar" class="sidebar">
+        <ul class="nav">
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">group</i>
+                    <h5>관리자 관리</h5>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">view_compact</i>
+                    <h5>메인 관리</h5>
+                </a>
+            </li>
+            <li class="has-sub on">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">dvr</i>
+                    <h5>포트폴리오</h5>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret fr"></b>
+                    <i class="material-icons ml20 mr10">assignment_late</i>
+                    <h5>견적문의</h5>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="side_bg"></div>
+    <!-- END side GNB //-->
+    
+    <!-- popup 1 del -->
+    <div class="pop-window fade" id="modal-del">
+        <div class="alert">
+            <div class="alert_con">
+                <i class="material-icons red">error_outline</i>
+                <p>정말로 삭제 하시겠습니까?</p>
+            </div>
+            <div class="modal_foot">
+                <a href="javascript:;" data-dismiss="modal" class="b_red">확인</a>
+                <a href="javascript:;" data-dismiss="modal" class="b_sgrey">취소</a>
+            </div>
+        </div>
+    </div>
+    <!-- END popup 1 del //-->
+    
+    <!-- popup 2 add -->
+    <div class="pop-window fade" id="modal-alert">
+        <div class="alert">
+            <div class="alert_con">
+                <i class="material-icons tblue">error_outline</i>
+                <p>등록하시겠습니까?</p>
+            </div>
+            <div class="modal_foot">
+                <a href="javascript:;" data-dismiss="modal" class="b_red">확인</a>
+                <a href="javascript:;" data-dismiss="modal" class="b_sgrey">취소</a>
+            </div>
+        </div>
+    </div>
+    <!-- END popup 2 add //-->
+    
+    <!-- contents area -->
+    <div class="con_wrap">
+        <!-- my info -->
+        <div class="info_wrap">
+            <h4 class="title">포트폴리오</h4>
+            <div class="panel mody">
+                <ul>
+                    <li><h5>작성자 ID</h5></li>
+                    <li>
+                        <input type="text" placeholder="작성자 ID">
+                    </li>
+                    <li><h5>노출여부</h5></li>
+                    <li class="select_input">
+                        <div>
+                            <select name="" id="" class="">
+                                <option value="">공개</option>
+                                <option value="">비공개</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li><h5>시공형태</h5></li>
+                    <li class="select_input">
+                        <div>
+                            <select name="" id="" class="">
+                                <option value="">분류</option>
+                                <option value="">주거공간</option>
+                                <option value="">상업공간</option>
+                                <option value="">사무공간</option>
+                            </select>
+                        </div>
+                    </li>
+                    
+                    <li><h5>시공주소</h5></li>
+                    <li>
+                        <input type="text" placeholder="주소" class="mody_tit">
+                    </li>
+                    <li><h5>시공면적</h5></li>
+                    <li class="half">
+                        <input type="text" placeholder="면적">
+                    </li>
+                    <li><h5>천정</h5></li>
+                    <li class="half">
+                        <input type="text" placeholder="천정">
+                    </li>
+                    <li><h5>바닥</h5></li>
+                    <li class="half">
+                        <input type="text" placeholder="바닥">
+                    </li>
+                    <li><h5>벽체</h5></li>
+                    <li class="half">
+                        <input type="text" placeholder="벽체">
+                    </li>
+                    <li><h5>제목</h5></li>
+                    <li>
+                        <input type="text" placeholder="제목" class="mody_tit">
+                    </li>
+                    <li><h5>내용</h5></li>
+                    <li>
+                        <textarea name="" id=""></textarea>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- button area -->
+        <div class="btn_wrap">
+            <a href="#modal-del" data-toggle="modal" class="b_red">삭제</a>
+            <a href="#modal-alert" data-toggle="modal" class="b_blue">등록</a>
+            <a href="" class="b_sgrey">목록</a>
+        </div>
+        <!-- END button area //-->
+    </div>
+    <!-- END contents area //-->
+</div>
+
+</body>
+</html>
