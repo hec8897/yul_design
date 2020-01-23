@@ -132,12 +132,12 @@
             
             <div class="map_area">
                 <div class="btn_area">
-                    <a href="" class="btn b_le">길찾기</a>
-                    <a href="" class="btn b_le">지도 자세히 보기</a>
+                    <a href="https://map.kakao.com/link/to/광진동양파라곤1단지아파트,37.548604, 127.070350" class="btn b_le" target="blank">길찾기</a>
+                    <a href="https://map.kakao.com/link/search/광진동양파라곤1단지아파트" class="btn b_le" target="blank">지도 자세히 보기</a>
                 </div>
                 
                 <!--// map API -->
-                <div class="map_api"></div>
+                <div class="map_api" id='map'></div>
                 <!-- map API //-->
             </div>
         </div>
@@ -184,6 +184,23 @@
 
 <script src="src/app.js"></script>
 <script src="src/app.min.js"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3eddfea369682272db72fa004738f54e"></script>
+
+<script>
+    var container = document.getElementById('map');
+                var options = {
+                    center: new kakao.maps.LatLng(37.548604, 127.070350),
+                    level: 3
+                };
+                var map = new kakao.maps.Map(container, options);
+                var markerPosition = new kakao.maps.LatLng(37.548604, 127.070350);
+                var marker = new kakao.maps.Marker({
+                    position: markerPosition
+                });
+                marker.setMap(map);
+
+</script>
 
 </body>
 </html>
