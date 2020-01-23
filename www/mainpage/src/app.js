@@ -12,7 +12,7 @@ const HtmlLinkInsert = {
     Gnb() {
         const NavGnb = document.getElementById('gnb')
         NavGnb.innerHTML = `<nav>
-                                <div class="ci"><a href=""><img src="images/bi_yul.png" alt="YUL"></a></div>
+                                <div class="ci"><a href="${HtmlRoute.main}"><img src="images/bi_yul.png" alt="YUL"></a></div>
                                 <a href="${HtmlRoute.main}">HOME</a>
                                 <a href="${HtmlRoute.about}">ABOUT US</a>
                                 <a href="${HtmlRoute.portfolio.list}">PORTFOLIO</a>

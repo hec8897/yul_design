@@ -4,15 +4,20 @@ Vue.component('delte-modal', {
   data: function data() {
     return {
       idx: null,
+      thisTarget: null,
       Data: null
     };
   },
   created: function created() {
     var _this = this;
 
-    idx = null;
     eventBus.$on('bannerData', function (Data) {
       _this.Data = Data[0];
+      _this.thisTarget = 'bannerData';
+    });
+    eventBus.$on('CounselData', function (Data) {
+      _this.Data = Data;
+      _this.thisTarget = 'CounselData';
     });
   },
   methods: {
@@ -23,24 +28,39 @@ Vue.component('delte-modal', {
         Modal.style.display = 'none';
       }, 100);
     },
-    GetData: function GetData(a) {
+    GetData: function GetData() {
       var _this2 = this;
 
-      var baseURI = 'api/banner.api.php';
+      var baseURI = null;
+
+      if (this.thisTarget == 'bannerData') {
+        baseURI = 'api/banner.api.php';
+      } else if (this.thisTarget == 'CounselData') {
+        baseURI = 'api/consul.data.php';
+      }
+
+      console.log(this.thisTarget);
+      console.log(baseURI);
       axios.post(baseURI, {
-        mode: "imgDelte",
+        mode: "Delete",
         Data: this.Data
       }).then(function (result) {
-        if (result.data.phpResult == 'ok') {
-          eventBus.$emit('bannerDelteResult', "ok");
+        console.log(result);
 
+        if (result.data.phpResult == 'ok') {
           _this2.ModalClose();
+
+          if (_this2.thisTarget == 'bannerData') {
+            eventBus.$emit('bannerDelteResult', "ok");
+          } else if (_this2.thisTarget == 'CounselData') {
+            router.go(-1);
+          }
         } else {
           alert('실패하였습니다 (관리자에게 문의해주세요)');
         }
       }).catch(function (err) {
         return console.log('Login: ', err);
-      }); // //idx 활용 데이터 삭제후 idx 초기화!
+      });
     }
   }
 });

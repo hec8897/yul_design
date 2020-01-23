@@ -15,15 +15,21 @@ Vue.component('delte-modal', {
     data(){
         return{
             idx:null,
+            thisTarget:null,
             Data:null
         }
     },
     created(){
-        idx = null;
         eventBus.$on('bannerData',(Data)=>{
-            this.Data = Data[0];
-            
+            this.Data = Data[0];            
+            this.thisTarget = 'bannerData';
         })
+        eventBus.$on('CounselData', (Data)=>{
+            this.Data = Data
+            this.thisTarget = 'CounselData';
+
+        })
+
     },
     methods:{
         ModalClose() {
@@ -35,26 +41,39 @@ Vue.component('delte-modal', {
             }, 100);
         },
         
-        GetData(a){
-            const baseURI = 'api/banner.api.php';
+        GetData(){
+            let baseURI = null;
+            if(this.thisTarget == 'bannerData'){
+                baseURI = 'api/banner.api.php';
+            }
+            else if(this.thisTarget == 'CounselData'){
+                baseURI = 'api/consul.data.php';
+            }
+            console.log(this.thisTarget)
+            console.log(baseURI)
             axios.post(
                 baseURI,{
-                    mode:"imgDelte",
+                    mode:"Delete",
                     Data:this.Data
               
                 }
                 )
                 .then((result) => {
+                    console.log(result)
                     if (result.data.phpResult == 'ok') {
-                        eventBus.$emit('bannerDelteResult', "ok")
                         this.ModalClose();
+                        if(this.thisTarget == 'bannerData'){
+                            eventBus.$emit('bannerDelteResult', "ok")
+                        }
+                        else if(this.thisTarget == 'CounselData'){
+                            router.go(-1)
+                        }
                     }
                     else{
                         alert('실패하였습니다 (관리자에게 문의해주세요)')
                     }
                 })
                 .catch(err => console.log('Login: ', err));
-            // //idx 활용 데이터 삭제후 idx 초기화!
         }
     }
 })

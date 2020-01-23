@@ -23,7 +23,7 @@ else if($mode == 'activation'){
     $sql = "UPDATE `main_banner` SET `activation` = '$activation' WHERE `idx` = $idx";
     $query = mysqli_query($conn,$sql);
 }
-else if($mode == 'imgDelte'){
+else if($mode == 'Delete'){
     $idx = $data['Data']['idx'];
     
     if(unlink('../'.$data['Data']['imgLink'])) {

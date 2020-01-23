@@ -19,7 +19,7 @@ if($mode == 'lists'){
             "reqConsult"=>$row['reqconsult'],
             "reqMemo"=>$row['reqmemo'],
             "reqAddress"=>$row['reqaddress'],
-            "inserDate"=>$row['insertdate'],
+            "InsertDate"=>$row['insertdate'],
             "reqMeasure"=>$row['reqmeasure'],
             "reqDate"=>$row['reqdate']
         ));
@@ -40,11 +40,15 @@ else if($mode == 'list'){
         "reqConsult"=>$row['reqconsult'],
         "reqMemo"=>$row['reqmemo'],
         "reqAddress"=>$row['reqaddress'],
-        "inserDate"=>$row['insertdate'],
+        "InsertDate"=>$row['insertdate'],
         "reqMeasure"=>$row['reqmeasure'],
         "reqDate"=>$row['reqdate']
     ));
-
+}
+else if($mode == "Delete"){
+    $idx = $data['Data'];
+    $sql = "DELETE FROM `insert_tb` WHERE `insert_tb`.`idx` = '$idx'";
+    $query = mysqli_query($conn,$sql);
 
 }
 
@@ -58,7 +62,7 @@ else{
 $json =  json_encode(
     array(
         "result"=>$result,
-        "phpResult"=>$phpResult
+        "phpResult"=>$phpResult,
 )); 
 
 echo urldecode($json);
