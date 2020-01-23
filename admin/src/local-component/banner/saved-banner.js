@@ -139,9 +139,6 @@ Vue.component('saved-banner-controler', {
                         }
                 })
                 .catch(err => console.log('Login: ', err));
-
-
-
         }
     }
 })

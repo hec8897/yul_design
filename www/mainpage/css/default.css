@@ -305,6 +305,11 @@ textarea:focus{border:1px solid #666; background:#f9f9f9}
 #footer .copy li span{color:#b9b9b9; font-size:13px; font-weight:700}
 #footer .copy li:last-child{margin-right:0}
 
+/* foot contact */
+.foot_contact{display:none; position:fixed; z-index:999; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); width:100%; height:50px; text-align:center}
+.foot_contact a{display:block; color:#fff; height:50px; line-height:50px}
+.foot_contact a img{display:inline-block; vertical-align:middle; width:20px; margin-right:5px}
+
 
 /* 
     elements ----------------------------------------------------------------------------------------------------------------------------------------------------------------

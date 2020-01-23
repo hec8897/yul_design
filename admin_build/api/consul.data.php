@@ -6,7 +6,7 @@ $result = array();
 $mode = $data['mode'];
 
 if($mode == 'lists'){
-    $sql = "SELECT * FROM `insert_tb`";
+    $sql = "SELECT * FROM `insert_tb` ORDER by idx desc";
     $query = mysqli_query($conn,$sql);
     
     while($row = mysqli_fetch_array($query)){

@@ -146,11 +146,20 @@
     .swiper-pagination{margin-bottom:30px}
     
     .btn_contact{display:none}
+    .foot_contact{display:block}
+    
     
     /* main */
     .visual{height:600px}
     .visual .visual_con{margin-top:180px}
-    .visual .visual_con h1{font-size:39px; letter-spacing:0}
+    .visual .visual_con h1{margin-bottom:15px; font-size:42px; letter-spacing:0; text-shadow:3px 3px 6px rgba(0,0,0,0.3)}
+    .visual .visual_con p{text-shadow:3px 3px 6px rgba(0,0,0,0.7)}
+    .visual .visual_con p span{text-shadow:3px 3px 6px rgba(0,0,0,0.7)}
+
+    .visual .visual_con.txt1{margin-top:160px}
+    .visual .visual_con.txt2{margin-top:120px}
+    .visual .visual_con.txt3{margin-top:200px}
+    
     .ma_about .about_img{top:800px}
     .swipe-portfolio{margin-bottom:50px}
     .ma_portfolio div{margin-bottom:30px}
@@ -205,9 +214,9 @@
     .sub_tit h2{font-size:24px; line-height:30px}
     
     /* main */
-    .visual .visual_con h1{font-size:24px}
-    .visual .visual_con p{font-size:18px}
-    .visual .visual_con p span{font-size:18px}
+    .visual .visual_con h1{font-size:36px}
+    .visual .visual_con p{font-size:24px}
+    .visual .visual_con p span{font-size:24px}
     
     .ma_about .about_img{top:770px}
     .ma_port{margin-top:530px}
