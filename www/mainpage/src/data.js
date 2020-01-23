@@ -1,4 +1,6 @@
 DataInsertAxios = () => {
+    const CheckBox = document.getElementById('checkbox_1');
+
     const reqStandardRadio1 = document.getElementById('radio_1');
     const reqStandardRadio2 = document.getElementById('radio_2');
     const reqStandardRadio3 = document.getElementById('radio_3');
@@ -19,7 +21,10 @@ DataInsertAxios = () => {
     const reqAddress = document.getElementById('reqaddress').value;
     const reqMeasure = document.getElementById('reqmeasure').value;
     const reqDate = document.getElementById('reqdate').value;
-    if (reqName == "") {
+    if(CheckBox.checked == false){
+        alert('개인정보수집 및 이용에 동의해주세요');
+    }
+    else if (reqName == "") {
         alert('성함을 입력해주세요');
     } else if (reqPhone == "") {
         alert('연락처를 입력해주세요');
