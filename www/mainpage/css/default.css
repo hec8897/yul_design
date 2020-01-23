@@ -390,7 +390,7 @@ input:focus{border:1px solid #666; background:#f9f9f9}
 .btn{
     position:relative; z-index:9; display:inline-block; text-align:center; font-size:14px; color:#fff; background:#ff952e;
     width:200px; height:50px; line-height:50px; padding:0 20px; box-sizing:border-box; box-shadow:6px 6px 11px rgba(0,0,0,0.2);
-    transition:all 0.2s ease;
+    transition:all 0.2s ease; cursor: pointer;
 }
 .btn:hover{background:#ffa439; box-shadow:1px 1px 3px rgba(0,0,0,0.3)}
 
