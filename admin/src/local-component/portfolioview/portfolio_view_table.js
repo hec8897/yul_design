@@ -58,8 +58,13 @@ Vue.component('portfilio-update', {
             </li>
             <li><h5>제목</h5></li>
             <li>
+                <input type="file">
+            </li>
+            <li><h5>대표이미지</h5></li>
+            <li>
                 <input type="text" placeholder="제목" class="mody_tit">
             </li>
+
             <li><h5>내용</h5></li>
             <li>
                 <textarea name="content" id='summernote'></textarea>
@@ -73,7 +78,6 @@ Vue.component('portfilio-update', {
     <span class="b_sgrey">목록</span>
 </div>
 </div>
-
 `,
     created(){
 
