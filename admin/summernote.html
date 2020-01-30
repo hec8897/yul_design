@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- JQuery file-->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="moduls/axios.min.js"></script>
+
+    <!-- summernote -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/summernote_custom.css">
+    <!-- summernote -->
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        textarea {
+            resize: none;
+            overflow: hidden;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <textarea name="content" id='summernote'></textarea>
+    <script>
+        $('#summernote').summernote({
+            height: 400,
+            lang: 'ko-KR', // default: 'en-US'
+            focus: false,
+            tooltip: false,
+            resize: false,
+            lang: 'ko-KR', // 기본 메뉴언어 US->KR로 변경
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'underline', 'clear']],
+                ['para', ['paragraph']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['height', ['height']],
+                ['hr', ['hr']],
+                ['picture', ['picture']],
+                ['view', ['fullscreen', 'codeview']]
+            ],
+            callbacks: {
+                onImageUpload: function (files, editor, welEditable) {
+                    for (var i = files.length - 1; i >= 0; i--) {
+                        sendFile(files[i], this);
+                    }
+                }
+            }
+        });
+        $('.note-statusbar').hide()
+
+        function sendFile(file, el) {
+            formData = new FormData();
+            formData.append('file', file);
+            const baseURI = 'api/upload.img.php';
+
+            axios.post(
+                    baseURI, formData
+                    )
+                    .then((result) => {
+                        if(result.data.file == 'fileNo'){
+                            alert('파일이없습니다')
+                        }
+                        else if(result.data.file == 'noExt'){
+                            alert('사용할수없는확장자입니다')
+                        }
+                        else if(result.data.file == 'huge'){
+                            alert('사이즈가너무큽니다.')
+                        }
+                        else{
+                            let url = 'http://yuldesign.kr/port_upload/'+result.data.file
+                            $(el).summernote('editor.insertImage', url);
+                            $('#imageBoard > ul').append('<li><img src="'+url+'" width="auto" height="auto"/></li>');
+                        }
+                        // this.Data = result.data.result;
+                    })
+                    .catch(err => console.log('Login: ', err));
+         
+        }
+
+    </script>
+
+
+</body>
+
+</html>

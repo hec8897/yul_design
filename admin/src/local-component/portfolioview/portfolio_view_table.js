@@ -1,73 +1,74 @@
 //고민해야하는 요소...에디터 API 활용, 이미지를 어떤식으로업로드할것인지...
 
 
-Vue.component('portfilio-update', {
-    props:['mode'],
+let test = Vue.component('portfilio-update', {
+    props: ['mode'],
     template: ` <div class="info_wrap">
     <h4 class="title">포트폴리오</h4>
     <save-modal></save-modal>
     <delte-modal tb='banner'></delte-modal>
-
     <div class="panel mody">
-    
         <ul>
-            <li><h5>작성자 ID</h5></li>
+            <li><h5>작성자</h5></li>
             <li>
-                <input type="text" placeholder="작성자 ID">
+                <input type="text" placeholder="작성자" id='reqwriter'>
+            </li>
+            <li><h5>제목</h5></li>
+            <li>
+                <input type="text" placeholder="제목" class="mody_tit" id='reqtit'>
             </li>
             <li><h5>노출여부</h5></li>
             <li class="select_input">
                 <div>
-                    <select name="" id="" class="">
-                        <option value="">공개</option>
-                        <option value="">비공개</option>
+                    <select id="reqactive">
+                        <option value="1" v-if="mode==='new'" disabled>공개</option>
+                        <option value="1" v-else>공개</option>
+
+                        <option value="0" selected >비공개</option>
                     </select>
                 </div>
             </li>
             <li><h5>시공형태</h5></li>
             <li class="select_input">
                 <div>
-                    <select name="" id="" class="">
+                    <select id="standard">
                         <option value="">분류</option>
-                        <option value="">주거공간</option>
-                        <option value="">상업공간</option>
-                        <option value="">사무공간</option>
+                        <option value="주거">주거공간</option>
+                        <option value="상업">상업공간</option>
+                        <option value="사무">사무공간</option>
                     </select>
                 </div>
             </li>
-            
             <li><h5>시공주소</h5></li>
             <li>
-                <input type="text" placeholder="주소" class="mody_tit">
+                <input type="text" placeholder="주소" id='reqaddress' class="mody_tit">
             </li>
             <li><h5>시공면적</h5></li>
             <li class="half">
-                <input type="text" placeholder="면적">
+                <input type="text" placeholder="면적" id='measure'>
             </li>
-            <li><h5>천정</h5></li>
+            <li><h5>천장</h5></li>
             <li class="half">
-                <input type="text" placeholder="천정">
+                <input type="text" placeholder="천장" id='ceiling'>
             </li>
             <li><h5>바닥</h5></li>
             <li class="half">
-                <input type="text" placeholder="바닥">
+                <input type="text" placeholder="바닥" id='floor'>
             </li>
             <li><h5>벽체</h5></li>
             <li class="half">
-                <input type="text" placeholder="벽체">
-            </li>
-            <li><h5>제목</h5></li>
-            <li>
-                <input type="file">
+                <input type="text" placeholder="벽체" id='walls'>
             </li>
             <li><h5>대표이미지</h5></li>
             <li>
-                <input type="text" placeholder="제목" class="mody_tit">
+                <input type="file" 
+                v-on:change='SelectMainImg'
+                ref="mainimg" 
+                >
             </li>
-
             <li><h5>내용</h5></li>
             <li>
-                <textarea name="content" id='summernote'></textarea>
+                <iframe src="summernote.html" id='summernote_iframe'></iframe>
             </li>
         </ul>
     </div>
@@ -79,60 +80,72 @@ Vue.component('portfilio-update', {
 </div>
 </div>
 `,
-    created(){
-        console.log(this.mode)
-    },
-    mounted() {
-        this.SummerNoteImg();
-
+    
+    data() {
+        return {
+            UploadMainImg:null
+        }
     },
     methods: {
+      
         OpenDelModal(idx) {
             const Modal = document.getElementById('modal-alert')
             Modal.style.display = 'block';
             setTimeout(() => {
                 Modal.style.opacity = '1';
             }, 100);
-
             eventBus.$emit('idx', idx)
         },
-        SummerNoteImg(){
-            $('#summernote').summernote({
-                height: 400,
-                lang: 'ko-KR', // default: 'en-US'
-                focus: false,
-                tooltip: false,
-                lang : 'ko-KR', // 기본 메뉴언어 US->KR로 변경
-    
-                // callbacks: {
-                //     onImageUpload: function(files, editor, welEditable) {
-                //       for (var i = files.length - 1; i >= 0; i--) {
-                //         sendFile(files[i], this);
-                //       }
-                //     }
-                // },
-                
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'underline', 'clear']],
-                    ['para', ['paragraph']],
-                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['height', ['height']],
-                    ['hr', ['hr']],
-                    ['picture', ['picture']],
-                    ['view', ['fullscreen', 'codeview']]
-                ]
-            });
-            $('.note-statusbar').hide()
+        SelectMainImg(){
+            this.UploadMainImg = this.$refs.mainimg.files[0];
+            console.log(this.UploadMainImg)
         },
-        GetData(){
-            
-        },
+     
         InsertData() {
-            const textarea = document.querySelector('textarea')
-            console.log(textarea.value)
+            const reqTit = document.getElementById('reqtit');
+            const Activate = document.getElementById('reqactive');
+            const Writer = document.getElementById('reqwriter');
+            const Standard = document.getElementById('standard');
+            const Address = document.getElementById('reqaddress');
+            const Measure = document.getElementById('measure');
+            const Ceiling = document.getElementById('ceiling');
+            const Floor = document.getElementById('floor');
+            const Walls = document.getElementById('walls');
+            const sumNote = document.getElementById('summernote_iframe').contentWindow.document.getElementById("summernote")
+            let InsertData = new FormData();
+            if(reqTit.value == ""){
+                alert('제목은필수로 작성해주세요')
+                reqTit.focus()
+            }
+            else{
+
+                InsertData.append('mode',this.mode)
+                InsertData.append('ReqTit',reqTit.value)
+                InsertData.append('Activation',Activate.value)
+                InsertData.append('Writer',Writer.value)
+                InsertData.append('Standard',Standard.value)
+                InsertData.append('Address',Address.value)
+                InsertData.append('Measure',Measure.value)
+                InsertData.append('Ceiling',Ceiling.value)
+                InsertData.append('Floor',Floor.value)
+                InsertData.append('Walls',Walls.value)
+                InsertData.append('MainImg',this.UploadMainImg)
+                InsertData.append('desc',sumNote.value)
+
+                const baseURI = 'api/portfolio.save.php';
+                axios.post(
+                    baseURI, InsertData
+                    )
+                    .then((result) => {
+                        console.log(result.data.Desc)
+                        // this.Data = result.data.result;
+                    })
+                    .catch(err => console.log('Login: ', err));
+            
+            }
+            
+
+         
         }
     }
 })
