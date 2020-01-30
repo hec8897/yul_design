@@ -218,6 +218,20 @@ Vue.component('portfolio-bord', {
             ]
         }
     },
+    mounted(){
+        const baseURI = 'api/get.portfolio.list.php';
+        axios.post(
+            baseURI
+            )
+            .then((result) => {
+                if(result.data.phpResult == 'ok'){
+                    this.lists = result.data.result
+                    eventBus.$emit('UpdateList',{DataLength:Math.ceil((this.lists.length)/10),nowpage:this.limit-10})
+                }
+                console.log(result)
+            })
+            .catch(err => console.log('Login: ', err));
+    },
     created(){
         this.limit = this.start+10
         eventBus.$on('searchData',(Data)=>{

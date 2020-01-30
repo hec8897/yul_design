@@ -86,8 +86,13 @@ let test = Vue.component('portfilio-update', {
             UploadMainImg:null
         }
     },
+    mounted(){
+        if(this.mode!='new'){
+            this.GetData()
+        }
+    },
+    
     methods: {
-      
         OpenDelModal(idx) {
             const Modal = document.getElementById('modal-alert')
             Modal.style.display = 'block';
@@ -100,8 +105,18 @@ let test = Vue.component('portfilio-update', {
             this.UploadMainImg = this.$refs.mainimg.files[0];
             console.log(this.UploadMainImg)
         },
-     
-        InsertData() {
+        GetData(){
+            const baseURI = 'api/get.portfolio.data.php';
+            axios.post(
+                baseURI, {idx:this.mode}
+                )
+                .then((result) => {
+                    console.log(result)
+              
+                })
+                .catch(err => console.log('Login: ', err));
+        },
+        InsertData(mode) {
             const reqTit = document.getElementById('reqtit');
             const Activate = document.getElementById('reqactive');
             const Writer = document.getElementById('reqwriter');
@@ -137,12 +152,12 @@ let test = Vue.component('portfilio-update', {
                     baseURI, InsertData
                     )
                     .then((result) => {
-                        console.log(result.data.Desc)
-                        // this.Data = result.data.result;
+                        if(result.data.phpResult == 'ok'){
+                            alert('작성이완료되었습니다')
+                        }
                     })
                     .catch(err => console.log('Login: ', err));
-            
-            }
+                }
             
 
          
