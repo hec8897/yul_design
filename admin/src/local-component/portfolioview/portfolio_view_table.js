@@ -1,7 +1,7 @@
 //고민해야하는 요소...에디터 API 활용, 이미지를 어떤식으로업로드할것인지...
 
 
-let test = Vue.component('portfilio-update', {
+Vue.component('portfilio-update', {
     props: ['mode'],
     template: ` <div class="info_wrap">
     <h4 class="title">포트폴리오</h4>
