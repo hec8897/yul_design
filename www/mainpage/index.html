@@ -37,11 +37,21 @@
 		<script src="js/respond.min.js"></script>
 	    <![endif]-->
     <!--  END BASE JS  -->
-    <script>
-        $(document).ready(function() {
-            App.init();
-        });
-    </script>
+    <script src="moduls/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+
+    <!-- Minified version of `es6-promise-auto` below. -->
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+   <script>
+       $(document).ready(function() {
+           App.init();
+       });
+
+       var Promise = require('es6-promise').Promise;
+   </script>
 </head>
 <body>
 <div id="page-container" class="wrap">
@@ -62,33 +72,9 @@
         
         <!--// visual -->
         <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="visual" style="background:url('images/banner_1.jpg') no-repeat top center">
-                        <div class="visual_con txt1">
-                            <h1>YUL INTERIOR</h1>
-                            <p>예쁘고 세련된 집에서 살고 싶다!<span>당신의 오랜 꿈을 이뤄드립니다.</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="visual" style="background:url('images/banner_2.jpg') no-repeat top center">
-                        <div class="visual_con txt2">
-                            <h1>YUL INTERIOR</h1>
-                            <p>오래 머물고 싶은 공간!<span>힐링 공간창조를 위한 노력</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="visual" style="background:url('images/banner_3.jpg') no-repeat top center">
-                        <div class="visual_con txt3">
-                            <h1>YUL INTERIOR</h1>
-                            <p>트랜디한 가치를 높이다!<span>공간을 바꾸는 기술</span></p>
-                        </div>
-                    </div>
-                </div>
+            <div class="swiper-wrapper" id='sliders'>
+                <!-- Main slier -->
             </div>
-            <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
         </div>
         <!-- END visual //-->
@@ -250,55 +236,16 @@
 </div>
 
 <!-- swiper js -->
-<script src="js/swiper.min.js"></script>
-<!-- Initialize Swiper -->
-<script>
-    /* Swipe */
-    var swiper = new Swiper('.swiper-container', {
-        loop: true,
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
-    
-    var swiper = new Swiper('.swipe-portfolio', {
-        loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        slidesPerView: 3,
-        spaceBetween: 20,
-        breakpoints: {
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 10,
-            },
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-            },
-            360: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            }
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-</script>
 <!-- <script src="src/app.js"></script> -->
 <script src="src/app.min.js"></script>
+<!-- <script src="src/data.js"></script> -->
+<script src="src/data.min.js"></script>
+<script src="js/swiper.min.js"></script>
+
+<script>
+mainBannerGet()
+</script>
+<!-- Initialize Swiper -->
+
 </body>
 </html>
