@@ -80,39 +80,11 @@ Vue.component('portfilio-update', {
 </div>
 `,
     created(){
-
+        console.log(this.mode)
     },
     mounted() {
-        $('#summernote').summernote({
-            height: 400,
-            lang: 'ko-KR', // default: 'en-US'
-            focus: false,
-            tooltip: false,
-            lang : 'ko-KR', // 기본 메뉴언어 US->KR로 변경
+        this.SummerNoteImg();
 
-            // callbacks: {
-            //     onImageUpload: function(files, editor, welEditable) {
-            //       for (var i = files.length - 1; i >= 0; i--) {
-            //         sendFile(files[i], this);
-            //       }
-            //     }
-            // },
-            
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'underline', 'clear']],
-                ['para', ['paragraph']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['height', ['height']],
-                ['hr', ['hr']],
-                ['picture', ['picture']],
-                ['view', ['fullscreen', 'codeview']]
-            ]
-        });
-
-        $('.note-statusbar').hide()
     },
     methods: {
         OpenDelModal(idx) {
@@ -125,7 +97,38 @@ Vue.component('portfilio-update', {
             eventBus.$emit('idx', idx)
         },
         SummerNoteImg(){
-
+            $('#summernote').summernote({
+                height: 400,
+                lang: 'ko-KR', // default: 'en-US'
+                focus: false,
+                tooltip: false,
+                lang : 'ko-KR', // 기본 메뉴언어 US->KR로 변경
+    
+                // callbacks: {
+                //     onImageUpload: function(files, editor, welEditable) {
+                //       for (var i = files.length - 1; i >= 0; i--) {
+                //         sendFile(files[i], this);
+                //       }
+                //     }
+                // },
+                
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'underline', 'clear']],
+                    ['para', ['paragraph']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['height', ['height']],
+                    ['hr', ['hr']],
+                    ['picture', ['picture']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+            $('.note-statusbar').hide()
+        },
+        GetData(){
+            
         },
         InsertData() {
             const textarea = document.querySelector('textarea')

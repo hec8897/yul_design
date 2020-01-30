@@ -187,11 +187,21 @@ iframe,object,video,embed{position:relative; top:0; left:0; max-width:100%}
 .tabs ul{width:1200px; margin:0 auto}
 .tabs ul li{float:left; width:33.33%; border-right:1px solid #f0f0f0; box-sizing:border-box}
 .tabs ul li:first-child{border-left:1px solid #f0f0f0}
+
+.tabs li span{display:block; line-height:70px; font-size:18px; color:#666; cursor: pointer;}
 .tabs li a{display:block; line-height:70px; font-size:18px; color:#666}
+
 .tabs li:hover{border:0}
 .tabs li:hover a{background:#ff952e; color:#fff}
+.tabs li:hover span{background:#ff952e; color:#fff}
+
 .tabs li.on{border:0}
+/* .tabs li.on span{background:#ff952e; color:#fff; cursor: pointer;} */
+
 .tabs li.on a{background:#ff952e; color:#fff}
+.tabs .router-link-exact-active span{
+    background:#ff952e; color:#fff
+}
 
 .protfolio{position:relative; width:100%}
 .ma_portfolio.sub{margin-top:50px}

@@ -3,32 +3,33 @@
 <!--[if !IE]><!-->
 <html lang="ko">
 <!--<![endif]-->
+
 <head>
-	<title>율디자인 인테리어</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta name="title" content="YUL i.d" />
-	<meta name="author" content="YUL i.d" />
-	<meta name="keywords" content="YUL i.d" />
+    <title>율디자인 인테리어</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="title" content="YUL i.d" />
+    <meta name="author" content="YUL i.d" />
+    <meta name="keywords" content="YUL i.d" />
     <meta name="description" content="YUL i.d" />
     <meta property="og:type" content="website" />
-	<meta property="og:image" content="images/opengraph.jpg" />
-	<meta property="og:title" content="YUL i.d" />
-	<meta property="og:locale" content="ko_KR" />
-	<meta property="og:description" content="YUL i.d" />
-	<meta property="og:url" content="http://yulid.co.kr/" />
+    <meta property="og:image" content="images/opengraph.jpg" />
+    <meta property="og:title" content="YUL i.d" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:description" content="YUL i.d" />
+    <meta property="og:url" content="http://yulid.co.kr/" />
 
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
-    
+
     <!--  BASE CSS  -->
-	<link href="fonts/fonts.min.css" rel="stylesheet" />
-	<link href="css/swiper.min.css" rel="stylesheet" />
-	<link href="css/default.css" rel="stylesheet" />
-	<link href="css/responsive.min.css" rel="stylesheet" />
-	<!--  END BASE CSS  -->
-	
-	<!--  BASE JS  -->
-	<script src="js/jquery-1.9.1.min.js"></script>
+    <link href="fonts/fonts.min.css" rel="stylesheet" />
+    <link href="css/swiper.min.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
+    <link href="css/responsive.min.css" rel="stylesheet" />
+    <!--  END BASE CSS  -->
+
+    <!--  BASE JS  -->
+    <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/scrollMonitor.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/apps.min.js"></script>
@@ -37,168 +38,80 @@
 		<script src="js/respond.min.js"></script>
 	    <![endif]-->
     <!--  END BASE JS  -->
+    <!-- Vue.js Component -->
+    <script src="moduls/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+    <!-- Minified version of `es6-promise-auto` below. -->
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+    <!-- <script src="https://unpkg.com/vue/dist/vue.min.js"></script> -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script><!-- dev -->
+    <script src="https://unpkg.com/vue-router/dist/vue-router.min.js"></script>
+    <!-- Vue.js Component -->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             App.init();
         });
     </script>
 </head>
-<body>
-<div id="page-container" class="wrap">
-    <!--// Header -->
-    <header id="header" class="sub">
-        <!--// popover GNB -->
-        <div class="pop_gnb">
-            <div class="b_menu navbar-toggle" data-click="sidebar-toggled">
-                <span></span><span></span><span class="m_half"></span>
-            </div>
-            <div id="sidebar" class="sidebar">
-            </div>
-        </div>
-        <!-- END popover GNB //-->
-        
-        <div class="gnb" id='gnb'>
-        </div>
-        
-        <!--// sub visual -->
-        <div class="sub_visual bg_2">
-            <h1>PORTFOLIO</h1>
-        </div>
-        <!-- sub visual //-->
-    
-    </header>
 
-    <div class="foot_contact">
-        <a href="consul.html">
-            <img src="images/icon_assign.png" alt="견적문의"> 견적문의 바로가기
-        </a>
-    </div>
-    <!-- END Header //-->
-    
-    <!--// contents -->
-    <div id="section">
-        <!--// tab menu -->
-        <div class="tabs">
-            <ul class="">
-                <li class="on"><a href="">주거공간</a></li>
-                <li><a href="">상업공간</a></li>
-                <li><a href="">사무공간</a></li>
-            </ul>
+<body>
+    <div id="page-container" class="wrap">
+        <!--// Header -->
+        <header id="header" class="sub">
+            <!--// popover GNB -->
+            <div class="pop_gnb">
+                <div class="b_menu navbar-toggle" data-click="sidebar-toggled">
+                    <span></span><span></span><span class="m_half"></span>
+                </div>
+                <div id="sidebar" class="sidebar">
+                </div>
+            </div>
+            <!-- END popover GNB //-->
+
+            <div class="gnb" id='gnb'>
+            </div>
+
+            <!--// sub visual -->
+            <div class="sub_visual bg_2">
+                <h1>PORTFOLIO</h1>
+            </div>
+            <!-- sub visual //-->
+
+        </header>
+
+        <div class="foot_contact">
+            <a href="consul.html">
+                <img src="images/icon_assign.png" alt="견적문의"> 견적문의 바로가기
+            </a>
         </div>
-        <!-- END tab menu //-->
-        
-        <!--// portfolio -->
-        <div class="protfolio">
-            <div class="sub_tit">
-                <h1>주거공간</h1>
-            </div>
-            
-            <div class="ma_portfolio sub">
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_1.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_2.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_3.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_4.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_5.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_6.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_1.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_2.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_3.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_4.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-            </div>
-            
-            <!--// page -->
-            <div class="paging">
-                <a href=""><img src="images/navi_left.gif" alt="priv"></a>
-                <a href="">1</a>
-                <a href="">2</a>
-                <a href="">3</a>
-                <a href="">4</a>
-                <a href="">5</a>
-                <a href="">6</a>
-                <a href="">7</a>
-                <a href="">8</a>
-                <a href="">9</a>
-                <a href="">10</a>
-                <a href=""><img src="images/navi_right.gif" alt="next"></a>
-            </div>
-            <!-- page //-->
-            <!--// search -->
-            <div class="search">
-                <div class="search_select">
-                    <select name="" id="">
-                        <option value="">제목</option>
-                    </select>
-                </div>
-                <div class="search_input">
-                    <a href=""><img src="images/icon_search.png" alt="search"></a>
-                    <input type="text" placeholder="검색">
-                </div>
-            </div>
-            <!-- search //-->
-            
+        <!-- END Header //-->
+        <!--// contents -->
+        <div id="section">
+            <router-view></router-view>
         </div>
-        <!-- portfolio //-->
+      
+        <!--END contents //-->
+
+        <!--// footer -->
+        <footer id="footer" class="">
+        </footer>
+        <!--END footer //-->
     </div>
-    <!--END contents //-->
-    
-    <!--// footer -->
-    <footer id="footer" class="">
-   
-        
-    </footer>
-    <!--END footer //-->
-</div>
-<!-- <script src="src/app.js"></script> -->
-<script src="src/app.min.js"></script>
+    <!-- <script src="src/app.js"></script> -->
+    <script src="src/app.min.js"></script>
+
+    <script src="moduls/vue/local/portfolio-nav.js"></script>
+
+    <script src="moduls/vue/local/residence.js"></script>
+    <script src="moduls/vue/local/commercial.js"></script>
+    <script src="moduls/vue/local/office.js"></script>
+
+
+
+    <script src="moduls/vue/app.vue.js"></script>
 </body>
+
 </html>
