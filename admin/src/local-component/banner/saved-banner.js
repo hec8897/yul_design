@@ -78,7 +78,6 @@ Vue.component('saved-banner-controler', {
             let idxData = this.ImgDatas.filter((x) => {
                 return x.idx == idx;
             })
-            console.log(idxData)
             const Modal = document.getElementById('modal-del')
             Modal.style.display = 'block';
             setTimeout(() => {

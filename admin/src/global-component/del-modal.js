@@ -4,7 +4,7 @@ Vue.component('delte-modal', {
                 <div class="alert">
                     <div class="alert_con">
                         <i class="material-icons red">error_outline</i>
-                        <p>정말로 삭제 하시겠습니까? (삭제후엔 복구가 불가능합니다)</p>
+                        <p>정말로 삭제 하시겠습니까? {{this.tb}}(삭제후엔 복구가 불가능합니다)</p>
                     </div>
                     <div class="modal_foot">
                         <span v-on:click='GetData' class="b_red">확인</span>
@@ -20,6 +20,7 @@ Vue.component('delte-modal', {
         }
     },
     created(){
+        console.log(this.tb)
         eventBus.$on('bannerData',(Data)=>{
             this.Data = Data[0];            
             this.thisTarget = 'bannerData';
@@ -27,9 +28,13 @@ Vue.component('delte-modal', {
         eventBus.$on('CounselData', (Data)=>{
             this.Data = Data
             this.thisTarget = 'CounselData';
-
         })
 
+        eventBus.$on('idx', (Data)=>{
+            console.log(Data)
+            this.Data = Data
+            this.thisTarget = 'portfolio';
+        })
     },
     methods:{
         ModalClose() {
@@ -49,23 +54,25 @@ Vue.component('delte-modal', {
             else if(this.thisTarget == 'CounselData'){
                 baseURI = 'api/consul.data.php';
             }
-            console.log(this.thisTarget)
-            console.log(baseURI)
+            else if(this.thisTarget == 'portfolio'){
+                baseURI = 'api/portfolio.save.php';
+            }
             axios.post(
                 baseURI,{
                     mode:"Delete",
                     Data:this.Data
-              
-                }
+                    }
                 )
                 .then((result) => {
-                    console.log(result)
                     if (result.data.phpResult == 'ok') {
                         this.ModalClose();
                         if(this.thisTarget == 'bannerData'){
                             eventBus.$emit('bannerDelteResult', "ok")
                         }
                         else if(this.thisTarget == 'CounselData'){
+                            router.go(-1)
+                        }
+                        else if(this.thisTarget == 'portfolio'){
                             router.go(-1)
                         }
                     }
