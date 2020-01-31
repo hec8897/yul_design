@@ -33,6 +33,7 @@
 
     <textarea name="content" id='summernote'></textarea>
     <script>
+  
         $('#summernote').summernote({
             height: 400,
             lang: 'ko-KR', // default: 'en-US'
@@ -60,6 +61,11 @@
                 }
             }
         });
+        function test(Test){
+
+            $('#summernote').summernote('insertText', Test);
+        }
+
         $('.note-statusbar').hide()
 
         function sendFile(file, el) {
@@ -88,8 +94,8 @@
                         // this.Data = result.data.result;
                     })
                     .catch(err => console.log('Login: ', err));
-         
         }
+      
 
     </script>
 

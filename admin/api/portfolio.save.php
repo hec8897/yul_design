@@ -4,7 +4,6 @@
   header('Access-Control-Allow-Origin: *');  
   $data = json_decode(file_get_contents("php://input"),true);
 
-
     $ReqTit = $_POST['ReqTit'];
     $Activation = $_POST['Activation'];
     $Writer = $_POST['Writer'];

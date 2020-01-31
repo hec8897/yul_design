@@ -13,13 +13,16 @@ $idx = $data['idx'];
     array_push($result, array(
       "idx"=> $row['idx'],
       "tit"=> $row['title'],
+      "Writer"=>$row['writer'],
       "standard"=> $row['standard'],
       "reqAddress"=> $row['address'],
       "reqMeasure"=> $row['measure'],
       "option1"=> $row['ceiling'],
       "option2"=> $row['floor'],
       "option3"=> $row['walls'],
-      "Activation"=> $row['activation']
+      "Activation"=> $row['activation'],
+      "MainImg"=>$row['main_img'],
+      "Desc"=>$row['desc']
     ));
 }
 
