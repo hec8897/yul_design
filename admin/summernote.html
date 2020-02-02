@@ -26,7 +26,7 @@
         }
     </style>
 
-    <title>Document</title>
+    <title>율디자인 인테리어 admin</title>
 </head>
 
 <body>
@@ -88,6 +88,10 @@
                             alert('사이즈가너무큽니다.')
                         }
                         else{
+                            
+                            // 파일이름 리턴받아서 테이블에 저장해야함(일반삭제시필요) 파일 갯수제한있어야하나..?
+                            //저장 하지않고 종료시 파일삭제 로직필요 
+
                             let url = 'http://yuldesign.kr/port_upload/'+result.data.file
                             $(el).summernote('editor.insertImage', url);
                             $('#imageBoard > ul').append('<li class="summernote_img"><img src="'+url+'" width="auto" height="auto"/></li>');

@@ -10,11 +10,11 @@
         $file = $files;
         $upload_directory = '../../port_upload/';
         $time = date('YmdHi');
+        //초 추가해야함
 
         $ext_str = "jpg,gif,png";
         $allowed_extensions = explode(',', $ext_str);
         $max_file_size = 5000000;
-        //Byte 단위임..
         $ext = substr($file['name'], strrpos($file['name'], '.') + 1);
         $path = $file['name'];
         if($files == null){
