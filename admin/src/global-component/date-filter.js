@@ -1,9 +1,10 @@
 Vue.component('date-filter', {
+    props:['mode'],
     template: `<div class="search_wrap">
                 <div class="panel">
                     <ul>
-                        <li><h5>등록일</h5></li>
-                        <li>
+                        <li style='display:none'><h5>등록일</h5></li>
+                        <li style='display:none'>
                             <div class="daterange">
                                 <label for="datepicker-default"><i class="material-icons md-18">date_range</i></label>
                                 <input type="text" class="" name="start" id="datepicker-default" placeholder="날짜선택"/>
@@ -25,9 +26,9 @@ Vue.component('date-filter', {
                             <div>
                                 <select id='search_value'>
                                     <option value="">분류옵션</option>
-                                    <option value="home">주거공간</option>
-                                    <option value="office">사무공간</option>
-                                    <option value="store">상업공간</option>
+                                    <option value="주거">주거공간</option>
+                                    <option value="사무">사무공간</option>
+                                    <option value="상업">상업공간</option>
 
                                 </select>                                
                             </div>
@@ -52,6 +53,8 @@ Vue.component('date-filter', {
         SearchDateData() {
             const FrontDate = document.getElementById('datepicker-default');
             const BackDate = document.getElementById('datepicker-autoClose');
+            const SearchValue = document.getElementById('search_value');
+
             // const SelectClass = document.getElementById('select_class');
             // const SearchValue = document.getElementById('search_value');
 
@@ -62,49 +65,29 @@ Vue.component('date-filter', {
                 alert('기준날짜를 선택해주세요')
                 BackDate.focus()
             } else {
-                this.DateSearch = {
-                    FrontDate: FrontDate.value,
-                    BackDate: BackDate.value
-                }
-                if (this.DataValue == null) {
+             
                     eventBus.$emit('searchData', {
                         FrontDate: FrontDate.value,
                         BackDate: BackDate.value,
-                        // 검색 조건 => main-bord.js
-                    })
-                } else {
-                    eventBus.$emit('searchData', {
-                        FrontDate: FrontDate.value,
-                        BackDate: BackDate.value,
-                        SearchValue: this.DataValue
-                        // 검색 조건 => main-bord.js
+                        SearchValue: SearchValue.value
                     })
                 }
-            }
         },
         SeachStandard() {
+            const FrontDate = document.getElementById('datepicker-default');
+            const BackDate = document.getElementById('datepicker-autoClose');
             const SearchValue = document.getElementById('search_value');
             if (SearchValue.value == "") {
                 alert('검색할 분류를 선택해주세요')
                 SearchValue.focus()
             } else {
                 this.DataValue = SearchValue.value;
-                console.log(this.DateSearch)
-                if (this.DateSearch == null) {
-
-                    eventBus.$emit('searchData', {
-                        SearchValue: SearchValue.value
-                        // 검색 조건 => main-bord.js
-                    })
-                }
-                else{
                     eventBus.$emit('searchData', {
                         FrontDate: FrontDate.value,
                         BackDate: BackDate.value,
                         SearchValue: this.DataValue
                         // 검색 조건 => main-bord.js
                     })
-                }
 
             }
 

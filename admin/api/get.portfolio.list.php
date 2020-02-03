@@ -3,8 +3,25 @@ include("../inc/conn.php");
 mysqli_set_charset($conn,"utf-8"); 
 $data = json_decode(file_get_contents("php://input"),true);
 $result = array();
+$mode = $data['mode'];
 
+if($mode == "search"){
+  if(isset($data['BackDate'])){
+    if(isset($data['SearchValue'])){
+
+    }
+    else{
+      $sql = 'SELECT * FROM `tb_portfolio`';
+    }
+  }
+  else{
+    $SearchValue = $data['SearchData']['SearchValue'];
+    $sql = "SELECT * FROM `tb_portfolio` WHERE `standard` = '$SearchValue'";
+  }
+}
+else{
   $sql = 'SELECT * FROM `tb_portfolio`';
+}
   $query = mysqli_query($conn,$sql);
 
   while($row = mysqli_fetch_array($query)){

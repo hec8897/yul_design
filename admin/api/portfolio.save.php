@@ -4,7 +4,7 @@
   header('Access-Control-Allow-Origin: *');  
   $data = json_decode(file_get_contents("php://input"),true);
 
-    $mode = $_POST['mode'];
+    $mode = isset($_POST['mode'])?$_POST['mode']:$data['mode'];
     $idx = $_POST['idx'];
     $ReqTit = $_POST['ReqTit'];
     $Activation = $_POST['Activation'];
@@ -16,13 +16,13 @@
     $Floor = $_POST['Floor'];
     $Walls = $_POST['Walls'];
     $desc = $_POST['desc'];
-
+    $DescImg = $_POST['desc_img'];
     $MainImg = $_FILES['MainImg'];
 
     function FileUploader($files){
         $file = $files;
         $upload_directory = '../../port_upload/main_img/';
-        $time = date('YmdHi');
+        $time = date('YmdHis');
 
         $ext_str = "jpg,gif,png";
         $allowed_extensions = explode(',', $ext_str);
@@ -49,10 +49,10 @@
     if($mode == 'new'){
         $sql = "INSERT INTO `tb_portfolio` 
         (`activation`, `writer`, `standard`, `address`, 
-        `measure`, `floor`, `walls`, `ceiling`, `title`, `main_img`, `desc`) 
+        `measure`, `floor`, `walls`, `ceiling`, `title`, `main_img`, `desc`,`desc_img`) 
         VALUES 
         ('0', '$Writer', '$Standard', '$Address', 
-        '$Measure', '$Floor', '$Walls', '$Ceiling', '$ReqTit', '$MainImgRoute', '$desc')";
+        '$Measure', '$Floor', '$Walls', '$Ceiling', '$ReqTit', '$MainImgRoute', '$desc','$DescImg')";
         $query = mysqli_query($conn,$sql);
     
     }
@@ -60,21 +60,47 @@
         $sql ="UPDATE `tb_portfolio` SET `activation`= '$Activation', 
         `writer`='$Writer',`standard`='$Standard', `address` = '$Address', 
         `measure` = '$Measure', `floor` = '$Floor', `walls` = '$Walls' , 
-        `ceiling` = '$Ceiling', `title`= '$ReqTit', `main_img` = '$MainImgRoute', `desc` = '$desc' WHERE `idx`='$idx'";
-        $query = mysqli_query($conn,$sql);
+        `ceiling` = '$Ceiling', `title`= '$ReqTit', `main_img` = '$MainImgRoute', `desc` = '$desc', `desc_img` = '$DescImg' WHERE `idx`='$idx'";
+         $query = mysqli_query($conn,$sql);
+
+    }
+    else if($mode == 'NoneSave'){
+        //저장안했을때 로직
+        $DescImg = $data['Data'];
+        for($count = 0 ; $count <count($DescImg) ; $count++){
+            unlink("../../".substr($DescImg[$count],20));
+            // unlink("../../".substr($DescImg[$count],도메인주소길이));
+        }
 
     }
     else{
-        $idx = $data['Data'];
-        $JoinUsingImg = "SELECT `main_img` FROM `tb_portfolio` WHERE idx = '$idx'";
-        $MainImgquery = mysqli_query($conn,$JoinUsingImg);
-        $DeletImg = mysqli_fetch_assoc($MainImgquery);
-        $DeletImgTarget = "../../port_upload/main_img/".$DeletImg['main_img'];
+        //포트폴리오삭제로직
+        $Data = $data['Data'];
+        $idx = $data['Data']['idx'];
+        if($Data['mode'] == "DataAll"){
+            $url = "http://yuldesign.kr/";
+            $DescImg = $data['Data']['ImgArray'];
+            $JoinUsingImg = "SELECT `main_img` FROM `tb_portfolio` WHERE idx = '$idx'";
+            $MainImgquery = mysqli_query($conn,$JoinUsingImg);
+            $DeletImg = mysqli_fetch_assoc($MainImgquery);
+            $DeletImgTarget = "../../port_upload/main_img/".$DeletImg['main_img'];
+            for($count = 0 ; $count <count($DescImg) ; $count++){
+                    unlink("../../".substr($DescImg[$count],20));
+                    // unlink("../../".substr($DescImg[$count],도메인주소길이));
+                }
+                unlink($DeletImgTarget);
+                $sql = "DELETE FROM `tb_portfolio` WHERE idx = '$idx'";
+            }
+            else{
+                $DeletImgTarget = "../../port_upload/main_img/".$Data['ImgArray'];
+                unlink($DeletImgTarget);
+                $sql = "UPDATE `tb_portfolio` SET `main_img` = '' WHERE idx = '$idx'";
+            }
+            $query = mysqli_query($conn,$sql);
 
-        //메인이미지삭제
-        //사용된이미지도삭제....할방법 고민좀
-        // $sql = "DELETE FROM `tb_portfolio` WHERE idx = '$idx'";
     }
+
+
     
     if(isset($query)){
         $phpResult = 'ok';
@@ -86,7 +112,8 @@
     $json =  json_encode(
         array(
             "phpResult"=>$phpResult,
-            "test"=>$DeletImgTarget
+            "mode"=>$Data
+           
     ));
 
     echo urldecode($json);

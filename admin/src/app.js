@@ -26,8 +26,7 @@ const router = new VueRouter({
         {
             path:'/portfolioview/:idx',
             component:portFolioPageView,
-            props:true
-          
+            props:true,
         },
         {
             path: '/consul/',

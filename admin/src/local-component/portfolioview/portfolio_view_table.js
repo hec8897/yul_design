@@ -189,7 +189,7 @@ Vue.component('portfilio-update', {
 
             <li v-else>
             <a v-bind:href='"../port_upload/main_img/"+Portdata.MainImg' target='blank'>{{Portdata.MainImg}}</a>
-            <span class='b_red'>삭제후 재등록</span>
+            <span class='b_red' v-on:click='MainImgDelte(mode)'>삭제후 재등록</span>
             </li>
 
             <li><h5>내용</h5></li>
@@ -199,13 +199,16 @@ Vue.component('portfilio-update', {
         </ul>
     </div>
     <div class="btn_wrap">
-        <span class="b_red" v-on:click="OpenDelModal(mode)">삭제</span>
+        <span class="b_red" v-if="mode != 'new'" v-on:click="DeleteData(mode)">삭제</span>
         <span class="b_blue" v-if="mode === 'new'" v-on:click="InsertData('new')">등록</span>
         <span class="b_blue" v-else v-on:click="InsertData('update')">수정</span>
-
-        <span class="b_sgrey">목록</span>
+        <span class="b_sgrey" v-on:click = "NoneSave">목록</span>
     </div>
     </div>`,
+    created(){
+      
+    },
+
     data() {
         return {
             UploadMainImg: null,
@@ -213,33 +216,70 @@ Vue.component('portfilio-update', {
         }
     },
     mounted() {
+        InsertData = new FormData();
         if (this.mode != 'new') {
             this.GetData();
         }
+        eventBus.$on('MainImgDelteResult', (Data)=>{
+            if(Data == "ok"){
+                this.GetData();
+            }
+        })
+
     },
     updated() {
         let DESC = this.Portdata.Desc;
+        let DescImg = this.Portdata.DescImg.split(",");
+        $('#summernote_iframe').load(function () {
+            for(let i = 0; i<DescImg.length; i++){
+                $('#summernote_iframe').get(0).contentWindow.ImgArray.push(DescImg[i])
+
+            }
+        })
         $('#summernote_iframe').load(function () {
             $('#summernote_iframe').get(0).contentWindow.InsertDesc(DESC)
         })
     },
     methods: {
-        OpenDelModal(idx) {
+        OpenDelModal(Data,Mode) {
             const Modal = document.getElementById('modal-del')
             Modal.style.display = 'block';
             setTimeout(() => {
                 Modal.style.opacity = '1';
             }, 100);
-            eventBus.$emit('idx', idx)
+            eventBus.$emit(Mode, Data)
+        },
+        DeleteData(idx){
+            let DescImg = this.Portdata.DescImg.split(",");
+            let Data = {idx:idx,ImgArray:DescImg,mode:"DataAll"}
+            this.OpenDelModal(Data,"DataAll")
         },
         SelectMainImg() {
             this.UploadMainImg = this.$refs.mainimg.files[0];
+        },
+        MainImgDelte(idx){
+            let MainImg = this.Portdata.MainImg;
+            let Data = {idx:idx,ImgArray:MainImg,mode:"MainImg"}
+            this.OpenDelModal(Data,"MainImg")
+        },
+        NoneSave(){
+            let NewImgArray = $('#summernote_iframe').get(0).contentWindow.NewImgArray
+            const baseURI = 'api/portfolio.save.php';
+            axios.post(baseURI,{
+                mode:"NoneSave",
+                Data:NewImgArray
+            })
+            .then((result) => {
+                router.go(-1)
+            })
+            .catch(err => console.log('Login: ', err));
+            //작성중 저장안하고 이탈(이탈시 서버업로드된 이미지 삭제)
         },
         GetData() {
             const baseURI = 'api/get.portfolio.data.php';
             axios.post(
                     baseURI, {
-                        idx: this.mode
+                        idx: this.mode,
                     }
                 )
                 .then((result) => {
@@ -256,7 +296,7 @@ Vue.component('portfilio-update', {
                             option3: "적삼목",
                             MainImg: "../upload/202001141651works_9.jpg",
                             Desc: "<p>123</p>",
-                            Activation: 0,
+                            Activation: 0
                         }
                     } else {
                         this.Portdata = result.data.result[0];
@@ -264,7 +304,6 @@ Vue.component('portfilio-update', {
                 })
                 .catch(err => console.log('Login: ', err));
         },
-
         InsertData(mode) {
             const reqTit = document.getElementById('reqtit');
             const Activate = document.getElementById('reqactive');
@@ -277,9 +316,9 @@ Vue.component('portfilio-update', {
             const Walls = document.getElementById('walls');
             const sumNote = document.getElementById('summernote_iframe').contentWindow.document.getElementById("summernote")
         
-            let InsertData = new FormData();
 
             function DataFromInsert(modes,MainImg,idx) {
+                console.log($('#summernote_iframe').get(0).contentWindow.ImgArray)
                 if (reqTit.value == "") {
                     alert('제목은필수로 작성해주세요')
                     reqTit.focus()
@@ -300,6 +339,7 @@ Vue.component('portfilio-update', {
                     InsertData.append('Walls', Walls.value)
                     InsertData.append('MainImg', MainImg)
                     InsertData.append('desc', sumNote.value)
+                    InsertData.append('desc_img',$('#summernote_iframe').get(0).contentWindow.ImgArray)
 
                     const baseURI = 'api/portfolio.save.php';
                     axios.post(
@@ -308,6 +348,7 @@ Vue.component('portfilio-update', {
                         .then((result) => {
                             if (result.data.phpResult == 'ok') {
                                 alert('작성이완료되었습니다')
+                                console.log(result)
                                 router.push({
                                     path: '/portfolio'
                                 })

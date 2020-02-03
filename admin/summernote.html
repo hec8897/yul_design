@@ -68,7 +68,8 @@
         
 
         $('.note-statusbar').hide()
-
+        ImgArray = [];
+        NewImgArray = [];
         function sendFile(file, el) {
             formData = new FormData();
             formData.append('file', file);
@@ -88,14 +89,12 @@
                             alert('사이즈가너무큽니다.')
                         }
                         else{
-                            
-                            // 파일이름 리턴받아서 테이블에 저장해야함(일반삭제시필요) 파일 갯수제한있어야하나..?
-                            //저장 하지않고 종료시 파일삭제 로직필요 
-
                             let url = 'http://yuldesign.kr/port_upload/'+result.data.file
                             $(el).summernote('editor.insertImage', url);
                             $('#imageBoard > ul').append('<li class="summernote_img"><img src="'+url+'" width="auto" height="auto"/></li>');
-                            //이미지를저장할방법....
+                            ImgArray.push(url)
+                            NewImgArray.push(url)
+                            parent.InsertData.append('desc_img',ImgArray)
                         }
                         // this.Data = result.data.result;
                     })

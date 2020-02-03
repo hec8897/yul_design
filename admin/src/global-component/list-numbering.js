@@ -39,11 +39,16 @@ Vue.component('list-number', {
     mounted(){
         this.thisNumber = this.nowpage
         const NoBtn = document.querySelectorAll('.nobtn')
-        NoBtn[0].className = 'nobtn on'
+        if(NoBtn.length>0){
+            NoBtn[0].className = 'nobtn on'
+        }
     },
     updated(){
         const NoBtn = document.querySelectorAll('.nobtn')
-        NoBtn[0].className = 'nobtn on'
+        if(NoBtn.length>0){
+            NoBtn[0].className = 'nobtn on'
+        }
+
     },
     methods:{
         ActivationBtn(j){

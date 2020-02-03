@@ -9,7 +9,7 @@
     function FileUploader($files){
         $file = $files;
         $upload_directory = '../../port_upload/';
-        $time = date('YmdHi');
+        $time = date('YmdHis');
         //초 추가해야함
 
         $ext_str = "jpg,gif,png";
@@ -34,12 +34,12 @@
 
         
     }
-    $UploadResult1 = FileUploader($ImgFile);
+    $UploadResult = FileUploader($ImgFile);
 
 
     $json =  json_encode(
         array(
-            "file"=>$UploadResult1,
+            "file"=>$UploadResult
     )); 
 
     echo urldecode($json);

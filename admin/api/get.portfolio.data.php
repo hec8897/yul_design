@@ -22,7 +22,8 @@ $idx = $data['idx'];
       "option3"=> $row['walls'],
       "Activation"=> $row['activation'],
       "MainImg"=>$row['main_img'],
-      "Desc"=>$row['desc']
+      "Desc"=>$row['desc'],
+      "DescImg"=>$row['desc_img']
     ));
 }
 

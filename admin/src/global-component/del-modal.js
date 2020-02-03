@@ -4,7 +4,7 @@ Vue.component('delte-modal', {
                 <div class="alert">
                     <div class="alert_con">
                         <i class="material-icons red">error_outline</i>
-                        <p>정말로 삭제 하시겠습니까? {{this.tb}}(삭제후엔 복구가 불가능합니다)</p>
+                        <p>정말로 삭제 하시겠습니까?(삭제후엔 복구가 불가능합니다)</p>
                     </div>
                     <div class="modal_foot">
                         <span v-on:click='GetData' class="b_red">확인</span>
@@ -20,19 +20,20 @@ Vue.component('delte-modal', {
         }
     },
     created(){
-        console.log(this.tb)
         eventBus.$on('bannerData',(Data)=>{
             this.Data = Data[0];            
             this.thisTarget = 'bannerData';
         })
         eventBus.$on('CounselData', (Data)=>{
-            this.Data = Data
+            this.Data = Data;
             this.thisTarget = 'CounselData';
         })
-
-        eventBus.$on('idx', (Data)=>{
-            console.log(Data)
-            this.Data = Data
+        eventBus.$on('DataAll', (Data)=>{
+            this.Data = Data;
+            this.thisTarget = 'portfolio';
+        })
+        eventBus.$on('MainImg', (Data)=>{
+            this.Data = Data;
             this.thisTarget = 'portfolio';
         })
     },
@@ -73,7 +74,11 @@ Vue.component('delte-modal', {
                             router.go(-1)
                         }
                         else if(this.thisTarget == 'portfolio'){
-                            router.go(-1)
+                            if(this.Data.mode == "MainImg"){
+                                eventBus.$emit('MainImgDelteResult', "ok")
+                            }else{
+                                router.go(-1)
+                            }
                         }
                     }
                     else{
