@@ -9,13 +9,23 @@ var Commercial = {
         <h1>상업공간</h1>
     </div>
 
+  
     <div class="ma_portfolio sub">
-        <div v-for="list in lists">
+
+    <div v-for="list in lists">
+                    <a v-bind:href="'portfolio_view.html?idx='+list.idx">
+                        <div>
+                        <img v-bind:src="list.portfolioImg" alt="portfolio img">
+                        </div>
+                        <img src="images/blank_img.png" alt="blank">
+                    </a>
+                    <p>시공형태 : {{list.portfolioStandard}} / 시공주소 : {{list.Address}}</p>
+                </div>
+        <!-- <div v-for="list in lists">
             <a v-bind:href="'portfolio_view.html?idx='+list.idx">
                 <img v-bind:src="list.portfolioImg" alt="portfolio img">
-                <p>시공형태 : {{list.portfolioStandard}} / 시공주소 : {{list.Address}}</p>
             </a>
-        </div>
+        </div> -->
 
     </div>
 

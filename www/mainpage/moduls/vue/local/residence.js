@@ -10,12 +10,21 @@ var Residence = {
     </div>
 
     <div class="ma_portfolio sub">
-        <div v-for="list in lists">
+
+    <div v-for="list in lists">
+                    <a v-bind:href="'portfolio_view.html?idx='+list.idx">
+                        <div>
+                        <img v-bind:src="list.portfolioImg" alt="portfolio img">
+                        </div>
+                        <img src="images/blank_img.png" alt="blank">
+                    </a>
+                    <p>시공형태 : {{list.portfolioStandard}} / 시공주소 : {{list.Address}}</p>
+                </div>
+        <!-- <div v-for="list in lists">
             <a v-bind:href="'portfolio_view.html?idx='+list.idx">
                 <img v-bind:src="list.portfolioImg" alt="portfolio img">
-                <p>시공형태 : {{list.portfolioStandard}} / 시공주소 : {{list.Address}}</p>
             </a>
-        </div>
+        </div> -->
 
     </div>
 
@@ -53,20 +62,19 @@ var Residence = {
 <!-- portfolio //-->
 </div>
     </div>`,
-    data:function() {
-        return{
-            lists:[
-                {
-                    idx:0,
-                    portfolioImg:"",
-                    portfolioStandard:"주거공간",
-                    Address:"개포 LG자이 APT1"
+    data: function () {
+        return {
+            lists: [{
+                    idx: 0,
+                    portfolioImg: "",
+                    portfolioStandard: "주거공간",
+                    Address: "개포 LG자이 APT1"
                 },
                 {
-                    idx:0,
-                    portfolioImg:"images/portfolio_2.jpg",
-                    portfolioStandard:"주거공간",
-                    Address:"개포 LG자이 APT2"
+                    idx: 0,
+                    portfolioImg: "images/portfolio_2.jpg",
+                    portfolioStandard: "주거공간",
+                    Address: "개포 LG자이 APT2"
                 }
             ]
         }
@@ -74,13 +82,13 @@ var Residence = {
     created() {
         const baseURI = 'api/get.portfolio.php';
         axios.post(
-                baseURI,{
-                    mode:"standard",
-                    standard:'주거'
+                baseURI, {
+                    mode: "standard",
+                    standard: '주거'
                 }
             )
             .then((result) => {
-                if(result.data.phpResult == "ok"){
+                if (result.data.phpResult == "ok") {
                     this.lists = result.data.result
                 }
             })
