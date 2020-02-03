@@ -38,9 +38,9 @@ const HtmlLinkInsert = {
                                     <li>
                                         <a href="${HtmlRoute.portfolio.list}" class="h_lnb">PORTFOLIO</a>
                                         <ul class="s_lnb">
-                                            <li><a href="/">주거공간</a></li>
-                                            <li><a href="/">상업공간</a></li>
-                                            <li><a href="/">사무공간</a></li>
+                                            <li><a href="portfolio.html#/">주거공간</a></li>
+                                            <li><a href="portfolio.html#/commercial">상업공간</a></li>
+                                            <li><a href="portfolio.html#/office">사무공간</a></li>
                                         </ul>
                                     </li>
                                     <li>
