@@ -91,7 +91,7 @@
                         else{
                             let url = 'http://yuldesign.kr/port_upload/'+result.data.file
                             $(el).summernote('editor.insertImage', url);
-                            $('#imageBoard > ul').append('<li class="summernote_img"><img src="'+url+'" width="auto" height="auto"/></li>');
+                            $('#imageBoard > ul').append('<li class="summernote_img"><img src="'+url+'" width="100%" height="auto"/></li>');
                             ImgArray.push(url)
                             NewImgArray.push(url)
                             parent.InsertData.append('desc_img',ImgArray)
