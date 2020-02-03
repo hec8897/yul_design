@@ -300,6 +300,8 @@ Vue.component('portfilio-update', {
                         }
                     } else {
                         this.Portdata = result.data.result[0];
+                        console.log(this.Portdata)
+
                     }
                 })
                 .catch(err => console.log('Login: ', err));

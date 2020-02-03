@@ -7,7 +7,13 @@ const HtmlRoute = {
     },
     consulting: 'consul.html'
 }
-
+const getQueryString = function () {
+    params = {};
+    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (str, key, value) {
+        params[key] = value;
+    });
+    return params;
+}
 const HtmlLinkInsert = {
     Gnb() {
         const NavGnb = document.getElementById('gnb')
@@ -64,6 +70,53 @@ const HtmlLinkInsert = {
                                 </ul>
                             </div>`
 
+    }
+}
+
+const PortViewRender = {
+    GetData(){
+        getQueryString()
+        const baseURI = 'api/get.portfolio.php';
+        axios.post(
+                baseURI,params
+            )
+            .then((result) => {
+                const tabMenu = document.querySelectorAll('.tab_menu')
+                const viewTit = document.getElementById('sub_tit');
+                const viewHead = document.getElementById('view_head');
+                const viewCon = document.getElementById('view_con');
+                if(result.data.phpResult == 'ok'){
+                    const GetData = result.data.result[0]
+                    if(GetData.standard == "주거"){
+                        tabMenu[0].className='on';
+                    }
+                    else if(GetData.standard == "상업"){
+                        tabMenu[1].className='on';
+                    }
+                    else if(GetData.standard == "사무"){
+                        tabMenu[2].className='on';
+                    }
+                    viewTit.innerHTML =`<h1>${GetData.standard}공간</h1>`
+
+                    viewHead.innerHTML = `
+                    <p>${GetData.tit}</p>
+                    <ul>
+                        <li>시공형태 : ${GetData.standard}공간</li>
+                        <li>시공주소 : ${GetData.reqAddress}</li>
+                        <li>시공면적 : ${GetData.reqMeasure}</li>
+                        <li>천정 : ${GetData.option1}</li>
+                        <li>바닥 : ${GetData.option2}</li>
+                        <li>벽체 : ${GetData.option3}</li>
+                    </ul>`    
+                    viewCon.innerHTML= GetData.Desc
+                }
+
+
+      
+
+
+            })
+            .catch(err => console.log('Login: ', err));
     }
 }
 

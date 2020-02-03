@@ -1,0 +1,3 @@
+Vue.component('portfoli-nav', {
+  template: " <div class=\"tabs\">\n    <ul>\n            <router-link to='/' tag='li'><span>\uC8FC\uAC70\uACF5\uAC04</span></router-link>\n            <router-link to='/commercial' tag='li'><span>\uC0C1\uC5C5\uACF5\uAC04</span></router-link>\n            <router-link to='/office' tag='li'><span>\uC0AC\uBB34\uACF5\uAC04</span></router-link>\n        </ul>\n    </div>"
+});

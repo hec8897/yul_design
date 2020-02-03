@@ -37,10 +37,19 @@
 		<script src="js/respond.min.js"></script>
 	    <![endif]-->
     <!--  END BASE JS  -->
+    <script src="moduls/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+    <!-- Minified version of `es6-promise-auto` below. -->
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
     <script>
         $(document).ready(function() {
             App.init();
         });
+
+         
+        var Promise = require('es6-promise').Promise;
     </script>
 </head>
 <body>
@@ -79,45 +88,24 @@
     <div id="section">
         <!--// tab menu -->
         <div class="tabs">
-            <ul class="">
-                <li><a href="">주거공간</a></li>
-                <li class="on"><a href="">상업공간</a></li>
-                <li><a href="">사무공간</a></li>
+            <ul class="" id='tabs'>
+                <li class='tab_menu'><a href="portfolio.html#/">주거공간</a></li class='tab_menu'>
+                <li class='tab_menu'><a href="portfolio.html#/commercial">상업공간</a></li class='tab_menu'>
+                <li class='tab_menu'><a href="portfolio.html#/office">사무공간</a></li class='tab_menu'>
             </ul>
         </div>
-        <!-- END tab menu //-->
-        
-        <!--// portfolio -->
         <div class="protfolio">
-            <div class="sub_tit">
-                <h1>주거공간</h1>
+            <div class="sub_tit" id='sub_tit'>
             </div>
-            
-            <!--// head -->
-            <div class="view_head">
-                <p>아이들이 행복한 집, 개포 LG자이 아파트</p>
-                <ul>
-                    <li>시공형태 : 주거공간</li>
-                    <li>시공주소 : 서울시 금천구 구로 디지털로 1234 개포 자이아파트 3단지</li>
-                    <li>시공면적 : 100평</li>
-                    <li>천정 : 적삼목</li>
-                    <li>바닥 : 대리석</li>
-                    <li>벽체 : 적삼목</li>
-                </ul>
+            <div class="view_head" id='view_head'>
+               
             </div>
-            <!-- head //-->
-            
-            <!--// con -->
-            <div class="view_con">
+            <div class="view_con" id='view_con'>
                 
             </div>
-         
-            <!-- con //-->
-            
             <div class="btn_area">
                 <a href="" class="btn">견적문의</a>
             </div>
-            
             <!--// view footer -->
             <div class="view_foot">
                 <a href="" class="fl"><img src="images/navi_priv2.png" alt=""></a>
@@ -137,8 +125,11 @@
     </footer>
     <!--END footer //-->
 </div>
-<!-- <script src="src/app.js"></script> -->
 <script src="src/app.min.js"></script>
+<!-- <script src="src/app.js"></script> -->
+<script>
+PortViewRender.GetData()
+</script>
 
 
 </body>

@@ -10,66 +10,13 @@ var Commercial = {
     </div>
 
     <div class="ma_portfolio sub">
-        <div>
-            <a href="">
-                <img src="images/portfolio_1.jpg" alt="portfolio img">
-                <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
+        <div v-for="list in lists">
+            <a v-bind:href="'portfolio_view.html?idx='+list.idx">
+                <img v-bind:src="list.portfolioImg" alt="portfolio img">
+                <p>시공형태 : {{list.portfolioStandard}} / 시공주소 : {{list.Address}}</p>
             </a>
         </div>
-        <div>
-            <a href="">
-                <img src="images/portfolio_2.jpg" alt="portfolio img">
-                <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-            </a>
-        </div>
-        <div>
-            <a href="">
-                <img src="images/portfolio_3.jpg" alt="portfolio img">
-                <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-            </a>
-        </div>
-        <div>
-            <a href="">
-                <img src="images/portfolio_4.jpg" alt="portfolio img">
-                <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-            </a>
-        </div>
-        <div>
-            <a href="">
-                <img src="images/portfolio_5.jpg" alt="portfolio img">
-                <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-            </a>
-        </div>
-        <div>
-            <a href="">
-                <img src="images/portfolio_6.jpg" alt="portfolio img">
-                <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-            </a>
-        </div>
-        <div>
-            <a href="">
-                <img src="images/portfolio_1.jpg" alt="portfolio img">
-                <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-            </a>
-        </div>
-        <div>
-            <a href="">
-                <img src="images/portfolio_2.jpg" alt="portfolio img">
-                <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-            </a>
-        </div>
-        <div>
-            <a href="">
-                <img src="images/portfolio_3.jpg" alt="portfolio img">
-                <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-            </a>
-        </div>
-        <div>
-            <a href="">
-                <img src="images/portfolio_4.jpg" alt="portfolio img">
-                <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-            </a>
-        </div>
+
     </div>
 
     <!--// page -->
@@ -89,7 +36,7 @@ var Commercial = {
 </div> -->
     <!-- page //-->
     <!--// search -->
-    <div class="search">
+    <!-- <div class="search">
         <div class="search_select">
             <select name="" id="">
                 <option value="">제목</option>
@@ -99,12 +46,46 @@ var Commercial = {
             <a href=""><img src="images/icon_search.png" alt="search"></a>
             <input type="text" placeholder="검색">
         </div>
-    </div>
+    </div> -->
     <!-- search //-->
 
 </div>
 <!-- portfolio //-->
 </div>
-    </div>`
+    </div>`,
+    data:function() {
+        return{
+            lists:[
+                {
+                    idx:0,
+                    portfolioImg:"",
+                    portfolioStandard:"주거공간",
+                    Address:"개포 LG자이 APT1"
+                },
+                {
+                    idx:0,
+                    portfolioImg:"images/portfolio_2.jpg",
+                    portfolioStandard:"주거공간",
+                    Address:"개포 LG자이 APT2"
+                },
+            ]
+        }
+    },
+    created() {
+        const baseURI = 'api/get.portfolio.php';
+        axios.post(
+                baseURI,{
+                    mode:"standard",
+                    standard:'상업'
+                }
+            )
+            .then((result) => {
+                console.log(result)
+                if(result.data.phpResult == "ok"){
+                    this.lists = result.data.result
+                }
+            })
+            .catch(err => console.log('Login: ', err));
+    }
 
 }

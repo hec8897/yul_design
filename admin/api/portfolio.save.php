@@ -24,7 +24,7 @@
         $upload_directory = '../../port_upload/main_img/';
         $time = date('YmdHis');
 
-        $ext_str = "jpg,gif,png";
+        $ext_str = "jpg,gif,png,JPG,GIF,PNG";
         $allowed_extensions = explode(',', $ext_str);
         $max_file_size = 5000000;
         //Byte 단위임..
@@ -60,7 +60,7 @@
         $sql ="UPDATE `tb_portfolio` SET `activation`= '$Activation', 
         `writer`='$Writer',`standard`='$Standard', `address` = '$Address', 
         `measure` = '$Measure', `floor` = '$Floor', `walls` = '$Walls' , 
-        `ceiling` = '$Ceiling', `title`= '$ReqTit', `main_img` = '$MainImgRoute', `desc` = '$desc', `desc_img` = '$DescImg' WHERE `idx`='$idx'";
+        `ceiling` = '$Ceiling', `title`= '$ReqTit', `desc` = '$desc', `desc_img` = '$DescImg' WHERE `idx`='$idx'";
          $query = mysqli_query($conn,$sql);
 
     }

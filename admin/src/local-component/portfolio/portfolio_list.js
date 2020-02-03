@@ -42,7 +42,6 @@ Vue.component('portfolio-bord', {
             <td v-if="list.Activation === '0'" class='gray'>비공개</td>
             <td v-else>공개</td>
         </router-link> 
-
     </table>
     <list-number v-bind:nowpage = 'this.limit-10' v-bind:DataLength='Math.ceil((this.lists.length)/10)'></list-number>
     <div class="foot_btn">
