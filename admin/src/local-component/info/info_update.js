@@ -47,19 +47,16 @@ Vue.component('info-update', {
  },
  created(){
     eventBus.$on('userInfo',(Data)=>{
-        console.log(Data)
         if(Data == 'change'){
             alert('변경된 정보로 다시 로그인해주세요')
             sessionStorage.clear();
             location.href = "index.html";
         }
     })
-
  },
 
  methods:{
      OpenDelModal(Data){
-
          const Modal = document.getElementById('modal-alert')
          Modal.style.display='block';
          setTimeout(() => {
@@ -72,24 +69,18 @@ Vue.component('info-update', {
         ChangePwCheck(){
             const ReqPw = document.getElementById('reqpw').value
             const ReqRePw = document.getElementById('re_reqpw').value
-
             const ReqID = document.getElementById('reqid').value
             const ReqPhone = document.getElementById('reqfront').value + document.getElementById('reqmid').value + document.getElementById('reqback').value
-
             if(ReqRePw == ""){
                 alert('변경할 패스워드를 입력해주세요')
-
             }
             else{
-
-                
                 if(ReqPw == ReqRePw){
                     let Data = {
                         Idx:sessionStorage.idx,
                         ChPw:ReqRePw,
                         ChPhone:ReqPhone,
                         ChId:ReqID
-                        
                     }
                     this.OpenDelModal(Data)
                 }

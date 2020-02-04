@@ -205,10 +205,6 @@ Vue.component('portfilio-update', {
         <span class="b_sgrey" v-on:click = "NoneSave">목록</span>
     </div>
     </div>`,
-    created(){
-      
-    },
-
     data() {
         return {
             UploadMainImg: null,
@@ -225,7 +221,6 @@ Vue.component('portfilio-update', {
                 this.GetData();
             }
         })
-
     },
     updated() {
         let DESC = this.Portdata.Desc;
@@ -233,7 +228,6 @@ Vue.component('portfilio-update', {
         $('#summernote_iframe').load(function () {
             for(let i = 0; i<DescImg.length; i++){
                 $('#summernote_iframe').get(0).contentWindow.ImgArray.push(DescImg[i])
-
             }
         })
         $('#summernote_iframe').load(function () {
@@ -300,7 +294,6 @@ Vue.component('portfilio-update', {
                         }
                     } else {
                         this.Portdata = result.data.result[0];
-                        console.log(this.Portdata)
 
                     }
                 })
@@ -320,7 +313,6 @@ Vue.component('portfilio-update', {
         
 
             function DataFromInsert(modes,MainImg,idx) {
-                console.log($('#summernote_iframe').get(0).contentWindow.ImgArray)
                 if (reqTit.value == "") {
                     alert('제목은필수로 작성해주세요')
                     reqTit.focus()
@@ -350,12 +342,10 @@ Vue.component('portfilio-update', {
                         .then((result) => {
                             if (result.data.phpResult == 'ok') {
                                 alert('작성이완료되었습니다')
-                                console.log(result)
                                 router.push({
                                     path: '/portfolio'
                                 })
                             }
-                            console.log(result.data)
                         })
                         .catch(err => console.log('Login: ', err));
                 }

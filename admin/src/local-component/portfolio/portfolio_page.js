@@ -2,7 +2,7 @@ const portFolioPage = {
     props:['page'],
     template:`
     <div class="con_wrap">
-    <date-filter></date-filter>
+    <date-filter mode='portfolio'></date-filter>
     <portfolio-bord></portfolio-bord>
     </div>`
   

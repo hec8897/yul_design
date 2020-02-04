@@ -11,16 +11,12 @@ Vue.component('app-nav', {
                             <i class="material-icons ml20 mr10">view_compact</i>
                             <h5>메인 관리</h5>
                         </router-link>
-
                         <router-link to="/portfolio" tag='li' class='has-sub' class-active="has-sub on">
                             <b class="caret fr"></b>
                             <i class="material-icons ml20 mr10">dvr</i>
                             <h5>포트폴리오</h5>
                             </router-link>
-
-                            
                             <router-link to="/consul" tag='li' class='has-sub' class-active="has-sub on">
-
                             <b class="caret fr"></b>
                             <i class="material-icons ml20 mr10">assignment_late</i>
                             <h5>견적문의</h5>

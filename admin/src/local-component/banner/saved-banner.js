@@ -98,7 +98,6 @@ Vue.component('saved-banner-controler', {
                     idx,Activation,mode:'banner'
                 })
             }
-
             if(mode == 'new'){
                 let Activation = this.ImgDatas.filter((x) => {
                     return x.Activation == 1;
@@ -113,10 +112,6 @@ Vue.component('saved-banner-controler', {
             else{
                 PostData();
             }
-            
-    
-
-           
         },
         OpenImgInsertModal(Data) {
             const Modal = document.getElementById('modal-add');

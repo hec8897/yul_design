@@ -3,8 +3,8 @@ Vue.component('date-filter', {
     template: `<div class="search_wrap">
                 <div class="panel">
                     <ul>
-                        <li style='display:none'><h5>등록일</h5></li>
-                        <li style='display:none'>
+                        <li v-if="mode === 'consul'"><h5>등록일</h5></li>
+                        <li v-if="mode === 'consul'">
                             <div class="daterange">
                                 <label for="datepicker-default"><i class="material-icons md-18">date_range</i></label>
                                 <input type="text" class="" name="start" id="datepicker-default" placeholder="날짜선택"/>
@@ -54,9 +54,6 @@ Vue.component('date-filter', {
             const FrontDate = document.getElementById('datepicker-default');
             const BackDate = document.getElementById('datepicker-autoClose');
             const SearchValue = document.getElementById('search_value');
-
-            // const SelectClass = document.getElementById('select_class');
-            // const SearchValue = document.getElementById('search_value');
 
             if (FrontDate.value == "") {
                 alert('기준날짜를 선택해주세요')

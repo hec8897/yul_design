@@ -45,6 +45,33 @@ else if($mode == 'list'){
         "reqDate"=>$row['reqdate']
     ));
 }
+else if($mode =='search'){
+    $FrontDate = $data['Data']['FrontDate'];
+    $BackDate = $data['Data']['BackDate'];
+    $SearchValue = $data['Data']['SearchValue']."공간";
+    $DataSearch = $BackDate === ""?"":"AND insertdate Between '$FrontDate' And '$BackDate'";
+    $StandardSearch = $SearchValue === ""?"standard is NOT Null":"standard = '$SearchValue'";
+
+    $sql = "SELECT * FROM `insert_tb` WHERE $StandardSearch $DataSearch ORDER by idx desc";
+    $query = mysqli_query($conn,$sql);
+    while($row = mysqli_fetch_array($query)){
+        array_push($result, array(
+            "idx"=>$row['idx'],
+            "reqName"=>$row['reqname'],
+            "reqPhone"=>$row['reqphone'],
+            "standard"=>$row['standard'],
+            "tit"=>$row['title'],
+            "reqConsult"=>$row['reqconsult'],
+            "reqMemo"=>$row['reqmemo'],
+            "reqAddress"=>$row['reqaddress'],
+            "InsertDate"=>$row['insertdate'],
+            "reqMeasure"=>$row['reqmeasure'],
+            "reqDate"=>$row['reqdate']
+        ));
+    }
+
+
+}
 else if($mode == "Delete"){
     $idx = $data['Data'];
     $sql = "DELETE FROM `insert_tb` WHERE `insert_tb`.`idx` = '$idx'";
@@ -62,7 +89,7 @@ else{
 $json =  json_encode(
     array(
         "result"=>$result,
-        "phpResult"=>$phpResult,
+        "phpResult"=>$phpResult
 )); 
 
 echo urldecode($json);

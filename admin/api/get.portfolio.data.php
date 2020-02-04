@@ -37,9 +37,7 @@ else{
 $json =  json_encode(
   array(
       "result"=>$result,
-      "test"=>$idx,
-      "test2"=>$sql,
-      "phpResult"=>$phpResult ,
+      "phpResult"=>$phpResult
 
 )); 
 

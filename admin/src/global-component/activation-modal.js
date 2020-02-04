@@ -52,7 +52,6 @@ Vue.component('activation-modal', {
 
                 })
                 .catch(err => console.log('Login: ', err));
-            //배너 비활성화 로직
         }
     }
 })

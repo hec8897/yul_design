@@ -3,15 +3,12 @@
   mysqli_set_charset($conn,"utf-8"); 
   header('Access-Control-Allow-Origin: *');  
   $data = json_decode(file_get_contents("php://input"),true);
-
   $ImgFile = $_FILES['file'];
-
     function FileUploader($files){
         $file = $files;
         $upload_directory = '../../port_upload/';
         $time = date('YmdHis');
         //초 추가해야함
-
         $ext_str = "jpg,gif,png,JPG,GIF,PNG";
         $allowed_extensions = explode(',', $ext_str);
         $max_file_size = 5000000;
@@ -31,8 +28,6 @@
                
         }
         return $Result = $Results;
-
-        
     }
     $UploadResult = FileUploader($ImgFile);
 

@@ -71,7 +71,6 @@ const ConsulView = {
             }
         }
     },
-    created() {},
     mounted() {
         this.GetData()
 

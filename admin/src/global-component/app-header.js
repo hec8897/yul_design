@@ -11,7 +11,6 @@ Vue.component('app-header', {
         methods:{
           DestorySessionData(){
                 var y = confirm("로그아웃 하시겠습니까?");
-
                 if (y == true) {
                     sessionStorage.clear();
                     location.href = "index.html";
