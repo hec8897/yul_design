@@ -26,7 +26,6 @@ const mainPortfolio = {
                 }
             )
             .then((result) => {
-                console.log(result)
                 if (result.data.phpResult == "ok") {
                     this.lists = result.data.result
                 }

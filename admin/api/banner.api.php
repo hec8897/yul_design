@@ -42,7 +42,6 @@ else if(empty($mode)){
     move_uploaded_file($subImg['tmp_name'], $upload_directory.$fileName);
     $DbUploadroute = "banner/".$fileName;
     $fileNames = $subImg['name'];
-
     $sql = "INSERT INTO `main_banner` (banner_route,name,activation) VALUES ('$DbUploadroute','$fileNames',0)";
     $query = mysqli_query($conn,$sql);
 

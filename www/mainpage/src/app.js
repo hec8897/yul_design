@@ -25,7 +25,7 @@ const HtmlLinkInsert = {
                                 <a href="${HtmlRoute.consulting}">CONSULTING</a>
                             </nav>`
     },
-    sideBarRender(){
+    sideBarRender() {
         const SideBar = document.getElementById('sidebar')
         SideBar.innerHTML = `<div class="ci_color"><a href="${HtmlRoute.main}"><img src="images/bi_yul.png" alt="YUL"></a></div>
                                 <ul>
@@ -51,7 +51,7 @@ const HtmlLinkInsert = {
                                 <p class="contact">gon2rang@naver.com &nbsp;/&nbsp; 010<span>-</span>4723<span>-</span>7753</p>`
 
     },
-    footerRender(){
+    footerRender() {
         const Footer = document.querySelector('footer')
         Footer.innerHTML = `<a href="${HtmlRoute.main}"><img src="images/bi_yul.png" alt="YUL"></a>
                             <div>
@@ -74,29 +74,31 @@ const HtmlLinkInsert = {
 }
 
 const PortViewRender = {
-    GetData(){
+    GetData() {
         getQueryString()
         const baseURI = 'api/get.portfolio.php';
         axios.post(
-                baseURI,params
+                baseURI, params
             )
             .then((result) => {
+
+
                 const tabMenu = document.querySelectorAll('.tab_menu')
                 const viewTit = document.getElementById('sub_tit');
                 const viewHead = document.getElementById('view_head');
                 const viewCon = document.getElementById('view_con');
-                if(result.data.phpResult == 'ok'){
+                const PortNav = document.getElementById('port_nav');
+
+                if (result.data.phpResult == 'ok') {
                     const GetData = result.data.result[0]
-                    if(GetData.standard == "주거"){
-                        tabMenu[0].className='on';
+                    if (GetData.standard == "주거") {
+                        tabMenu[0].className = 'on';
+                    } else if (GetData.standard == "상업") {
+                        tabMenu[1].className = 'on';
+                    } else if (GetData.standard == "사무") {
+                        tabMenu[2].className = 'on';
                     }
-                    else if(GetData.standard == "상업"){
-                        tabMenu[1].className='on';
-                    }
-                    else if(GetData.standard == "사무"){
-                        tabMenu[2].className='on';
-                    }
-                    viewTit.innerHTML =`<h1>${GetData.standard}공간</h1>`
+                    viewTit.innerHTML = `<h1>${GetData.standard}공간</h1>`
 
                     viewHead.innerHTML = `
                     <p>${GetData.tit}</p>
@@ -107,12 +109,25 @@ const PortViewRender = {
                         <li>천정 : ${GetData.option1}</li>
                         <li>바닥 : ${GetData.option2}</li>
                         <li>벽체 : ${GetData.option3}</li>
-                    </ul>`    
-                    viewCon.innerHTML= GetData.Desc
+                    </ul>`
+                    viewCon.innerHTML = GetData.Desc
+
+                    let Standards = result.data.Standardidx;
+                    let Standardidx = [];
+                    for (let i = 0; i < Standards.length; i++) {
+                        Standardidx.push(Standards[i].idx)
+                    }
+                    let thisIndex = Standardidx.indexOf(params.idx)
+                    let NextPage = thisIndex == Standardidx.length - 1 ? 0 : thisIndex + 1;
+                    let AfterPage = thisIndex == 0 ? Standardidx.length - 1 : thisIndex - 1;
+
+                    PortNav.innerHTML = `<a href="portfolio_view.html?idx=${Standardidx[AfterPage]}" class="fl"><img src="images/navi_priv2.png" alt=""></a>
+                    <a href="portfolio.html#/" class="btn_list">목록보기</a>
+                    <a href="portfolio_view.html?idx=${Standardidx[NextPage]}" class="fr"><img src="images/navi_next2.png" alt=""></a>`
                 }
 
 
-      
+
 
 
             })
@@ -120,7 +135,7 @@ const PortViewRender = {
     }
 }
 
-function MokupRender(){
+function MokupRender() {
     HtmlLinkInsert.Gnb()
     HtmlLinkInsert.sideBarRender()
     HtmlLinkInsert.footerRender()

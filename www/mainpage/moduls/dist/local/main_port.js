@@ -12,8 +12,6 @@ var mainPortfolio = {
       axios.post(baseURI, {
         mode: "All"
       }).then(function (result) {
-        console.log(result);
-  
         if (result.data.phpResult == "ok") {
           _this.lists = result.data.result;
         }

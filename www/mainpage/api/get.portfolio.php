@@ -44,7 +44,17 @@ $mode = $data['mode'];
           "Activation"=> $row['activation'],
           "Desc"=>$row['desc'],
         ));
+        $standard = $row['standard'];
+        $idxArray = array();
+        $idxSql = "SELECT idx FROM `tb_portfolio` WHERE `standard`='$standard'";
+        $queryIdx= mysqli_query($conn,$idxSql);
 
+        while($rows = mysqli_fetch_assoc($queryIdx)){
+          array_push($idxArray, array(
+              "idx"=>$rows['idx']
+          ));
+      }
+      
   }
 
 
@@ -58,6 +68,7 @@ else{
 $json =  json_encode(
   array(
       "result"=>$result,
+      "Standardidx"=>$idxArray,
       "phpResult"=>$phpResult ,
 
 )); 
