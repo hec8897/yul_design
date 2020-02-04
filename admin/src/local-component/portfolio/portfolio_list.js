@@ -13,6 +13,7 @@ Vue.component('portfolio-bord', {
             <th>천정</th>
             <th>바닥</th>
             <th>벽체</th>
+            <th>슬라이드</th>
             <th>노출</th>
         </tr>
 
@@ -39,6 +40,9 @@ Vue.component('portfolio-bord', {
             <td v-if="list.Activation === '0'" class='gray'>{{list.option3}}</td>
             <td v-else>{{list.option3}}</td>
 
+            <td v-if="list.MainSlider === '0'" class='gray'>비공개</td>
+            <td v-else>공개</td>
+
             <td v-if="list.Activation === '0'" class='gray'>비공개</td>
             <td v-else>공개</td>
         </router-link> 
@@ -61,7 +65,8 @@ Vue.component('portfolio-bord', {
                     option1: '적삼목',
                     option2: '대리석',
                     option3: '적삼목',
-                    Activation: "1"
+                    Activation: "1",
+                    MainSlider:0
                 },
                 {
                     idx: 1,
@@ -72,7 +77,9 @@ Vue.component('portfolio-bord', {
                     option1: '적삼목',
                     option2: '대리석',
                     option3: '적삼목',
-                    Activation: "0"
+                    Activation: "0",
+                    MainSlider:1
+
                 }
             ]
               

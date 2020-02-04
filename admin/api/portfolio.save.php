@@ -17,6 +17,8 @@
     $Walls = $_POST['Walls'];
     $desc = $_POST['desc'];
     $DescImg = $_POST['desc_img'];
+    $MainSlider = $_POST['Mainslider'];
+
     $MainImg = $_FILES['MainImg'];
 
     function FileUploader($files){
@@ -49,10 +51,10 @@
         $MainImgRoute = FileUploader($MainImg);
 
         $sql = "INSERT INTO `tb_portfolio` 
-        (`activation`, `writer`, `standard`, `address`, 
+        (`activation`, `writer`, `standard`, `address`, `main_slider`,
         `measure`, `floor`, `walls`, `ceiling`, `title`, `main_img`, `desc`,`desc_img`) 
         VALUES 
-        ('$Activation', '$Writer', '$Standard', '$Address', 
+        ('$Activation', '$Writer', '$Standard', '$Address', '$MainSlider',
         '$Measure', '$Floor', '$Walls', '$Ceiling', '$ReqTit', '$MainImgRoute', '$desc','$DescImg')";
         $query = mysqli_query($conn,$sql);
     
@@ -66,7 +68,7 @@
             $Route = "";
         }
 
-        $sql ="UPDATE `tb_portfolio` SET `activation`= '$Activation', 
+        $sql ="UPDATE `tb_portfolio` SET `activation`= '$Activation', `main_slider` = '$MainSlider',
         `writer`='$Writer',`standard`='$Standard', `address` = '$Address', 
         `measure` = '$Measure', `floor` = '$Floor', `walls` = '$Walls' , 
         `ceiling` = '$Ceiling', `title`= '$ReqTit', $Route`desc` = '$desc', `desc_img` = '$DescImg' WHERE `idx`='$idx'";

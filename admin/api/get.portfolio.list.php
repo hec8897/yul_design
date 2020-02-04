@@ -34,7 +34,9 @@ else{
       "option1"=> $row['ceiling'],
       "option2"=> $row['floor'],
       "option3"=> $row['walls'],
-      "Activation"=> $row['activation']
+      "Activation"=> $row['activation'],
+      "MainSlider"=>$row['main_slider']
+
     ));
 }
 

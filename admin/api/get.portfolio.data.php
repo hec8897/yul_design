@@ -23,7 +23,8 @@ $idx = $data['idx'];
       "Activation"=> $row['activation'],
       "MainImg"=>$row['main_img'],
       "Desc"=>$row['desc'],
-      "DescImg"=>$row['desc_img']
+      "DescImg"=>$row['desc_img'],
+      "MainSlider"=>$row['main_slider']
     ));
 }
 

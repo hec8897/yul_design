@@ -40,7 +40,7 @@ Vue.component('portfilio-update', {
                 v-else
                 />
             </li>
-            <li><h5>노출여부</h5></li>
+            <li><h5>포트폴리오공개</h5></li>
             <li class="select_input">
                 <div>
                     <select id="reqactive" v-if="mode === 'new'">
@@ -54,6 +54,24 @@ Vue.component('portfilio-update', {
 
                         <option v-if="Portdata.Activation == 0" value="0" selected>비공개</option>
                         <option v-else value="0">비공개</option>
+                    </select>
+                </div>
+            </li>
+
+            <li><h5>메인슬라이더</h5></li>
+            <li class="select_input">
+                <div>
+                    <select id="reqslider" v-if="mode === 'new'">
+                        <option value="1">사용</option>
+                        <option value="0" selected>사용안함</option>
+                    </select>
+
+                    <select id="reqslider" v-else>
+                        <option v-if='Portdata.MainSlider == 1' value="1" selected>사용</option>
+                        <option v-else value="1">사용</option>
+
+                        <option v-if="Portdata.MainSlider == 0" value="0" selected>사용안함</option>
+                        <option v-else value="0">사용안함</option>
                     </select>
                 </div>
             </li>
@@ -289,7 +307,8 @@ Vue.component('portfilio-update', {
                             option3: "적삼목",
                             MainImg: "../upload/202001141651works_9.jpg",
                             Desc: "<p>123</p>",
-                            Activation: 0
+                            Activation: 0,
+                            MainSlider:0
                         }
                     } else {
                         this.Portdata = result.data.result[0];
@@ -301,6 +320,7 @@ Vue.component('portfilio-update', {
         InsertData(mode) {
             const reqTit = document.getElementById('reqtit');
             const Activate = document.getElementById('reqactive');
+            const MainSlider = document.getElementById('reqslider');
             const Writer = document.getElementById('reqwriter');
             const Standard = document.getElementById('standard');
             const Address = document.getElementById('reqaddress');
@@ -332,6 +352,7 @@ Vue.component('portfilio-update', {
                     InsertData.append('Walls', Walls.value)
                     InsertData.append('MainImg', MainImg)
                     InsertData.append('desc', sumNote.value)
+                    InsertData.append('Mainslider',MainSlider.value)
                     InsertData.append('desc_img',$('#summernote_iframe').get(0).contentWindow.ImgArray)
 
                     const baseURI = 'api/portfolio.save.php';
