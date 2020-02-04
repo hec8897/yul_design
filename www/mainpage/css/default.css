@@ -201,6 +201,8 @@ iframe,object,video,embed{position:relative; top:0; left:0; max-width:100%}
 .tabs li.on{border:0}
 .tabs li.on a{background:#ff952e; color:#fff}
 .tabs li.router-link-exact-active{background:#ff952e; color:#fff}
+.tabs li.router-link-exact-active span{color: #fff;}
+.tabs li span{cursor: pointer;}
 
 .protfolio{position:relative; width:100%}
 .ma_portfolio.sub{margin-top:50px}

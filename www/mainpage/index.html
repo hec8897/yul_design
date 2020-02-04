@@ -45,6 +45,18 @@
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
+      <!-- Vue.js Component -->
+    <script src="moduls/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+    <!-- Minified version of `es6-promise-auto` below. -->
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+    <!-- <script src="https://unpkg.com/vue/dist/vue.min.js"></script> -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script><!-- dev -->
+    <script src="https://unpkg.com/vue-router/dist/vue-router.min.js"></script>
+    <!-- Vue.js Component -->
    <script>
        $(document).ready(function() {
            App.init();
@@ -52,6 +64,8 @@
 
        var Promise = require('es6-promise').Promise;
    </script>
+
+ 
 </head>
 <body>
 <div id="page-container" class="wrap">
@@ -135,90 +149,13 @@
             </div>
             
             <!--// slide -->
-            <div class="swipe-portfolio">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="">
-                            <div class="overf">
-                                <h2>주거공간</h2>
-                                <p>80평형<br>강남구 대치동 234-5678 sj 아파트</p>
-                                <span>자세히 보기</span>
-                            </div>
-                            <img src="images/swipe_1.jpg" alt="sample img">
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="">
-                            <div class="overf">
-                                <h2>상업공간</h2>
-                                <p>120평형<br>강남구 대치동 234-5678 현대백화점 지하2층</p>
-                                <span>자세히 보기</span>
-                            </div>
-                            <img src="images/swipe_2.jpg" alt="sample img">
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="">
-                            <div class="overf">
-                                <h2>사무공간</h2>
-                                <p>100평형<br>강남구 대치동 234-5678 구로디지털단지 A동</p>
-                                <span>자세히 보기</span>
-                            </div>
-                            <img src="images/swipe_3.jpg" alt="sample img">
-                        </a>
-                    </div>
-                </div>
-                <!-- navi -->
-                <div class="swiper-button-next"><img src="images/icon_next.png" alt=""></div>
-                <div class="swiper-button-prev"><img src="images/icon_priv.png" alt=""></div>
-            </div>
+
             <!-- END slide //-->
             
             <!-- portfolio list -->
-            <div class="ma_portfolio">
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="images/portfolio_11.jpg" alt="portfolio img">
-                        </div>
-                        <img src="images/blank_img.png" alt="blank">
-                    </a>
-                    <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                </div>
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="images/portfolio_2.jpg" alt="portfolio img">
-                        </div>
-                        <img src="images/blank_img.png" alt="blank">
-                    </a>
-                    <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_3.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_4.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_5.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <img src="images/portfolio_6.jpg" alt="portfolio img">
-                        <p>시공형태 : 주거공간 / 시공주소 : 개포 LG자이 APT</p>
-                    </a>
-                </div>
-            </div>
+
+            <main-slider></main-slider>
+            <main-port></main-port>
 
             <div class="port_bg"></div>
         </div>
@@ -247,6 +184,10 @@
 <!-- <script src="src/data.js"></script> -->
 <script src="src/data.min.js"></script>
 <script src="js/swiper.min.js"></script>
+
+<script src="moduls/dist/local/main_port.js"></script>
+<script src="moduls/dist/local/main_slider.js"></script>
+<script src="moduls/dist/app.main.vue.js"></script>
 
 <script>
 mainBannerGet()
