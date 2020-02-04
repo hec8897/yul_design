@@ -1,6 +1,3 @@
-//고민해야하는 요소...에디터 API 활용, 이미지를 어떤식으로업로드할것인지...
-
-
 Vue.component('portfilio-update', {
     props: ['mode'],
     template: ` <div class="info_wrap">
@@ -47,8 +44,8 @@ Vue.component('portfilio-update', {
             <li class="select_input">
                 <div>
                     <select id="reqactive" v-if="mode === 'new'">
-                        <option value="1" disabled>공개</option>
-                        <option value="0" selected >비공개</option>
+                        <option value="1" selected>공개</option>
+                        <option value="0">비공개</option>
                     </select>
 
                     <select id="reqactive" v-else>
@@ -177,6 +174,7 @@ Vue.component('portfilio-update', {
                 type="file" 
                 v-on:change='SelectMainImg'
                 ref="mainimg" 
+                placeholder='가로형이미지'
                 >
             </li>
             <li v-else-if="mode!='new' && Portdata.MainImg.length < 8">
@@ -250,6 +248,7 @@ Vue.component('portfilio-update', {
         },
         SelectMainImg() {
             this.UploadMainImg = this.$refs.mainimg.files[0];
+            console.log(this.UploadMainImg)
         },
         MainImgDelte(idx){
             let MainImg = this.Portdata.MainImg;
@@ -340,6 +339,7 @@ Vue.component('portfilio-update', {
                             baseURI, InsertData
                         )
                         .then((result) => {
+                            console.log(result)
                             if (result.data.phpResult == 'ok') {
                                 alert('작성이완료되었습니다')
                                 router.push({

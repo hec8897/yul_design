@@ -44,23 +44,32 @@
         }
         return $Result = $Results;
     }
-    $MainImgRoute = FileUploader($MainImg);
 
     if($mode == 'new'){
+        $MainImgRoute = FileUploader($MainImg);
+
         $sql = "INSERT INTO `tb_portfolio` 
         (`activation`, `writer`, `standard`, `address`, 
         `measure`, `floor`, `walls`, `ceiling`, `title`, `main_img`, `desc`,`desc_img`) 
         VALUES 
-        ('0', '$Writer', '$Standard', '$Address', 
+        ('$Activation', '$Writer', '$Standard', '$Address', 
         '$Measure', '$Floor', '$Walls', '$Ceiling', '$ReqTit', '$MainImgRoute', '$desc','$DescImg')";
         $query = mysqli_query($conn,$sql);
     
     }
     else if($mode == 'update'){
+        $MainImgRoute = FileUploader($MainImg);
+        if(strlen($MainImgRoute)>10){
+            $Route = "`main_img` = '$MainImgRoute',";
+        }
+        else{
+            $Route = "";
+        }
+
         $sql ="UPDATE `tb_portfolio` SET `activation`= '$Activation', 
         `writer`='$Writer',`standard`='$Standard', `address` = '$Address', 
         `measure` = '$Measure', `floor` = '$Floor', `walls` = '$Walls' , 
-        `ceiling` = '$Ceiling', `title`= '$ReqTit', `desc` = '$desc', `desc_img` = '$DescImg' WHERE `idx`='$idx'";
+        `ceiling` = '$Ceiling', `title`= '$ReqTit', $Route`desc` = '$desc', `desc_img` = '$DescImg' WHERE `idx`='$idx'";
          $query = mysqli_query($conn,$sql);
 
     }
@@ -112,7 +121,8 @@
     $json =  json_encode(
         array(
             "phpResult"=>$phpResult,
-            "mode"=>$Data
+            "mode"=>$Data,
+            "test"=>$Route
            
     ));
 

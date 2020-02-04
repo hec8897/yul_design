@@ -34,11 +34,11 @@
     <textarea name="content" id='summernote'></textarea>
     <script>
         $('#summernote').summernote({
-            height: 400,
+            height: 800,
             lang: 'ko-KR', // default: 'en-US'
             focus: false,
             tooltip: false,
-            resize: false,
+            // resize: false,
             lang: 'ko-KR', // 기본 메뉴언어 US->KR로 변경
             toolbar: [
                 // [groupName, [list of button]]
@@ -50,8 +50,16 @@
                 ['height', ['height']],
                 ['hr', ['hr']],
                 ['picture', ['picture']],
-                // ['view', ['fullscreen', 'codeview']]
             ],
+            popover: {
+                image: [
+                    ['image', ['resizeFull', 'resizeHalf','resizeNone']],
+                    ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                    ['remove', ['removeMedia']]
+                ],
+            },
+
+
             callbacks: {
                 onImageUpload: function (files, editor, welEditable) {
                     for (var i = files.length - 1; i >= 0; i--) {
@@ -61,7 +69,7 @@
             }
         });
 
-        function InsertDesc(DESC){
+        function InsertDesc(DESC) {
             $('#summernote').summernote('code', DESC);
         }
         $('.note-statusbar').hide()
@@ -73,24 +81,24 @@
             var baseURI = 'api/upload.img.php';
             axios.post(baseURI, formData).then(function (result) {
                 if (result.data.file == 'fileNo') {
-                alert('파일이없습니다');
+                    alert('파일이없습니다');
                 } else if (result.data.file == 'noExt') {
-                alert('사용할수없는확장자입니다');
+                    alert('사용할수없는확장자입니다');
                 } else if (result.data.file == 'huge') {
-                alert('사이즈가너무큽니다.');
+                    alert('사이즈가너무큽니다.');
                 } else {
-                var url = 'http://yuldesign.kr/port_upload/' + result.data.file;
-                $(el).summernote('editor.insertImage', url);
-                $('#imageBoard > ul').append('<li class="summernote_img"><img src="' + url + '" width="100%" height="auto"/></li>');
-                ImgArray.push(url);
-                NewImgArray.push(url);
-                parent.InsertData.append('desc_img', ImgArray);
+                    var url = 'http://yuldesign.kr/port_upload/' + result.data.file;
+                    $(el).summernote('editor.insertImage', url);
+                    $('#imageBoard > ul').append('<li class="summernote_img"><img src="' + url + '" width="80%" height="auto"/></li>');
+                    ImgArray.push(url);
+                    NewImgArray.push(url);
+                    parent.InsertData.append('desc_img', ImgArray);
                 }
             }).catch(function (err) {
                 return console.log('Login: ', err);
             });
-            }
-                
+        }
+
 
     </script>
 

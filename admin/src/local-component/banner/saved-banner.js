@@ -1,6 +1,6 @@
 Vue.component('saved-banner-controler', {
     template: `<div class="mban_wrap">
-                    <h4 class="title">메인이미지 관리</h4>
+                    <h4 class="title">메인이미지 관리(W1920*H650)</h4>
                 <div class="mban_edit">
                 
                 <img-modal mode='mainbanner'></img-modal>

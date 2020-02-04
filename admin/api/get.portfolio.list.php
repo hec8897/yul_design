@@ -11,12 +11,12 @@ if($mode == "search"){
 
     }
     else{
-      $sql = 'SELECT * FROM `tb_portfolio`';
+      $sql = 'SELECT * FROM `tb_portfolio` ORDER BY idx DESC';
     }
   }
   else{
     $SearchValue = $data['SearchData']['SearchValue'];
-    $sql = "SELECT * FROM `tb_portfolio` WHERE `standard` = '$SearchValue'";
+    $sql = "SELECT * FROM `tb_portfolio` WHERE `standard` = '$SearchValue' ORDER BY idx DESC";
   }
 }
 else{

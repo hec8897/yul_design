@@ -3,7 +3,6 @@
         template: `<div class="table_wrap mt50">
                         <div class="tit_wrap">
                             <h4>견적문의</h4>
-                            <a href="" class="b_more">더보기 +</a>
                         </div>
                         <table class="need">
                             <tr>
