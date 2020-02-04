@@ -40,7 +40,6 @@
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/summernote_custom.css">
         <!-- summernote -->
-    
         <!-- datapicker -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
@@ -48,12 +47,12 @@
         <script src="js/form-plugins.min.js"></script>
     
         <script>
-            // var sessionDefault = function () {
-            //         if (sessionStorage.length == 0) {
-            //             alert('로그인후 사용해주세요');
-            //             location.href = 'index.html';
-            //         }
-            //     }();
+            var sessionDefault = function () {
+                    if (sessionStorage.length == 0) {
+                        alert('로그인후 사용해주세요');
+                        location.href = 'index.html';
+                    }
+                }();
         </script>
         <!-- datapicker -->
     
@@ -77,7 +76,7 @@
 </body>
 
 <!-- 전역컴포넌트 -->
-<script src="src/global-component/app-header.js"></script>
+<!-- <script src="src/global-component/app-header.js"></script>
 <script src="src/global-component/app-nav.js"></script>
 <script src="src/global-component/banner-update.js"></script>
 <script src="src/global-component/del-modal.js"></script>
@@ -86,34 +85,67 @@
 <script src="src/global-component/img-modal.js"></script>
 <script src="src/global-component/date-filter.js"></script>
 <script src="src/global-component/list-numbering.js"></script>
-<!-- 전역컴포넌트 -->
 
 <script src="src/local-component/info/info_page.js"></script>
 <script src="src/local-component/info/info_update.js"></script>
-<!-- 사용자정보 지역컴포넌트 -->
 
 <script src="src/local-component/main/main-page.js"></script>
 <script src="src/local-component/main/main_banner.js"></script>
 <script src="src/local-component/main/main-bord.js"></script>
-<!-- 메인(상담게시판) 지역컴포넌트 -->
 
 <script src="src/local-component/banner/banner_page.js"></script>
 <script src="src/local-component/banner/saved-banner.js"></script>
-<!-- 메인베너 관리 지역컴포넌트 -->
 
 <script src="src/local-component/portfolio/portfolio_page.js"></script>
 <script src="src/local-component/portfolio/portfolio_list.js"></script>
-<!-- 포트폴리오 리스트 지역컴포넌트 -->
 
 <script src="src/local-component/portfolioview/portfolio_view_page.js"></script>
 <script src="src/local-component/portfolioview/portfolio_view_table.js"></script>
-<!-- 포트폴리오 관리 지역컴포넌트 -->
 
 <script src="src/local-component/consul/consul-page.js"></script>
 <script src="src/local-component/consul/consul_view.js"></script>
-<!-- 상담내용 관리 지역컴포넌트 -->
 
 <script src="src/app.js"></script>
+라우터 컴포넌트 -->
+
+<script src="dist/global-component/app-header.js"></script>
+<script src="dist/global-component/app-nav.js"></script>
+<script src="dist/global-component/banner-update.js"></script>
+<script src="dist/global-component/del-modal.js"></script>
+<script src="dist/global-component/save-modal.js"></script>
+<script src="dist/global-component/activation-modal.js"></script>
+<script src="dist/global-component/img-modal.js"></script>
+<script src="dist/global-component/date-filter.js"></script>
+<script src="dist/global-component/list-numbering.js"></script>
+<!-- 전역컴포넌트 -->
+
+<script src="dist/local-component/info/info_page.js"></script>
+<script src="dist/local-component/info/info_update.js"></script>
+<!-- 사용자정보 지역컴포넌트 -->
+
+<script src="dist/local-component/main/main-page.js"></script>
+<script src="dist/local-component/main/main_banner.js"></script>
+<script src="dist/local-component/main/main-bord.js"></script>
+<!-- 메인(상담게시판) 지역컴포넌트 -->
+
+<script src="dist/local-component/banner/banner_page.js"></script>
+<script src="dist/local-component/banner/saved-banner.js"></script>
+<!-- 메인베너 관리 지역컴포넌트 -->
+
+<script src="dist/local-component/portfolio/portfolio_page.js"></script>
+<script src="dist/local-component/portfolio/portfolio_list.js"></script>
+<!-- 포트폴리오 리스트 지역컴포넌트 -->
+
+<script src="dist/local-component/portfolioview/portfolio_view_page.js"></script>
+<script src="dist/local-component/portfolioview/portfolio_view_table.js"></script>
+<!-- 포트폴리오 관리 지역컴포넌트 -->
+
+<script src="dist/local-component/consul/consul-page.js"></script>
+<script src="dist/local-component/consul/consul_view.js"></script>
+<!-- 상담내용 관리 지역컴포넌트 -->
+
+<script src="dist/app.js"></script>
 <!-- 라우터 컴포넌트 -->
+
 
 </html>
