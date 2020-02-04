@@ -138,6 +138,7 @@ iframe,object,video,embed{position:relative; top:0; left:0; max-width:100%}
 .port_bg{position:absolute; top:0; width:100%; height:460px; background:#f6f6f6}
 
 .swipe-portfolio{position:relative; width:1200px; height:100%; margin:30px auto 100px auto; overflow:hidden}
+.swipe-portfolio .swiper-slide a>img{width:100%; display:block}
 .swipe-portfolio .overf{position:absolute; width:100%; height:100%; background:rgba(0,0,0,0); opacity:0; transition:all 0.3s ease}
 .swipe-portfolio .overf h2{color:#fff; margin-top:100px}
 .swipe-portfolio .overf p{color:#fff; margin-top:20px}
@@ -189,7 +190,7 @@ iframe,object,video,embed{position:relative; top:0; left:0; max-width:100%}
 /* sub portfolio */
 .tabs{width:100%; height:70px; border-bottom:1px solid #f0f0f0; text-align:center}
 .tabs ul{width:1200px; margin:0 auto}
-.tabs ul li{float:left; width:33.33%; border-right:1px solid #f0f0f0; box-sizing:border-box}
+.tabs ul li{float:left; width:33.33%; border-right:1px solid #f0f0f0; box-sizing:border-box; cursor: pointer;}
 .tabs ul li:first-child{border-left:1px solid #f0f0f0}
 .tabs li a{display:block; line-height:70px; font-size:18px; color:#666}
 .tabs li span{display:block; line-height:70px; font-size:18px; color:#666}
@@ -201,8 +202,8 @@ iframe,object,video,embed{position:relative; top:0; left:0; max-width:100%}
 .tabs li.on{border:0}
 .tabs li.on a{background:#ff952e; color:#fff}
 .tabs li.router-link-exact-active{background:#ff952e; color:#fff}
-.tabs li.router-link-exact-active span{color: #fff;}
-.tabs li span{cursor: pointer;}
+.tabs li.router-link-exact-active span{color: white;}
+
 
 .protfolio{position:relative; width:100%}
 .ma_portfolio.sub{margin-top:50px}
