@@ -11,7 +11,7 @@ $mode = $data['mode'];
     $query = mysqli_query($conn,$sql);
 
     while($row = mysqli_fetch_array($query)){
-        if(strlen($row['main_img']) < 15){
+        if(strlen($row['main_img']) < 10){
             $MainImg = "http://yuldesign.kr/images/opengraph.jpg";
         }
         else{

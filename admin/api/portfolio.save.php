@@ -28,7 +28,7 @@
 
         $ext_str = "jpg,gif,png,JPG,GIF,PNG";
         $allowed_extensions = explode(',', $ext_str);
-        $max_file_size = 5000000;
+        $max_file_size = 2000000;
         //Byte 단위임..
         $ext = substr($file['name'], strrpos($file['name'], '.') + 1);
         $path = $file['name'];

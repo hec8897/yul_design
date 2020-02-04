@@ -6,12 +6,10 @@ $result = array();
 $mode = $data['mode'];
   if($mode == "All"){
     $standard = $data['standard'];
-
     $sql = "SELECT * FROM `tb_portfolio` ORDER by `idx` ASC limit 6";
     $query = mysqli_query($conn,$sql);
-
     while($row = mysqli_fetch_array($query)){
-        if(strlen($row['main_img']) < 15){
+        if(strlen($row['main_img']) < 10){
             $MainImg = "http://yuldesign.kr/images/opengraph.jpg";
         }
         else{
@@ -24,7 +22,6 @@ $mode = $data['mode'];
           "portfolioImg"=>$MainImg,
         ));
     }
-
   }
   else{
     $idx = $data['idx'];
@@ -47,7 +44,6 @@ $mode = $data['mode'];
       ));
   }
   }
-
 if(isset($query)){
   $phpResult = 'ok';
 }
