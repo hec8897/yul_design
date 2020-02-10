@@ -21,7 +21,7 @@
 
     $MainImg = $_FILES['MainImg'];
 
-    function FileUploader($files){
+    function FileUploader($files,$tit){
         $file = $files;
         $upload_directory = '../../port_upload/main_img/';
         $time = date('YmdHis');
@@ -29,7 +29,6 @@
         $ext_str = "jpg,gif,png,JPG,GIF,PNG";
         $allowed_extensions = explode(',', $ext_str);
         $max_file_size = 2000000;
-        //Byte 단위임..
         $ext = substr($file['name'], strrpos($file['name'], '.') + 1);
         $path = $file['name'];
         if($files == null){
@@ -41,14 +40,14 @@
         else if($file['size'] >= $max_file_size){
             $Results = 'huge';
         }
-        else if(move_uploaded_file($file['tmp_name'], $upload_directory.$time.$path)) {
-                $Results = $time.$path;
+        else if(move_uploaded_file($file['tmp_name'], $upload_directory.$time."main_img.".$ext)) {
+                $Results = $time."main_img.".$ext;
         }
         return $Result = $Results;
     }
 
     if($mode == 'new'){
-        $MainImgRoute = FileUploader($MainImg);
+        $MainImgRoute = FileUploader($MainImg,$ReqTit);
 
         $sql = "INSERT INTO `tb_portfolio` 
         (`activation`, `writer`, `standard`, `address`, `main_slider`,
@@ -60,7 +59,7 @@
     
     }
     else if($mode == 'update'){
-        $MainImgRoute = FileUploader($MainImg);
+        $MainImgRoute = FileUploader($MainImg,$ReqTit);
         if(strlen($MainImgRoute)>10){
             $Route = "`main_img` = '$MainImgRoute',";
         }
@@ -124,7 +123,8 @@
         array(
             "phpResult"=>$phpResult,
             "mode"=>$Data,
-            "test"=>$Route
+            "test"=>$MainImgRoute,
+            "test2"=>$Route
            
     ));
 

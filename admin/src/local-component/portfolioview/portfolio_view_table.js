@@ -204,7 +204,7 @@ Vue.component('portfilio-update', {
             </li>
 
             <li v-else>
-            <a v-bind:href='"../port_upload/main_img/"+Portdata.MainImg' target='blank'>{{Portdata.MainImg}}</a>
+            <a v-bind:href='"../port_upload/main_img/"+Portdata.MainImg' target='blank'>미리보기</a>
             <span class='b_red' v-on:click='MainImgDelte(mode)'>삭제후 재등록</span>
             </li>
 
