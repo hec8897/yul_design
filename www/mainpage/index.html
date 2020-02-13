@@ -3,32 +3,33 @@
 <!--[if !IE]><!-->
 <html lang="ko">
 <!--<![endif]-->
+
 <head>
-	<title>율디자인 인테리어</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta name="title" content="YUL i.d" />
-	<meta name="author" content="YUL i.d" />
-	<meta name="keywords" content="YUL i.d" />
+    <title>율디자인 인테리어</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="title" content="YUL i.d" />
+    <meta name="author" content="YUL i.d" />
+    <meta name="keywords" content="YUL i.d" />
     <meta name="description" content="YUL i.d" />
     <meta property="og:type" content="website" />
-	<meta property="og:image" content="images/opengraph.jpg" />
-	<meta property="og:title" content="YUL i.d" />
-	<meta property="og:locale" content="ko_KR" />
-	<meta property="og:description" content="YUL i.d" />
-	<meta property="og:url" content="http://yulid.co.kr/" />
+    <meta property="og:image" content="images/opengraph.jpg" />
+    <meta property="og:title" content="YUL i.d" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:description" content="YUL i.d" />
+    <meta property="og:url" content="http://yulid.co.kr/" />
     <link rel="canonical" href="http://http://yuldesign.kr/">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
-    
+
     <!--  BASE CSS  -->
-	<link href="fonts/fonts.min.css" rel="stylesheet" />
-	<link href="css/swiper.min.css" rel="stylesheet" />
-	<link href="css/default.css" rel="stylesheet" />
-	<link href="css/responsive.min.css" rel="stylesheet" />
-	<!--  END BASE CSS  -->
-	
-	<!--  BASE JS  -->
-	<script src="js/jquery-1.9.1.min.js"></script>
+    <link href="fonts/fonts.min.css" rel="stylesheet" />
+    <link href="css/swiper.min.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
+    <link href="css/responsive.min.css" rel="stylesheet" />
+    <!--  END BASE CSS  -->
+
+    <!--  BASE JS  -->
+    <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/scrollMonitor.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/apps.min.js"></script>
@@ -45,7 +46,7 @@
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
-      <!-- Vue.js Component -->
+    <!-- Vue.js Component -->
     <script src="moduls/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
@@ -56,142 +57,108 @@
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.min.js"></script>
     <!-- Vue.js Component -->
-   <script>
-       $(document).ready(function() {
-           App.init();
-       });
+    
+    <script>
+        $(document).ready(function () {
+            App.init();
+        });
 
-       var Promise = require('es6-promise').Promise;
-   </script>
+        var Promise = require('es6-promise').Promise;
+    </script>
 
- 
+
 </head>
+
 <body>
-<div id="page-container" class="wrap">
-    <!--// Header -->
-    <header id="header">
-        <!--// popover GNB -->
-        <div class="pop_gnb">
-            <div class="b_menu navbar-toggle" data-click="sidebar-toggled">
-                <span></span><span></span><span class="m_half"></span>
+    <div id="page-container" class="wrap">
+        <header id="header">
+            <div class="pop_gnb">
+                <div class="b_menu navbar-toggle" data-click="sidebar-toggled">
+                    <span></span><span></span><span class="m_half"></span>
+                </div>
+                <div id="sidebar" class="sidebar">
+                </div>
             </div>
-            <div id="sidebar" class="sidebar">
+            <div class="gnb" id='gnb'>
             </div>
-        </div>
-        <!-- END popover GNB //-->
-        
-        <div class="gnb" id='gnb'>
-        </div>
-        
-        <!--// visual -->
-        <div class="swiper-container">
-            <div class="swiper-wrapper" id='sliders'>
-                <!-- Main slier -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper" id='sliders'>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="swiper-pagination"></div>
-        </div>
-        <!-- END visual //-->
-    
-        <!--// about us -->
-        <div class="ma_about">
-            <div class="sub_tit">
-                <p class="mb20">TRENDY &amp; PRACTICAL DESIGN</p>
-                <h2>삶의 가치를 높여 주는<br>꿈의 공간을 창조합니다.</h2>
+            <div class="ma_about">
+                <div class="sub_tit">
+                    <p class="mb20">TRENDY &amp; PRACTICAL DESIGN</p>
+                    <h2>삶의 가치를 높여 주는<br>꿈의 공간을 창조합니다.</h2>
+                </div>
+                <div class="about_img"><img src="images/img_1.jpg" alt=""></div>
             </div>
-            <div class="about_img"><img src="images/img_1.jpg" alt=""></div>
-        </div>
-        
-        <div class="btn_area">
-            <a href="about.html" class="btn b_le">ABOUT US</a>
-        </div>
-        <!-- about us //-->
-        
-        <!-- sky banner -->
-        <div class="btn_contact">
-            <ul>
-                <li>
-                    <a href="consul.html">
-                        <img src="images/sky_icon_1.png" alt="icon">
-                        <p>견적문의</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <img src="images/sky_icon_2.png" alt="icon">
-                        <p>전화상담</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <img src="images/sky_icon_3.png" alt="icon">
-                        <p>카톡문의</p>
-                    </a>
-                </li>
-            </ul>
-            <a href="" class="top_btn" data-click="scroll-top">TOP</a>
-        </div>
-    </header>
 
-    <div class="foot_contact">
-        <a href="consul.html">
-            <img src="images/icon_assign.png" alt="견적문의"> 견적문의 바로가기
-        </a>
+            <div class="btn_area">
+                <a href="about.html" class="btn b_le">ABOUT US</a>
+            </div>
+            <div class="btn_contact">
+                <ul>
+                    <li>
+                        <a href="consul.html">
+                            <img src="images/sky_icon_1.png" alt="icon">
+                            <p>견적문의</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="images/sky_icon_2.png" alt="icon">
+                            <p>전화상담</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="images/sky_icon_3.png" alt="icon">
+                            <p>카톡문의</p>
+                        </a>
+                    </li>
+                </ul>
+                <a href="" class="top_btn" data-click="scroll-top">TOP</a>
+            </div>
+        </header>
+        <div class="foot_contact">
+            <a href="consul.html">
+                <img src="images/icon_assign.png" alt="견적문의"> 견적문의 바로가기
+            </a>
+        </div>
+        <div id="section">
+            <div class="ma_port">
+                <div class="sub_tit">
+                    <h1>PORTFOLIO</h1>
+                </div>
+                <main-slider></main-slider>
+                <main-port></main-port>
+                <div class="port_bg"></div>
+            </div>
+            <div class="ma_banner">
+                <div class="ban_tit">
+                    <p>당신의 라이프 스타일에 딱 맞는 맞춤 설계로<span>감동을 선사해드리겠습니다.</span></p>
+                    <img src="images/bi_yul.png" alt="YUL">
+                </div>
+                <div></div>
+            </div>
+        </div>
+        <footer id="footer">
+
+        </footer>
     </div>
-    <!-- END Header //-->
-    
-    <!--// contents -->
-    <div id="section">
-        <!--// portfolio -->
-        <div class="ma_port">
-            <div class="sub_tit">
-                <h1>PORTFOLIO</h1>
-            </div>
-            
-            <!-- END slide //-->
-            
-            <!-- portfolio list -->
-
-            <main-slider></main-slider>
-            <main-port></main-port>
-
-            <div class="port_bg"></div>
-        </div>
-        <!-- portfolio //-->
-        
-        <div class="ma_banner">
-            <div class="ban_tit">
-                <p>당신의 라이프 스타일에 딱 맞는 맞춤 설계로<span>감동을 선사해드리겠습니다.</span></p>
-                <img src="images/bi_yul.png" alt="YUL">
-            </div>
-            <div></div>
-        </div>
-    </div>
-    <!--END contents //-->
-    
-    <!--// footer -->
-    <footer id="footer">
-        
-    </footer>
-    <!--END footer //-->
-</div>
-
-<!-- swiper js -->
-<!-- <script src="src/app.js"></script> -->
-<script src="js/swiper.min.js"></script>
-
-<script src="moduls/dist/local/main_port.js"></script>
-<script src="moduls/dist/local/main_slider.js"></script>
-<script src="moduls/dist/app.main.vue.js"></script>
-<script src="src/app.min.js"></script>
-<!-- <script src="src/data.js"></script> -->
-<script src="src/data.min.js"></script>
 
 
+    <script src="js/swiper.min.js"></script>
+    <script src="moduls/dist/local/main_port.js"></script>
+    <script src="moduls/dist/local/main_slider.js"></script>
+    <script src="moduls/dist/app.main.vue.js"></script>
+    <script src="src/app.min.js"></script>
+    <script src="src/data.min.js"></script>
 
-<script>
-mainBannerGet()
-</script>
-<!-- Initialize Swiper -->
-
+    <script>
+        mainBannerGet()
+    </script>
 </body>
+
 </html>

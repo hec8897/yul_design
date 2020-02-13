@@ -81,6 +81,7 @@ const PortViewRender = {
                 baseURI, params
             )
             .then((result) => {
+                console.log(result)
 
 
                 const tabMenu = document.querySelectorAll('.tab_menu')

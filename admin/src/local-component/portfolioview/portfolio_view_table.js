@@ -75,6 +75,8 @@ Vue.component('portfilio-update', {
                     </select>
                 </div>
             </li>
+
+
             <li><h5>시공형태</h5></li>
             <li class="select_input">
                 <div>
@@ -186,6 +188,8 @@ Vue.component('portfilio-update', {
                 v-else
                 />
             </li>
+
+
             <li><h5>대표이미지</h5></li>
             <li v-if="mode === 'new'">
                 <input 
@@ -204,8 +208,31 @@ Vue.component('portfilio-update', {
             </li>
 
             <li v-else>
-            <a v-bind:href='"../port_upload/main_img/"+Portdata.MainImg' target='blank'>{{Portdata.MainImg}}</a>
+            <a v-bind:href='"../port_upload/main_img/"+Portdata.MainImg' target='blank'>미리보기</a>
             <span class='b_red' v-on:click='MainImgDelte(mode)'>삭제후 재등록</span>
+            </li>
+
+
+            <li><h5>슬라이드이미지</h5></li>
+            <li v-if="mode === 'new'">
+                <input 
+                type="file" 
+                v-on:change='SelectSlideImg'
+                ref="slideimg" 
+                placeholder='가로형이미지'
+                >
+            </li>
+            <li v-else-if="mode!='new' && Portdata.SlideImg.length < 8">
+                <input 
+                type="file" 
+                v-on:change='SelectSlideImg'
+                ref="slideimg" 
+                >
+            </li>
+
+            <li v-else>
+            <a v-bind:href='"../port_upload/slider/"+Portdata.SlideImg' target='blank'>미리보기</a>
+            <span class='b_red' v-on:click='SlideImgDelte(mode)'>삭제후 재등록</span>
             </li>
 
             <li><h5>내용</h5></li>
@@ -224,6 +251,7 @@ Vue.component('portfilio-update', {
     data() {
         return {
             UploadMainImg: null,
+            UploadSlideImg:null,
             Portdata: null
         }
     },
@@ -266,11 +294,18 @@ Vue.component('portfilio-update', {
         },
         SelectMainImg() {
             this.UploadMainImg = this.$refs.mainimg.files[0];
-            console.log(this.UploadMainImg)
+        },
+        SelectSlideImg() {
+            this.UploadSlideImg = this.$refs.slideimg.files[0];
         },
         MainImgDelte(idx){
             let MainImg = this.Portdata.MainImg;
             let Data = {idx:idx,ImgArray:MainImg,mode:"MainImg"}
+            this.OpenDelModal(Data,"MainImg")
+        },
+        SlideImgDelte(idx){
+            let SlideImg = this.Portdata.SlideImg;
+            let Data = {idx:idx,ImgArray:SlideImg,mode:"slideImg"}
             this.OpenDelModal(Data,"MainImg")
         },
         NoneSave(){
@@ -306,6 +341,7 @@ Vue.component('portfilio-update', {
                             option2: "바닥",
                             option3: "적삼목",
                             MainImg: "../upload/202001141651works_9.jpg",
+                            SlideImg:"123",
                             Desc: "<p>123</p>",
                             Activation: 0,
                             MainSlider:0
@@ -331,7 +367,7 @@ Vue.component('portfilio-update', {
             const sumNote = document.getElementById('summernote_iframe').contentWindow.document.getElementById("summernote")
         
 
-            function DataFromInsert(modes,MainImg,idx) {
+            function DataFromInsert(modes,MainImg,slideImg,idx) {
                 if (reqTit.value == "") {
                     alert('제목은필수로 작성해주세요')
                     reqTit.focus()
@@ -351,6 +387,7 @@ Vue.component('portfilio-update', {
                     InsertData.append('Floor', Floor.value)
                     InsertData.append('Walls', Walls.value)
                     InsertData.append('MainImg', MainImg)
+                    InsertData.append('SlideImg', slideImg)
                     InsertData.append('desc', sumNote.value)
                     InsertData.append('Mainslider',MainSlider.value)
                     InsertData.append('desc_img',$('#summernote_iframe').get(0).contentWindow.ImgArray)
@@ -360,23 +397,27 @@ Vue.component('portfilio-update', {
                             baseURI, InsertData
                         )
                         .then((result) => {
-                            console.log(result)
                             if (result.data.phpResult == 'ok') {
                                 alert('작성이완료되었습니다')
                                 router.push({
                                     path: '/portfolio'
                                 })
                             }
+                            else{
+                            }
+                            console.log(result)
                         })
                         .catch(err => console.log('Login: ', err));
                 }
             }
 
             if (mode == "new") {
-                DataFromInsert(this.mode,this.UploadMainImg)
-            } else {
+                DataFromInsert(this.mode,this.UploadMainImg,this.UploadSlideImg)
+                DataFromInsert(this.mode,this.UploadMainImg,this.UploadSlideImg)
+
+            } else if(mode == "update"){
                 const idx = this.mode;
-                DataFromInsert('update',this.UploadMainImg,idx)
+                DataFromInsert('update',this.UploadMainImg,this.UploadSlideImg,idx)
             }
         }
     }

@@ -19,17 +19,24 @@
     $DescImg = $_POST['desc_img'];
     $MainSlider = $_POST['Mainslider'];
 
-    $MainImg = $_FILES['MainImg'];
 
-    function FileUploader($files){
+    $MainImg = $_FILES['MainImg'];
+    $SlideImg = $_FILES['SlideImg'];
+
+
+    function FileUploader($files,$tit,$mode){
         $file = $files;
+        if($mode == 'main'){
         $upload_directory = '../../port_upload/main_img/';
+        }
+        else if($mode == 'slide'){
+            $upload_directory = '../../port_upload/slider/';
+        }
         $time = date('YmdHis');
 
         $ext_str = "jpg,gif,png,JPG,GIF,PNG";
         $allowed_extensions = explode(',', $ext_str);
-        $max_file_size = 2000000;
-        //Byte 단위임..
+        $max_file_size = 3000000;
         $ext = substr($file['name'], strrpos($file['name'], '.') + 1);
         $path = $file['name'];
         if($files == null){
@@ -41,26 +48,29 @@
         else if($file['size'] >= $max_file_size){
             $Results = 'huge';
         }
-        else if(move_uploaded_file($file['tmp_name'], $upload_directory.$time.$path)) {
-                $Results = $time.$path;
+        else if(move_uploaded_file($file['tmp_name'], $upload_directory.$time."main_img.".$ext)) {
+                $Results = $time."main_img.".$ext;
         }
         return $Result = $Results;
     }
 
     if($mode == 'new'){
-        $MainImgRoute = FileUploader($MainImg);
+        $MainImgRoute = FileUploader($MainImg,$ReqTit,'main');
+        $SlideImg = FileUploader($SlideImg,$ReqTit,'slide');
+
 
         $sql = "INSERT INTO `tb_portfolio` 
-        (`activation`, `writer`, `standard`, `address`, `main_slider`,
+        (`activation`, `writer`, `standard`, `address`, `main_slider`,`slide_img`,
         `measure`, `floor`, `walls`, `ceiling`, `title`, `main_img`, `desc`,`desc_img`) 
         VALUES 
-        ('$Activation', '$Writer', '$Standard', '$Address', '$MainSlider',
+        ('$Activation', '$Writer', '$Standard', '$Address', '$MainSlider','$SlideImg',
         '$Measure', '$Floor', '$Walls', '$Ceiling', '$ReqTit', '$MainImgRoute', '$desc','$DescImg')";
         $query = mysqli_query($conn,$sql);
     
     }
     else if($mode == 'update'){
-        $MainImgRoute = FileUploader($MainImg);
+        $MainImgRoute = FileUploader($MainImg,$ReqTit,'main');
+        $SlideImg = FileUploader($SlideImg,$ReqTit,'slide');
         if(strlen($MainImgRoute)>10){
             $Route = "`main_img` = '$MainImgRoute',";
         }
@@ -68,7 +78,7 @@
             $Route = "";
         }
 
-        $sql ="UPDATE `tb_portfolio` SET `activation`= '$Activation', `main_slider` = '$MainSlider',
+        $sql ="UPDATE `tb_portfolio` SET `activation`= '$Activation', `main_slider` = '$MainSlider',`slide_img` = '$SlideImg',
         `writer`='$Writer',`standard`='$Standard', `address` = '$Address', 
         `measure` = '$Measure', `floor` = '$Floor', `walls` = '$Walls' , 
         `ceiling` = '$Ceiling', `title`= '$ReqTit', $Route`desc` = '$desc', `desc_img` = '$DescImg' WHERE `idx`='$idx'";
@@ -91,21 +101,32 @@
         if($Data['mode'] == "DataAll"){
             $url = "http://yuldesign.kr/";
             $DescImg = $data['Data']['ImgArray'];
-            $JoinUsingImg = "SELECT `main_img` FROM `tb_portfolio` WHERE idx = '$idx'";
+            $JoinUsingImg = "SELECT `main_img`,`slide_img` FROM `tb_portfolio` WHERE idx = '$idx'";
             $MainImgquery = mysqli_query($conn,$JoinUsingImg);
             $DeletImg = mysqli_fetch_assoc($MainImgquery);
             $DeletImgTarget = "../../port_upload/main_img/".$DeletImg['main_img'];
+            $DeletSlideImgTarget = "../../port_upload/slider/".$DeletImg['slide_img'];
+
             for($count = 0 ; $count <count($DescImg) ; $count++){
                     unlink("../../".substr($DescImg[$count],20));
                     // unlink("../../".substr($DescImg[$count],도메인주소길이));
                 }
                 unlink($DeletImgTarget);
+                unlink($DeletSlideImgTarget);
+
                 $sql = "DELETE FROM `tb_portfolio` WHERE idx = '$idx'";
             }
-            else{
+            else if($Data['mode'] == 'MainImg'){
                 $DeletImgTarget = "../../port_upload/main_img/".$Data['ImgArray'];
                 unlink($DeletImgTarget);
                 $sql = "UPDATE `tb_portfolio` SET `main_img` = '' WHERE idx = '$idx'";
+            }
+            else if($Data['mode'] == 'slideImg'){
+                $DeletSlideImgTarget = "../../port_upload/slider/".$Data['ImgArray'];
+                unlink($DeletSlideImgTarget);
+                $sql = "UPDATE `tb_portfolio` SET `slide_img` = '' WHERE idx = '$idx'";
+
+
             }
             $query = mysqli_query($conn,$sql);
 
@@ -124,7 +145,6 @@
         array(
             "phpResult"=>$phpResult,
             "mode"=>$Data,
-            "test"=>$Route
            
     ));
 
