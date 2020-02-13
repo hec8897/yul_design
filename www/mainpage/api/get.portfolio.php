@@ -69,6 +69,7 @@ $json =  json_encode(
   array(
       "result"=>$result,
       "Standardidx"=>$idxArray,
+      "test"=>$idx,
       "phpResult"=>$phpResult ,
 
 )); 

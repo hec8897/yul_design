@@ -2,7 +2,7 @@ const mainSlider = {
     template: `         <div class="swipe-portfolio">
     <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="list in lists">
-            <a v-bind:href="'portfolio_view.html?idx='+list.idx" v-bind:style="{backgroundImage:'url(' +list.portfolioImg+')'}">
+            <a v-bind:href="'portfolio_view.html?idx='+list.idx" v-bind:style="{backgroundImage:'url(' +list.SlideImg+')'}">
 
                 <div class="overf">
                     <h2>{{list.portfolioStandard}}</h2>
@@ -30,6 +30,7 @@ const mainSlider = {
                 }
             )
             .then((result) => {
+                console.log(result)
                 if (result.data.phpResult == "ok") {
                     this.lists = result.data.result
                     console.log(result.data)

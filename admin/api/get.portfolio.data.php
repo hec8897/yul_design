@@ -22,6 +22,7 @@ $idx = $data['idx'];
       "option3"=> $row['walls'],
       "Activation"=> $row['activation'],
       "MainImg"=>$row['main_img'],
+      "SlideImg"=>$row['slide_img'],
       "Desc"=>$row['desc'],
       "DescImg"=>$row['desc_img'],
       "MainSlider"=>$row['main_slider']

@@ -76,7 +76,11 @@ Vue.component('delte-modal', {
                         else if(this.thisTarget == 'portfolio'){
                             if(this.Data.mode == "MainImg"){
                                 eventBus.$emit('MainImgDelteResult', "ok")
-                            }else{
+                            }
+                            else if(this.Data.mode =="slideImg"){
+                                eventBus.$emit('MainImgDelteResult', "ok")
+                            }
+                            else{
                                 router.go(-1)
                             }
                         }
