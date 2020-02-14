@@ -49,7 +49,7 @@ iframe,object,video,embed{position:relative; top:0; left:0; max-width:100%}
 .head_wrap .head_info h5{display:inline-block; color:#fff; font-weight:300; letter-spacing:0; margin-right:50px}
 .head_wrap .head_info span{display:inline-block; width:100px; height:30px; line-height:30px; font-size:14px; font-weight:400; text-align:center; margin:20px 10px 0 0}
 .head_wrap .head_info a.btn_info{background:#d9d9d9; color:#444}
-.head_wrap .head_info span.btn_out{background:#f4514a; color:#fff}
+.head_wrap .head_info span.btn_out{background:#f4514a; color:#fff; cursor: pointer;}
 
 /* Side GNB */
 .sidebar{position:absolute; z-index:6; padding-top:70px; height:100%; box-sizing:border-box}
@@ -58,7 +58,7 @@ iframe,object,video,embed{position:relative; top:0; left:0; max-width:100%}
     display:inline-block; width:0; height:0; margin:20px 10px 0 0; vertical-align:middle;
     border-left:4px solid #444; border-top:4px solid transparent; border-bottom:4px solid transparent; box-sizing: border-box;
 }
-.sidebar .nav .has-sub{width:100%; border-bottom:1px solid #d9d9d9}
+.sidebar .nav .has-sub{width:100%; border-bottom:1px solid #d9d9d9; cursor: pointer;}
 .sidebar .nav .has-sub.on,
 .sidebar .nav .has-sub.active,
 .sidebar .nav .has-sub.expand,
@@ -134,7 +134,7 @@ table.need th:nth-child(5){width:15%}
 table.need th:nth-child(6){width:15%}
 table th,td{height:40px; padding:5px; box-sizing:border-box; font-size:14px; text-align:center}
 table th{background:#f0f0f0; color:#444; font-weight:500; border-top:1px solid #444; border-bottom:1px solid #444}
-table td{color:#777; border-bottom:1px solid #d9d9d9}
+table td{color:#777; border-bottom:1px solid #d9d9d9;}
 table tr:last-child td{border-bottom:1px solid #444}
 table tr:hover td{background:#f9f9f9}
 table td a{display:block}
@@ -155,6 +155,7 @@ table.portfolio th:nth-child(5){width:7%}
 table.portfolio th:nth-child(6){width:7%}
 table.portfolio th:nth-child(7){width:7%}
 table.portfolio th:nth-child(8){width:7%}
+table.portfolio tr td{cursor: pointer;}
 
 /* admin sub */
 .panel input{height:40px; width:80%}
@@ -171,7 +172,7 @@ a.b_num{float:right; font-size:13px; color:#1a93d9; margin-top:7px}
 .panel div{position:relative}
 .panel li{min-height:40px}
 .panel .search_input div{float:left}
-.panel .search_input select{border:1px solid #e0e0e0; width:120px; height:40px; outline:none; margin-right:10px}
+.panel .search_input select{border:1px solid #e0e0e0; width:120px; height:40px; outline:none; margin-right:10px; cursor: pointer;}
 .panel .search_input select:focus{border:1px solid #999}
 .panel .search_input input[type=text]{width:220px; padding-right:30px; box-sizing:border-box}
 .panel .search_btn{width: 50px;display: inline-block; line-height: 40px; height: 40px; background-color: #d1312a; text-align: center; margin-left: 5px; border-radius: 2px;}
@@ -296,8 +297,8 @@ table.ui-datepicker-calendar td:hover{background:#f0f0f0; cursor:pointer}
 table.ui-datepicker-calendar td:first-child a,table.ui-datepicker-calendar th:first-child span{color:#e71707}
 table.ui-datepicker-calendar td:last-child a,table.ui-datepicker-calendar th:last-child span{color:#2184dd}
 
-.daterange{display:inline-block; position:relative}
-.daterange input{display:inline-block; width:120px; padding-right:30px; box-sizing:border-box}
+.daterange{display:inline-block; position:relative; cursor: pointer;}
+.daterange input{display:inline-block; width:120px; padding-right:30px; box-sizing:border-box; cursor: pointer;}
 .daterange input.btn{width: 100px; background-color: #1a93d9;padding: 0px; text-align: center; color: white;  margin-left: 10px; cursor: pointer; outline: none;}
 .daterange i{position:absolute; right:5px; top:5px; color:#666; line-height:30px}
 .daterange label{cursor:pointer}
@@ -320,7 +321,7 @@ table.ui-datepicker-calendar tr:last-child td{border-bottom:0}
 }
 .pop-window.in{opacity:1}
 .pop-window .alert {
-    position:relative; margin:200px auto; overflow:hidden;
+    position: absolute;; margin:0px auto; overflow:hidden;top: 45%;left: 50%; transform: translate(-50%,-50%);
     background:#fff; width:350px; height:200px; box-sizing:border-box; 
 }
 .pop-window .alert2{height:230px}

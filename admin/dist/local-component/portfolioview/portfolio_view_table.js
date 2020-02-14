@@ -185,7 +185,6 @@ Vue.component('portfilio-update', {
 
       if (mode == "new") {
         DataFromInsert(this.mode, this.UploadMainImg, this.UploadSlideImg);
-        DataFromInsert(this.mode, this.UploadMainImg, this.UploadSlideImg);
       } else if (mode == "update") {
         var idx = this.mode;
         DataFromInsert('update', this.UploadMainImg, this.UploadSlideImg, idx);
