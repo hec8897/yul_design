@@ -6,6 +6,7 @@ Vue.component('app-header', {
         </div>
             <div class="head_info">
                 <span class="btn_out" v-on:click='DestorySessionData'>로그아웃</span>
+                <span class="btn_out b_blue"><a href='http://yuldesign.kr/' target='_blank' >홈페이지</a></span>
             </div>
         </div>`,
         methods:{

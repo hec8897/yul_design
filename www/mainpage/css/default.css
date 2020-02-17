@@ -149,7 +149,7 @@ iframe,object,video,embed{position:relative; top:0; left:0; max-width:100%}
 
 .ma_portfolio{position:relative; width:1200px; height:100%; margin:0 auto}
 .ma_portfolio>div{display:inline-block; width:48%; margin-bottom:50px}
-.ma_portfolio p{text-overflow:ellipsis; overflow:hidden; white-space:nowrap}
+.ma_portfolio p{text-overflow:ellipsis; overflow:hidden; white-space:nowrap; margin-top: 7px;}
 .ma_portfolio div:nth-child(2n){float:right}
 
 .ma_portfolio a{position:relative; display:block; overflow:hidden}

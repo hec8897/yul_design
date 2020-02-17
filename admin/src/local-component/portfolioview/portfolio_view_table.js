@@ -58,23 +58,7 @@ Vue.component('portfilio-update', {
                 </div>
             </li>
 
-            <li><h5>메인슬라이더</h5></li>
-            <li class="select_input">
-                <div>
-                    <select id="reqslider" v-if="mode === 'new'">
-                        <option value="1">사용</option>
-                        <option value="0" selected>사용안함</option>
-                    </select>
-
-                    <select id="reqslider" v-else>
-                        <option v-if='Portdata.MainSlider == 1' value="1" selected>사용</option>
-                        <option v-else value="1">사용</option>
-
-                        <option v-if="Portdata.MainSlider == 0" value="0" selected>사용안함</option>
-                        <option v-else value="0">사용안함</option>
-                    </select>
-                </div>
-            </li>
+           
 
 
             <li><h5>시공형태</h5></li>
@@ -190,30 +174,29 @@ Vue.component('portfilio-update', {
             </li>
 
 
-            <li><h5>대표이미지</h5></li>
-            <li v-if="mode === 'new'">
-                <input 
-                type="file" 
-                v-on:change='SelectMainImg'
-                ref="mainimg" 
-                placeholder='가로형이미지'
-                >
-            </li>
-            <li v-else-if="mode!='new' && Portdata.MainImg.length < 8">
-                <input 
-                type="file" 
-                v-on:change='SelectMainImg'
-                ref="mainimg" 
-                >
-            </li>
-
-            <li v-else>
-            <a v-bind:href='"../port_upload/main_img/"+Portdata.MainImg' target='blank'>미리보기</a>
-            <span class='b_red' v-on:click='MainImgDelte(mode)'>삭제후 재등록</span>
-            </li>
+     
 
 
-            <li><h5>슬라이드이미지</h5></li>
+            <li><h5>메인슬라이더</h5></li>
+            <li class="select_input">
+                <div>
+                    <select id="reqslider" v-if="mode === 'new'">
+                        <option value="1">사용</option>
+                        <option value="0" selected>사용안함</option>
+                    </select>
+
+                    <select id="reqslider" v-else>
+                        <option v-if='Portdata.MainSlider == 1' value="1" selected>사용</option>
+                        <option v-else value="1">사용</option>
+
+                        <option v-if="Portdata.MainSlider == 0" value="0" selected>사용안함</option>
+                        <option v-else value="0">사용안함</option>
+                    </select>
+                </div>
+            </li>
+
+
+            <li><h5>슬라이드이미지(1MB 이내)</h5></li>
             <li v-if="mode === 'new'">
                 <input 
                 type="file" 
@@ -233,6 +216,27 @@ Vue.component('portfilio-update', {
             <li v-else>
             <a v-bind:href='"../port_upload/slider/"+Portdata.SlideImg' target='blank'>미리보기</a>
             <span class='b_red' v-on:click='SlideImgDelte(mode)'>삭제후 재등록</span>
+            </li>
+            <li><h5>대표이미지(1MB 이내)</h5></li>
+            <li v-if="mode === 'new'">
+                <input 
+                type="file" 
+                v-on:change='SelectMainImg'
+                ref="mainimg" 
+                placeholder='가로형이미지'
+                >
+            </li>
+            <li v-else-if="mode!='new' && Portdata.MainImg.length < 8">
+                <input 
+                type="file" 
+                v-on:change='SelectMainImg'
+                ref="mainimg" 
+                >
+            </li>
+
+            <li v-else>
+            <a v-bind:href='"../port_upload/main_img/"+Portdata.MainImg' target='blank'>미리보기</a>
+            <span class='b_red' v-on:click='MainImgDelte(mode)'>삭제후 재등록</span>
             </li>
 
             <li><h5>내용</h5></li>

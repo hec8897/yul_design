@@ -60,6 +60,7 @@ const HtmlLinkInsert = {
                                     <li><a href="${HtmlRoute.about}">ABOUT US</a></li>
                                     <li><a href="${HtmlRoute.portfolio.list}">PORTFOLIO</a></li>
                                     <li><a href="${HtmlRoute.consulting}">CONSULTING</a></li>
+                                    <li><a href="http://yuldesign.kr/admin" target='_blank'>Admin</a></li>
                                 </ul>
                                 <ul class="copy">
                                     <li><span>율 디자인</span></li>
