@@ -417,7 +417,6 @@ Vue.component('portfilio-update', {
 
             if (mode == "new") {
                 DataFromInsert(this.mode,this.UploadMainImg,this.UploadSlideImg)
-                DataFromInsert(this.mode,this.UploadMainImg,this.UploadSlideImg)
 
             } else if(mode == "update"){
                 const idx = this.mode;
